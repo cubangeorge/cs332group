@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-class PrimeTest {
+class Test_Suite {
 
 	@Test
 	void test_is_prime() {
