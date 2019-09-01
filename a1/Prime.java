@@ -21,6 +21,7 @@ public class Prime {
 	}
 
 	public static int is_prime(int num) {
+		/*this return 1 if number is prime zero otherwise*/
 		
 		return check_if_prime(num, firstprime); /* Initializes recursion */
 	}

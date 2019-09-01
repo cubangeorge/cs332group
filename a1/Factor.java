@@ -1,9 +1,10 @@
 
 public class Factor {
 	public static int is_factor(int a, int b){
-		//this method will return 0 if b is a factor of a, or return 1 otherwise 
-		//flip a signs: 
-		if (a<0) 
+		//this method HAS REVERE LOGIC!!!!!
+		//it will return 0 if b is a factor of a, or return 1 otherwise 
+		
+		if (a<0) //flip a's sign if negative
 			a=a*-1;
 		if (b==0) {// this covers my zero edge cases since 0*0 = 0
 			

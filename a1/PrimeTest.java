@@ -1,5 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class PrimeTest {
@@ -54,4 +57,21 @@ class PrimeTest {
 		
 		
 	}
+	
+	@Test 
+	void test_integerToBoolean(){
+		
+		assertEquals(true, FindPrimeFactors.integerToBoolean(1));
+		assertEquals(false, FindPrimeFactors.integerToBoolean(0));
+		assertEquals(true, FindPrimeFactors.integerToBoolean(4));
+		assertEquals(true, FindPrimeFactors.integerToBoolean(-1));
+	}//end test
+	@Test
+	void test_fPF_1() {
+		//here the first number is a prime factor 
+		List<Integer> a = Arrays.asList(12,24,3  ,4 ,5);
+		List<Integer> b = Arrays.asList(3 ,2 ,16 ,1 ,5); //list with pf @ 0
+		assertEquals(0,FindPrimeFactors.findPrimeFactor(a, b));
+		
+	}//end test
 }
