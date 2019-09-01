@@ -1,7 +1,7 @@
 
 public class Factor {
 	public static int is_factor(int a, int b){
-		//this method HAS REVERE LOGIC!!!!!
+		//this method HAS REVERSE LOGIC!!!!!
 		//it will return 0 if b is a factor of a, or return 1 otherwise 
 		
 		if (a<0) //flip a's sign if negative
