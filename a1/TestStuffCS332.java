@@ -15,7 +15,7 @@ public class TestStuffCS332 {
 		System.out.println(""+t);
 		
 		b = new int[] {2,3,4,5,6};
-		
+		System.out.println(Boolean.parseBoolean(String.valueOf(1)));
 
 	}
 	
