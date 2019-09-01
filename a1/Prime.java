@@ -1,4 +1,4 @@
-package a1_PrimeFactor;
+
 
 
 public class Prime {
