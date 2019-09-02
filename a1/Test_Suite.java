@@ -80,7 +80,7 @@ class Test_Suite {
 	void test_fPF_2() {
 		//here the last number is a prime factor 
 		List<Integer> a = Arrays.asList(5 ,23,3  ,34 ,25);
-		List<Integer> b = Arrays.asList(3 ,2 ,16 ,12  ,5); //list with pf @ 0
+		List<Integer> b = Arrays.asList(3 ,2 ,16 ,12  ,5); //list with pf @ 4
 		assertEquals(4,FindPrimeFactors.findPrimeFactor(a, b));
 		
 	}//end test
@@ -89,14 +89,14 @@ class Test_Suite {
 	void test_fPF_3() {
 		//here the middle index number is a prime factor 
 		List<Integer> a = Arrays.asList(5 ,23,25,34 ,24);
-		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ 0
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ 2
 		assertEquals(2,FindPrimeFactors.findPrimeFactor(a, b));
 	}//end test
 	@Test
 	void test_fPF_4() {
 		//here the middle index number and last are a prime factor 
 		List<Integer> a = Arrays.asList(5 ,23,25,34 ,25);
-		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ 0
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ 2
 		assertEquals(2,FindPrimeFactors.findPrimeFactor(a, b));
 	}//end test
 	
@@ -104,7 +104,7 @@ class Test_Suite {
 	void test_fPF_5() {
 		//here no prime factor 
 		List<Integer> a = Arrays.asList(5 ,23,66,34 ,23);
-		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ 0
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ -1
 		assertEquals(-1,FindPrimeFactors.findPrimeFactor(a, b));
 	}//end test
 	
