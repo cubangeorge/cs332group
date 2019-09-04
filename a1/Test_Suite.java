@@ -1,27 +1,38 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-class Test_Suite {
 
+class Test_Suite {
+	
+	
+	//test data arrays for more comprehensive testing
+	public static int[] nonPrimes = new int[] {0, 1, 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 46, 48, 49, 50, 51, 52, 54, 55, 56, 57, 58, 60, 62, 63 };
+	
+	public static int[] primes = new int[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
+	public static int[] compositeNumbers = new int[] {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 46, 48, 49, 50, 51, 52, 54, 55, 56, 57, 58, 60, 62, 63, 64, 65, 66, 68, 69, 70, 72, 74, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 96, 98, 99, 100};
+	
+	
+	
 	@Test
 	void test_is_prime() {
-		
-		assertEquals(1,Prime.is_prime(2));//checking primes 
-		assertEquals(1,Prime.is_prime(3));
-		assertEquals(1,Prime.is_prime(5));
-		assertEquals(1,Prime.is_prime(7));
-		assertEquals(1,Prime.is_prime(11));
 		
 		assertEquals(0,Prime.is_prime(1));//check not primes less than 1st prime 
 		assertEquals(0,Prime.is_prime(0));
 	
-		assertEquals(0,Prime.is_prime(4));//check not primes more than first prime 
-		assertEquals(0,Prime.is_prime(6)); 
-		assertEquals(0,Prime.is_prime(10)); 
+		for (int i = 0; i < nonPrimes.length; i++) {	
+				assertEquals(0, Prime.is_prime(nonPrimes[i]));	
+		}
+		
+		
+		for (int i = 0; i < primes.length; i++) {
+			assertEquals(1, Prime.is_prime(primes[i]));
+		}
 		
 	}
 
@@ -54,6 +65,20 @@ class Test_Suite {
 		assertEquals(1,Factor.is_factor(-4, -8)); //8*-.5 =-4  
 		assertEquals(1,Factor.is_factor(-4, 8)); //8*.5 =-4  
 		
+		
+		for (int j = 0; j < compositeNumbers.length; j++) {
+			for (int i = 1; i < compositeNumbers.length; i++) {
+			
+				if (compositeNumbers[j] % i == 0) {
+					assertEquals(0,Factor.is_factor(compositeNumbers[j], i));				
+				}
+				
+				if ((-1 * compositeNumbers[j]) % (-1* i) == 0) {
+					assertEquals(0,Factor.is_factor(compositeNumbers[j], i));
+				}	
+				
+			}
+		}
 		
 		
 	}
