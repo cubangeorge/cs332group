@@ -1,3 +1,4 @@
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -136,6 +137,7 @@ class Test_Suite {
 		assertEquals(0, FindPrimeFactors.findPrimeFactor(g, h));
 		
 		
+		
 	}//end test
 	
 	@Test
@@ -176,18 +178,35 @@ class Test_Suite {
 		//here no prime factor 
 		List<Integer> a = Arrays.asList(5 ,23,66,34 ,23);
 		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ -1
-		assertEquals(-1,FindPrimeFactors.findPrimeFactor(a, b));
+		
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail ("Illegal Argument Exception did not trigger");
+		}
+		catch(IllegalArgumentException e) {
+			System.out.println("Inside: findPrimeFactor"+e);
+		}
+		catch(Exception e){
+			System.out.println("Unexpected Exception:"+e);
+		}
 	}//end test
 	
-	
-	/*@Test
-	void test_fPF_Errors() {
-		List<Integer> a = Arrays.asList();
-		List<Integer> b = Arrays.asList(); 
-
-		try {
-		assertEquals(IndexOutOfBoundsException.class,FindPrimeFactors.findPrimeFactor(a, b));
-		} catch(IndexOutOfBoundsException )
+	@Test
+	void test_fPF_6() {
+		//here no prime factor and wrong length
+		List<Integer> a = Arrays.asList(5 ,23,66,34 );
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ -1
 		
-	}*/
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail ("Illegal Argument Exception did not trigger");
+		}
+		catch(IllegalArgumentException e) {
+			System.out.println("Inside: findPrimeFactor"+e);
+		}
+		catch(Exception e){
+			System.out.println("Unexpected Exception:"+e);
+		}
+	}//end test
+	
 }
