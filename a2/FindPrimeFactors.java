@@ -37,7 +37,7 @@ public class FindPrimeFactors {
 			i++;		
 		} //end while loop
 		//if it gets here no prime factors were found	
-		return -1;
+		throw new IllegalArgumentException("No found primeFactor");
 	}
 	
 	public static boolean integerToBoolean(int i) {
