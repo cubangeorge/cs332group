@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,27 +17,14 @@ class Test_Suite {
 
 	public static int[] compositeNumbers = new int[] {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 46, 48, 49, 50, 51, 52, 54, 55, 56, 57, 58, 60, 62, 63, 64, 65, 66, 68, 69, 70, 72, 74, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 96, 98, 99, 100};
 	
-	Random numbersToTest = new Random();
+	
 	
 	@Test
 	void test_is_prime() {
 		
 		assertEquals(0,Prime.is_prime(1));//check not primes less than 1st prime 
 		assertEquals(0,Prime.is_prime(0));
-		assertEquals(1,Prime.is_prime(2));//checking primes 
-		assertEquals(1,Prime.is_prime(3));
-		assertEquals(1,Prime.is_prime(5));
-		assertEquals(1,Prime.is_prime(7));
-		assertEquals(1,Prime.is_prime(11));
-
-
-
-		assertEquals(0,Prime.is_prime(4));//check not primes more than first prime 
-		assertEquals(0,Prime.is_prime(6)); 
-		assertEquals(0,Prime.is_prime(10)); 
-		
-
-
+	
 		for (int i = 0; i < nonPrimes.length; i++) {	
 				assertEquals(0, Prime.is_prime(nonPrimes[i]));	
 		}
@@ -79,7 +65,7 @@ class Test_Suite {
 		assertEquals(1,Factor.is_factor(-4, -8)); //8*-.5 =-4  
 		assertEquals(1,Factor.is_factor(-4, 8)); //8*.5 =-4  
 		
-		//insert tests to determine if negative or not
+		
 		for (int j = 0; j < compositeNumbers.length; j++) {
 			for (int i = 1; i < compositeNumbers.length; i++) {
 			
@@ -104,56 +90,23 @@ class Test_Suite {
 		assertEquals(false, FindPrimeFactors.integerToBoolean(0));
 		assertEquals(true, FindPrimeFactors.integerToBoolean(4));
 		assertEquals(true, FindPrimeFactors.integerToBoolean(-1));
-		
-		
-		for (int i = 0; i < 100; i++) {	
-			if (i != 0) {
-				assertEquals(true, FindPrimeFactors.integerToBoolean(i));	
-			} else {
-				assertEquals(false, FindPrimeFactors.integerToBoolean(i));
-			}
-		}
 	}//end test
 	
 	@Test
 	void test_fPF_1() {
 		//here the first number is a prime factor 
-		List<Integer> a = Arrays.asList(12, 24, 3, 4, 5);
-		List<Integer> b = Arrays.asList(3, 2, 16, 1, 5); //list with pf @ 0
+		List<Integer> a = Arrays.asList(12,24,3  ,4 ,5);
+		List<Integer> b = Arrays.asList(3 ,2 ,16 ,1 ,5); //list with pf @ 0
 		assertEquals(0,FindPrimeFactors.findPrimeFactor(a, b));
-		
-		List<Integer> c = Arrays.asList(30, 79, 6, 20, 83);
-		List<Integer> d = Arrays.asList(5, 34, 3, 4, 5);
-		assertEquals(0, FindPrimeFactors.findPrimeFactor(c, d));
-		
-		List<Integer> e = Arrays.asList(10, 50, 4, 0, 83);
-		List<Integer> f = Arrays.asList(2, 2, 3, 4, 5);
-		assertEquals(0, FindPrimeFactors.findPrimeFactor(e, f));
-		
-		
-		List<Integer> g = Arrays.asList(33, 24, 35, 107, 32);
-		List<Integer> h = Arrays.asList(3, 3, 5, 4, 4);
-		assertEquals(0, FindPrimeFactors.findPrimeFactor(g, h));
-		
-		
 		
 	}//end test
 	
 	@Test
 	void test_fPF_2() {
 		//here the last number is a prime factor 
-		List<Integer> a = Arrays.asList(5, 23, 3, 34, 25);
-		List<Integer> b = Arrays.asList(3, 2, 16, 12, 5); //list with pf @ 4
+		List<Integer> a = Arrays.asList(5 ,23,3  ,34 ,25);
+		List<Integer> b = Arrays.asList(3 ,2 ,16 ,12  ,5); //list with pf @ 4
 		assertEquals(4,FindPrimeFactors.findPrimeFactor(a, b));
-		
-		List<Integer> c = Arrays.asList(103, 67, 100, 34, 35);
-		List<Integer> d = Arrays.asList(3, 10, 25, 98, 7); //list with pf @ 4
-		assertEquals(4,FindPrimeFactors.findPrimeFactor(c, d));
-		
-		List<Integer> e = Arrays.asList(67, 60, 151, 92, 24);
-		List<Integer> f = Arrays.asList(9, 28, 30, 14, 3); //list with pf @ 4
-		assertEquals(4,FindPrimeFactors.findPrimeFactor(e, f));
-
 		
 	}//end test
 	
