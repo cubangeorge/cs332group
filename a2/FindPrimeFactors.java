@@ -30,7 +30,11 @@ public class FindPrimeFactors {
 	    * 
 	    */
 	public static int findPrimeFactor (List<Integer> a, List<Integer> b) {
-
+		
+		if (a == null || b == null) {
+			throw new NullPointerException("The lists are null");
+		}
+		
 		int i =0;
 		int size_a = a.size();
 		int size_b = b.size();
@@ -56,13 +60,13 @@ public class FindPrimeFactors {
 	 * @return: true or false - returns a true or false based on if the param is zero
 	 * 
 	 * @throws: IllegalArgumentException if the param is not an integer or if the param is null
-	 * 
-	 	* OVERVIEW: This determines whether the received number is 0 or not
+	   * 
+	   * OVERVIEW: This determines whether the received number is 0 or not
 	   * 
 	   * REQUIRES: The parameter be an integer and not null
 	   * 
 	   *           
-	   * EFFECTS: Returns 
+	   * EFFECTS: Returns true or false depending on if the received int is non zero
 	    * 
 	    */
 	public static boolean integerToBoolean(int i) {

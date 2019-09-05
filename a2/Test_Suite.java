@@ -1,4 +1,8 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -172,22 +176,51 @@ class Test_Suite {
 	}//end test
 	
 	@Test
-	void test_fPF_5() {
+	void test_fPF_Error1() {
 		//here no prime factor 
-		List<Integer> a = Arrays.asList(5 ,23,66,34 ,23);
-		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ -1
-		assertEquals(-1,FindPrimeFactors.findPrimeFactor(a, b));
+		List<Integer> a = Arrays.asList(5, 23, 66, 34, 23);
+		List<Integer> b = Arrays.asList(3, 2, 5, 12, 5); //list with pf @ -1
+		
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail("expected exception didn't happen");
+		} catch(IllegalArgumentException e) {
+	
+			assertTrue(true);
+		}
 	}//end test
 	
 	
-	/*@Test
-	void test_fPF_Errors() {
+	@Test
+	void test_fPF_Error2() {
+		//both lists are empty
 		List<Integer> a = Arrays.asList();
 		List<Integer> b = Arrays.asList(); 
-
-		try {
-		assertEquals(IndexOutOfBoundsException.class,FindPrimeFactors.findPrimeFactor(a, b));
-		} catch(IndexOutOfBoundsException )
 		
-	}*/
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail("expected exception didn't happen");
+		} catch(IndexOutOfBoundsException e) {
+			
+			assertTrue(true);
+		}
+		
+	}
+	
+	
+	@Test
+	void test_fPF_Error3() {
+		//both lists are empty
+		List<Integer> a = null;
+		List<Integer> b = null; 
+		
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail("expected exception didn't happen");
+		} catch(NullPointerException e) {
+			
+			assertTrue(true);
+		}
+		
+	}
 }
