@@ -184,7 +184,7 @@ class Test_Suite {
 			FindPrimeFactors.findPrimeFactor(a, b);
 			fail("expected exception didn't happen");
 		} catch(IllegalArgumentException e) {
-	
+			System.err.println("error " + e);
 			assertTrue(true);
 		}
 	}//end test
@@ -200,7 +200,7 @@ class Test_Suite {
 			FindPrimeFactors.findPrimeFactor(a, b);
 			fail("expected exception didn't happen");
 		} catch(IndexOutOfBoundsException e) {
-			
+			System.err.println("error " + e);
 			assertTrue(true);
 		}
 		
@@ -209,7 +209,7 @@ class Test_Suite {
 	
 	@Test
 	void test_fPF_Error3() {
-		//both lists are empty
+		//both lists are null
 		List<Integer> a = null;
 		List<Integer> b = null; 
 		
@@ -217,7 +217,33 @@ class Test_Suite {
 			FindPrimeFactors.findPrimeFactor(a, b);
 			fail("expected exception didn't happen");
 		} catch(NullPointerException e) {
-			
+			System.err.println("error " + e);
+			assertTrue(true);
+		}
+		
+	}
+	
+	@Test
+	void test_fPF_Error4() {
+		//size mismatches
+		List<Integer> a = Arrays.asList(5, 23, 66, 34, 23, 55, 12);
+		List<Integer> b = Arrays.asList(3, 2, 5, 12, 5);
+		
+		List<Integer> c = Arrays.asList(5, 23);
+		List<Integer> d = Arrays.asList(3, 2, 5, 12, 5, 4, 12);
+		
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail("expected exception didn't happen");
+		} catch(IndexOutOfBoundsException e) {
+			System.err.println("error " + e);
+			assertTrue(true);
+		}
+		
+		try {
+			FindPrimeFactors.findPrimeFactor(c, d);
+		} catch(IndexOutOfBoundsException e) {
+			System.err.println("error " + e);
 			assertTrue(true);
 		}
 		
