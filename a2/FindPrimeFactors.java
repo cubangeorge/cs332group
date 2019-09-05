@@ -1,4 +1,5 @@
 import java.util.List;
+
 /*
  * 
  * This program looks for the first index where there's a prime factor of the number in the first list.
@@ -6,7 +7,6 @@ import java.util.List;
  * @version 2.0
  * 
  */
-
 public class FindPrimeFactors {
 
 	/*
@@ -46,14 +46,14 @@ public class FindPrimeFactors {
 		while ((i < size_a  && i < size_b)) {
 			
 			if (!integerToBoolean(Factor.is_factor(a.get(i), b.get(i))) && integerToBoolean(Prime.is_prime(b.get(i)))) {
-					return i;	
+					return i;
 			}
 			i++;		
 		} //end while loop
 		//if it gets here no prime factors were found	
 		throw new IllegalArgumentException("No found primeFactor");
 	}
-	
+
 
 	/*
 	 * @param: int i - the number that is checked to see if 0
@@ -71,13 +71,11 @@ public class FindPrimeFactors {
 	    */
 	public static boolean integerToBoolean(int i) {
 		//returns true when i is anything except zero
+		//if i==0 returns false 
 		if (i == 0) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-	
-	
-	
 }

@@ -29,8 +29,6 @@ public class Factor {
 			}	
 		} 
 		
-		
-		
 		// edge case where b is a greater number
 		if (b > a) { 
 			return 1; 

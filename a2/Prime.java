@@ -2,8 +2,7 @@
 
 
 public class Prime {
-	// used globally in this class
-	static int firstprime = 2;
+	static int firstprime = 2; // used globally in this class
 
 	/*
 	 * @param: int num - the number to check if prime
@@ -16,21 +15,20 @@ public class Prime {
 	    */
 	public static int check_if_prime(int num, int i) {
 		
-		// stop condition: return a zero since is less than smallest prime
 		if (num < firstprime)
-			return 0; 		
-		
-		// stop condition: didn't find divisors other than self and one
+			return 0; 		// stop condition: return a zero since is less than smallest prime
+
 		else if (i > num - 1)
-			return 1; 		
+			return 1; 		// stop condition: didn't find divisors other than self and one
 		
-		// stop condition: return since found a divisor
 		else if (num % i == 0)
-			return 0; 		
+			return 0; 		// stop condition: return since found a divisor
 		
-		/* Continues recursion */
-		return check_if_prime(num, i + 1); 
+
+		
+		return check_if_prime(num, i + 1); /* Continues recursion */
 	}
+
 
 	/*
 	 * @param: int num - the number to check if prime
@@ -40,8 +38,8 @@ public class Prime {
 	   *      
 	    */
 	public static int is_prime(int num) {
+		/*this return 1 if number is prime zero otherwise*/
 		
-		 /* Initializes recursion */
-		return check_if_prime(num, firstprime);
+		return check_if_prime(num, firstprime); /* Initializes recursion */
 	}
 }
