@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -295,5 +296,26 @@ class Test_Suite {
 		} 
 		
 	}//end test
-	
+	@Test
+	void test_fPF_8() {
+		//testing FindPrimeFactors.isNotIntType(Integer)
+		// sending a legit List of ints
+		//List<Object> b = Arrays.asList(3 ,'c' ,"Hello" ,12.12 ); 
+		List<Integer> a = Arrays.asList(5 ,23,66,34, 7 );
+		List<Object> c = new ArrayList<Object> (a);
+		
+		assertEquals(false, FindPrimeFactors.isNotIntType(c)); 
+		
+	}//end test
+	@Test
+	void test_fPF_9() {
+		//testing FindPrimeFactors.isNotIntType(Integer)
+		// sending a bad list of non ints should return true
+		List<Object> b = Arrays.asList(3 ,'c' ,"Hello" ,12.12 ); 
+		List<Object> c = new ArrayList<Object> (b);
+		
+		assertEquals(true, FindPrimeFactors.isNotIntType(c)); 
+		
+	}//end test
+		
 }

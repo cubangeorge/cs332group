@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -42,10 +44,17 @@ public class FindPrimeFactors {
 		if (size_a == 0 || size_b == 0) {
 			throw new IndexOutOfBoundsException("List is empty");
 		}
+		
 		if ( size_a != size_b) {
 			throw new IndexOutOfBoundsException("List size missmatch");
 		}
 		
+		//type checker
+		List<Object> tempList = new ArrayList<Object> (a);
+		if (isNotIntType(tempList)) {
+			throw new IllegalArgumentException("not a list of ints");
+		}
+				
 		while ((i < size_a  && i < size_b)) {
 			
 			if (!integerToBoolean(Factor.is_factor(a.get(i), b.get(i))) && integerToBoolean(Prime.is_prime(b.get(i)))) {
@@ -80,5 +89,28 @@ public class FindPrimeFactors {
 		} else {
 			return true;
 		}
+	}
+	
+	public static boolean isNotIntType(List<Object> l) {
+		/**
+		 * this method will look for any element in the list that is not an Integer
+		 * returns true if it finds an non Integer value, or false otherwise
+		 **/
+		Iterator<Object> itr = l.iterator(); //made an obj iterator
+		
+		while (itr.hasNext()) {
+			try {
+				@SuppressWarnings("unused")
+				int i = (Integer) itr.next() ; //if wrong type will trigger ClassCastException
+				
+			}
+			catch (ClassCastException e){
+				return true;
+			}
+			
+		}
+		
+	return false;
+		
 	}
 }
