@@ -1,7 +1,4 @@
 import java.util.List;
-
-
-
 /*
  * 
  * This program looks for the first index where there's a prime factor of the number in the first list.
