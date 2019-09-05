@@ -41,8 +41,9 @@ public class FindPrimeFactors {
 		
 		if (size_a == 0 || size_b == 0) {
 			throw new IndexOutOfBoundsException("List is empty");
-		} else if (size_a != size_b) {
-			throw new IndexOutOfBoundsException("List sizes don't match up");
+		}
+		if ( size_a != size_b) {
+			throw new IndexOutOfBoundsException("List size missmatch");
 		}
 		
 		while ((i < size_a  && i < size_b)) {

@@ -185,7 +185,7 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(IllegalArgumentException e) {
 			System.err.println("error " + e);
-			assertTrue(true);
+			//assertTrue(true);
 		}
 	}//end test
 	
@@ -201,7 +201,7 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("error " + e);
-			assertTrue(true);
+			//assertTrue(true);
 		}
 		
 	}
@@ -218,7 +218,7 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(NullPointerException e) {
 			System.err.println("error " + e);
-			assertTrue(true);
+			//assertTrue(true);
 		}
 		
 	}
@@ -237,14 +237,14 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("error " + e);
-			assertTrue(true);
+			//assertTrue(true);
 		}
 		
 		try {
 			FindPrimeFactors.findPrimeFactor(c, d);
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("error " + e);
-			assertTrue(true);
+			//assertTrue(true);
 		}
 		
 	}
@@ -260,29 +260,40 @@ class Test_Suite {
 			fail ("Illegal Argument Exception did not trigger");
 		}
 		catch(IllegalArgumentException e) {
-			System.out.println("Inside: findPrimeFactor"+e);
-		}
-		catch(Exception e){
-			System.out.println("Unexpected Exception:"+e);
+			System.err.println("test_fPF_5: "+e);
 		}
 	}//end test
 	
 	@Test
 	void test_fPF_6() {
-		//here no prime factor and wrong length
+		//here no prime factor and different lengths
+		//since the length gets checked first the second Exception wont trigger
 		List<Integer> a = Arrays.asList(5 ,23,66,34, 7 );
-		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12 ); //list with 
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12); 
 		
 		try {
 			FindPrimeFactors.findPrimeFactor(a, b);
 			fail ("Illegal Argument Exception did not trigger");
 		}
-		catch(IllegalArgumentException e) {
-			System.out.println("Inside: findPrimeFactor"+e);
+		catch(IndexOutOfBoundsException e) {
+			System.err.println("test_fPF_6: "+e);
+		} 
+		
+	}//end test
+	@Test
+	void test_fPF_7() {
+		//here the order is reversed first list is shorter
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12 ); 
+		List<Integer> a = Arrays.asList(5 ,23,66,34, 7 );
+		
+		try {
+			FindPrimeFactors.findPrimeFactor(a, b);
+			fail ("Illegal Argument Exception did not trigger");
 		}
-		catch(Exception e2){
-			System.out.println("Unexpected Exception:"+e2);
-		}
+		catch(IndexOutOfBoundsException e) {
+			System.err.println("test_fPF_7: "+e);
+		} 
+		
 	}//end test
 	
 }
