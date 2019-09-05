@@ -194,8 +194,8 @@ class Test_Suite {
 	@Test
 	void test_fPF_6() {
 		//here no prime factor and wrong length
-		List<Integer> a = Arrays.asList(5 ,23,66,34 );
-		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12  ,5); //list with pf @ -1
+		List<Integer> a = Arrays.asList(5 ,23,66,34, 7 );
+		List<Integer> b = Arrays.asList(3 ,2 ,5 ,12 ); //list with 
 		
 		try {
 			FindPrimeFactors.findPrimeFactor(a, b);
@@ -204,8 +204,8 @@ class Test_Suite {
 		catch(IllegalArgumentException e) {
 			System.out.println("Inside: findPrimeFactor"+e);
 		}
-		catch(Exception e){
-			System.out.println("Unexpected Exception:"+e);
+		catch(Exception e2){
+			System.out.println("Unexpected Exception:"+e2);
 		}
 	}//end test
 	
