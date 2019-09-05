@@ -41,6 +41,7 @@ public class FindPrimeFactors {
 		int size_a = a.size();
 		int size_b = b.size();
 		
+		//size checker
 		if (size_a == 0 || size_b == 0) {
 			throw new IndexOutOfBoundsException("List is empty");
 		}
@@ -50,11 +51,16 @@ public class FindPrimeFactors {
 		}
 		
 		//type checker
-		List<Object> tempList = new ArrayList<Object> (a);
-		if (isNotIntType(tempList)) {
-			throw new IllegalArgumentException("not a list of ints");
+		
+		if (isNotIntType(new ArrayList<Object> (a) )) {
+			throw new IllegalArgumentException("List a not made of Ints");
 		}
-				
+		
+		
+		if (isNotIntType(new ArrayList<Object> (b) )) {
+			throw new IllegalArgumentException("List b not made of Ints");
+		}
+		//prime and factor checker 		
 		while ((i < size_a  && i < size_b)) {
 			
 			if (!integerToBoolean(Factor.is_factor(a.get(i), b.get(i))) && integerToBoolean(Prime.is_prime(b.get(i)))) {
