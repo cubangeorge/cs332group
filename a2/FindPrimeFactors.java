@@ -39,8 +39,10 @@ public class FindPrimeFactors {
 		int size_a = a.size();
 		int size_b = b.size();
 		
-		if (size_a == 0 || size_b == 0 || size_a != size_b) {
+		if (size_a == 0 || size_b == 0) {
 			throw new IndexOutOfBoundsException("List is empty");
+		} else if (size_a != size_b) {
+			throw new IndexOutOfBoundsException("List sizes don't match up");
 		}
 		
 		while ((i < size_a  && i < size_b)) {
