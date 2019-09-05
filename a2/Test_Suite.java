@@ -136,7 +136,6 @@ class Test_Suite {
 		assertEquals(0, FindPrimeFactors.findPrimeFactor(g, h));
 		
 		
-		
 	}//end test
 	
 	@Test
@@ -180,4 +179,15 @@ class Test_Suite {
 		assertEquals(-1,FindPrimeFactors.findPrimeFactor(a, b));
 	}//end test
 	
+	
+	/*@Test
+	void test_fPF_Errors() {
+		List<Integer> a = Arrays.asList();
+		List<Integer> b = Arrays.asList(); 
+
+		try {
+		assertEquals(IndexOutOfBoundsException.class,FindPrimeFactors.findPrimeFactor(a, b));
+		} catch(IndexOutOfBoundsException )
+		
+	}*/
 }
