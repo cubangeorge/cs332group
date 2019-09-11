@@ -51,15 +51,14 @@ public class FindPrimeFactors {
 		}
 		
 		//type checker
-		
-		if (isNotIntType(new ArrayList<Object> (a) )) {
-			throw new IllegalArgumentException("List a not made of Ints");
-		}
-		
-		
-		if (isNotIntType(new ArrayList<Object> (b) )) {
-			throw new IllegalArgumentException("List b not made of Ints");
-		}
+		/*
+		 * if (isNotIntType(new ArrayList<Object> (a) )) { throw new
+		 * IllegalArgumentException("List a not made of Ints"); }
+		 * 
+		 * 
+		 * if (isNotIntType(new ArrayList<Object> (b) )) { throw new
+		 * IllegalArgumentException("List b not made of Ints"); }
+		 */
 		//prime and factor checker 		
 		while ((i < size_a  && i < size_b)) {
 			
@@ -96,27 +95,27 @@ public class FindPrimeFactors {
 			return true;
 		}
 	}
-	
-	public static boolean isNotIntType(List<Object> l) {
-		/**
-		 * this method will look for any element in the list that is not an Integer
-		 * returns true if it finds an non Integer value, or false otherwise
-		 **/
-		Iterator<Object> itr = l.iterator(); //made an obj iterator
-		
-		while (itr.hasNext()) {
-			try {
-				@SuppressWarnings("unused")
-				int i = (Integer) itr.next() ; //if wrong type will trigger ClassCastException
-				
-			}
-			catch (ClassCastException e){
-				return true;
-			}
-			
-		}
-		
-	return false;
-		
-	}
+//	
+//	public static boolean isNotIntType(List<Object> l) {
+//		/**
+//		 * this method will look for any element in the list that is not an Integer
+//		 * returns true if it finds an non Integer value, or false otherwise
+//		 **/
+//		Iterator<Object> itr = l.iterator(); //made an obj iterator
+//		
+//		while (itr.hasNext()) {
+//			try {
+//				@SuppressWarnings("unused")
+//				int i = (Integer) itr.next() ; //if wrong type will trigger ClassCastException
+//				
+//			}
+//			catch (ClassCastException e){
+//				return true;
+//			}
+//			
+//		}
+//		
+//	return false;
+//		
+//	}
 }
