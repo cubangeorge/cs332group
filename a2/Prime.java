@@ -1,6 +1,9 @@
-
-
-
+/*
+ * 
+ * This program checks if a number is prime with recursion
+ * @author Jorge L Martinez & Valeria Green
+ * 
+ */
 public class Prime {
 	static int firstprime = 2; // used globally in this class
 
@@ -9,10 +12,10 @@ public class Prime {
 	 * @param: int i - the very first possible prime to compare against
 	 * @return: 0 or 1 - based on if primes in the list have been found
 	 *  
-	   * OVERVIEW: This determines whether the received number is prime or not in a recursive style. No preconditions because it can handle any input number as it will default to zero if it's a bad number.
-	   *      
-	    * 
-	    */
+	 * OVERVIEW: This determines whether the received number is prime or not in a recursive style. No preconditions because it can handle any input number as it will default to zero if it's a bad number.
+	 *      
+	 * 
+	 */
 	public static int check_if_prime(int num, int i) {
 		
 		if (num < firstprime)

@@ -1,4 +1,9 @@
-
+/*
+ * 
+ * This program checks if one number is a factor of another number
+ * @author Jorge L Martinez & Valeria Green
+ * 
+ */
 public class Factor {
 
 	/*
@@ -10,9 +15,9 @@ public class Factor {
 	 * 
 	 * OVERVIEW: It uses a series of conditions to handle edge cases before determining if b divides into a with or without a remainder. If so, then it's a factor. This method HAS REVERSE LOGIC!!!!!
 	 * 
-	   *            
-	    * 
-	    */
+	 *            
+	 * 
+	 */
 	public static int is_factor(int a, int b){
 		
 		//flip a's sign if negative

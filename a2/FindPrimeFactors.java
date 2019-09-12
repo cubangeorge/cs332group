@@ -6,7 +6,6 @@ import java.util.List;
  * 
  * This program looks for the first index where there's a prime factor of the number in the first list.
  * @author Jorge L Martinez & Valeria Green
- * @version 2.0
  * 
  */
 public class FindPrimeFactors {
@@ -50,15 +49,7 @@ public class FindPrimeFactors {
 			throw new IndexOutOfBoundsException("List size missmatch");
 		}
 		
-		//type checker
-		/*
-		 * if (isNotIntType(new ArrayList<Object> (a) )) { throw new
-		 * IllegalArgumentException("List a not made of Ints"); }
-		 * 
-		 * 
-		 * if (isNotIntType(new ArrayList<Object> (b) )) { throw new
-		 * IllegalArgumentException("List b not made of Ints"); }
-		 */
+
 		//prime and factor checker 		
 		while ((i < size_a  && i < size_b)) {
 			
@@ -88,34 +79,11 @@ public class FindPrimeFactors {
 	    */
 	public static boolean integerToBoolean(int i) {
 		//returns true when i is anything except zero
-		//if i==0 returns false 
 		if (i == 0) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-//	
-//	public static boolean isNotIntType(List<Object> l) {
-//		/**
-//		 * this method will look for any element in the list that is not an Integer
-//		 * returns true if it finds an non Integer value, or false otherwise
-//		 **/
-//		Iterator<Object> itr = l.iterator(); //made an obj iterator
-//		
-//		while (itr.hasNext()) {
-//			try {
-//				@SuppressWarnings("unused")
-//				int i = (Integer) itr.next() ; //if wrong type will trigger ClassCastException
-//				
-//			}
-//			catch (ClassCastException e){
-//				return true;
-//			}
-//			
-//		}
-//		
-//	return false;
-//		
-//	}
+
 }

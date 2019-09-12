@@ -1,3 +1,11 @@
+/*
+ * 
+ * This program conducts test cases
+ * @author Jorge L Martinez & Valeria Green
+ * 
+ */
+
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -187,7 +195,6 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(IllegalArgumentException e) {
 			System.err.println("error " + e);
-			//assertTrue(true);
 		}
 	}//end test
 	
@@ -203,7 +210,6 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("error " + e);
-			//assertTrue(true);
 		}
 		
 	}
@@ -220,7 +226,6 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(NullPointerException e) {
 			System.err.println("error " + e);
-			//assertTrue(true);
 		}
 		
 	}
@@ -239,14 +244,12 @@ class Test_Suite {
 			fail("expected exception didn't happen");
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("error " + e);
-			//assertTrue(true);
 		}
 		
 		try {
 			FindPrimeFactors.findPrimeFactor(c, d);
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("error " + e);
-			//assertTrue(true);
 		}
 		
 	}
@@ -297,39 +300,5 @@ class Test_Suite {
 		} 
 		
 	}//end test
-//	@Test
-//	void test_fPF_8() {
-//		//testing FindPrimeFactors.isNotIntType(Integer)
-//		// sending a legit List of ints
-//		//List<Object> b = Arrays.asList(3 ,'c' ,"Hello" ,12.12 ); 
-//		List<Integer> a = Arrays.asList(5 ,23,66,34, 7 );
-//		List<Object> c = new ArrayList<Object> (a);
-//		
-//		assertEquals(false, FindPrimeFactors.isNotIntType(c)); 
-//		
-//	}//end test
-//	@Test
-//	void test_fPF_9() {
-//		//testing FindPrimeFactors.isNotIntType(Integer)
-//		// sending a bad list of non ints should return true
-//		List<Object> b = Arrays.asList(3 ,'c' ,"Hello" ,12.12 ); 
-//		
-//		assertEquals(true, FindPrimeFactors.isNotIntType(b)); 
-//		
-//	}//end test
-	
-	/*
-	 * @Test void test_fPF_10() {
-	 * 
-	 * //testing FindPrimeFactors.isNotIntType(Integer) // sending a bad list of non
-	 * ints to the class
-	 * 
-	 * List<Integer> a = Arrays.asList(5 ,23,66,34, 7 ); List<Object> b =
-	 * Arrays.asList(3 ,'c' ,"Hello" ,12.12 ); Vector v =new Vector(b); // List<int>
-	 * ints = objects.Select(s => (int)s).ToList();
-	 * 
-	 * assertEquals(true, FindPrimeFactors.findPrimeFactor(a, b));
-	 * 
-	 * }//end test
-	 */		
+
 }
