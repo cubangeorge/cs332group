@@ -7,9 +7,11 @@
 
 import java.util.*;
 
+@SuppressWarnings("unused")
 public class Stack {
 
    private Object[] elements;
+//   private final int size = 0; @Hi Vale: this size should change the original example had a final initial default value which is ok but not changing would be a problem
    private final int size = 0;
 
 
