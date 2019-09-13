@@ -9,9 +9,6 @@
 import static org.junit.Assert.*;
 
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 
@@ -38,9 +35,9 @@ public class Stack_Test_Suite {
 	void test_implementation_changes() {
 		Stack awesome = new Stack();
 
-		assertEquals(0, awesome.getElements().length);
-		assertEquals(1, awesome.push(2).getElements().length);
-		assertEquals(2, awesome.push(2).push(10).getElements().length);
+		assertEquals(0, awesome.getSize());
+		assertEquals(1, awesome.push(2).getSize());
+		assertEquals(2, awesome.push(2).push(10).getSize());
 	}//end test
 	
 	
