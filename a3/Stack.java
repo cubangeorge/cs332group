@@ -62,7 +62,8 @@ public class Stack {
 	}	
 
 	public Object last() {//went from mutator to observer
-		return this.elements[this.size];
+		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
+		return this.elements[this.size-1];
 	}
 
 	public String toString() {
