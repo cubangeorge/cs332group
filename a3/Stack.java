@@ -40,7 +40,24 @@ public class Stack {
 	     
 	    return newerStack;
    }
+   
+   public Object pop() {
 
+	   int i=0;
+	   Object front_e[] = new Object[ elements.length ]; //make smaller stack array
+	   
+	   while ( i < elements.length) {
+		   
+		   	front_e[i] = elements[i]; //copy all elemnts minus the last one
+		   	i++;
+	   }
+	   
+	   Object o = elements [i]; //copy last element to return  
+	    elements = front_e; 
+	    return o;
+   }	
+   
+   
    	public Object[] getElements() {
    		return this.elements;
    	}
