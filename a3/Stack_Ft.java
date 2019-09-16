@@ -33,11 +33,8 @@ public class Stack_Ft{
 
 		Stack_Ft newStack = new Stack_Ft(size+1);//make new bigger stack
 		//t = this.bucket;//pass the pointer
-		
-		
-		populate ( o, newStack, size);
-		
-		return newStack; //return new immutable stack
+
+		return populate(o, newStack, size); //return new immutable stack
 	}
 
 	/**
@@ -46,7 +43,7 @@ public class Stack_Ft{
 	 * @param newStack the new stack
 	 * @param size the size of the new stack
 	 */
-	private void populate(Object e, Stack_Ft newStack, int size) {
+	private Stack_Ft populate(Object e, Stack_Ft newStack, int size) {
 		// Copy over references from bucket
 		for (int i = 0; i < this.elements.length; i++) {
 			Object current = elements[i];
@@ -55,6 +52,7 @@ public class Stack_Ft{
 
 		// Append object to new stack
 		newStack.elements[size] = bucket.putIfAbsent(Objects.hashCode(e), e);
+		return newStack;
 	}
 
 	public Stack_Ft pop() { // went from mutator to producer
