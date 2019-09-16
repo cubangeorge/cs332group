@@ -129,6 +129,12 @@ public class Stack_Test_Suite {
         long mut_time 		= run_push(a,mutable_Stack, total,rand);
 
 		//print stats
+        String lines = "----------------------------";
+        String header = "Performance comparison report";
+        System.out.printf("%s%s%s\n",
+        		lines,
+        		header,
+        		lines);
 		System.out.printf("%20s%20s%20s%20s\n"," ","Flyweight","Imutable","Mutable");
 		System.out.printf("%20s%20d%20d%20d\n","pushed elements:",total,total,total);
 		System.out.printf("%20s%20d%20d%20d\n","duration in mills:",flyweight_time,imut_time,mut_time);
