@@ -1,71 +1,115 @@
 /*
  * 
  * This program is a rewrite of the Stack class to make it immutable
- * @author Jorge L Martinez & Valeria Green
+ * @author Jorge L Martinez & Valeria Green & Blake Khan
  * 
  */
 
 public class Stack {
+	
+	//Fields ---------------------------------------------
 
 	private Object[] elements;
 	private int size;
 
 
+	//Constructors --------------------------------
 	
-	public int getSize() {
-		return size;
-	}
 	
+	
+	/*
+	 *
+	 * OVERVIEW: Default Constructor without parameters
+	 */
 	public Stack() {
 		this.elements = new Object[0];
 	}
 	
-	private Stack(int e) {//called by push and last only
+	/*
+	 * @param: Int e - which is the size of the array of elements and the size for the Stack object
+	 *
+	 * OVERVIEW: Constructor with parameters. Called by push and last only
+	 * 
+	 */
+	private Stack(int e) {
 		elements = new Object[e];
 		size = e;
 	}
 
-//	public Stack(int size, Object[] elements) {
-//		this.size = size;
-//		this.elements = elements;
-//	}
+	
+	//Methods --------------------------------------
 
-	//takes an object of a type and produces a new one
-	//takes the old elements array and size of it to make a new array with the input parameter as the latest element. Then makes a new object based off of that.
-	//   public Stack push(Object e) {
-	//	   int newSize = elements.length + 1;
-	//	   Object newishElements[] = new Object[newSize];
-	//	   //System.arraycopy(elements, 0, newishElements, 0, newSize);
-	//	   for (int i = 0; i < elements.length; i++) {
-	//		   newishElements[i] = elements[i];
-	//	   }
-	//	   
-	//	   newishElements[newSize-1] = e;
-	//			   
-	//	   Stack newerStack = new Stack(newSize, newishElements);
-	//	     
-	//	    return newerStack;
-	//   }
-	public Stack push(Object e) {//went from mutator to producer
 
-		Stack newStack = new Stack(size+1);//make new bigger stack
-		System.arraycopy(elements, 0, newStack.elements, 0, size); //copy over
-		newStack.elements[size]=e;	//stick it at the end
-		return newStack; //return new immutable stack
+
+	/*
+	 * @return: Returns the size of the Stack object
+	 *
+	 * OVERVIEW: A getter method for returning the size of the object
+	 * 
+	 */
+	public int getSize() {
+		return size;
+	}
+	
+	
+	/*
+	 * @param: Object e - The object to add to the end of the stack
+	 * @return: Returns a new stack that is identical to the old stack but with an additional element
+	 *
+	 * OVERVIEW: A push method to add an element to the end of a stack
+	 * Went from mutator to producer
+	 */
+	public Stack push(Object e) {
+
+		//make new bigger stack
+		Stack newStack = new Stack(size+1);
+		System.arraycopy(elements, 0, newStack.elements, 0, size); 
+		
+		//new array has it's elements copied over from the older one and sticks a new element to the end
+		newStack.elements[size]=e;	
+		//return new immutable stack
+		return newStack; 
 	}
 
-	public Stack pop() { // went from mutator to producer
+	
+	/*
+	 * 
+	 * @return: Returns a new stack without the last element in the stack
+	 * @throws: IllegalStateException if the array is empty
+	 *
+	 * REQUIRES: The stack object to not be empty
+	 * OVERVIEW: A pop method to return a new stack without the last element.
+	 * Went from mutator to producer
+	 */
+	public Stack pop() { 
 		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
 		Stack newStack = new Stack(size-1);
 		System.arraycopy(elements, 0, newStack.elements, 0, size	-1);
 		return newStack;
 	}	
 
-	public Object last() {//went from mutator to observer
+	/*
+	 * 
+	 * @return: Returns the last element in an array
+	 * @throws: IllegalStateException if the array is empty
+	 *
+	 * REQUIRES: The stack object to not be empty
+	 * OVERVIEW: A method to return the last element in an array
+	 * 
+	 * went from mutator to observer
+	 */
+	public Object last() {
 		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
 		return this.elements[this.size-1];
 	}
 
+	/*
+	 * 
+	 * @return: A string of the object's contents
+	 * 
+	 * OVERVIEW: A method to return a string version of the object
+	 * 
+	 */
 	public String toString() {
 		String newString = "";
 		for (int i = 0; i < this.elements.length; i++) {

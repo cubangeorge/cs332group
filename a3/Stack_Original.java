@@ -1,4 +1,4 @@
-//import java.util.*;
+
 public class Stack_Original {
 	/**
 	  * Variant of Bloch's Stack example page 60, 3rd edition
@@ -7,7 +7,7 @@ public class Stack_Original {
 
 	
 
-	//public class Stack {
+	
 
 	   private Object[] elements;
 	   private int size = 0;
@@ -37,5 +37,4 @@ public class Stack_Original {
 	      }
 	   }
 
-	//}
 }
