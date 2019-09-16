@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Objects;
 
 /*
  * 
@@ -11,7 +12,7 @@ public class Stack_Ft{
 
 	private Object[] elements;
 	private int size;
-	final static private HashMap<Integer ,Object> bucket = new HashMap<Integer,Object>();
+	private static final HashMap<Integer ,Object> bucket = new HashMap<>();
 	
 	public int getSize() {
 		return size;
@@ -38,14 +39,22 @@ public class Stack_Ft{
 		
 		return newStack; //return new immutable stack
 	}
-	private void populate (Object e, Stack_Ft newStack, int size) {
-		//will check if Object is not in Hasmap
-		// if found it will share it 
-		// if not found will add it 
+
+	/**
+	 * Copies over the current stack to the provided new stack, and appends the provided object.
+	 * @param e the object to append to the new stack
+	 * @param newStack the new stack
+	 * @param size the size of the new stack
+	 */
+	private void populate(Object e, Stack_Ft newStack, int size) {
+		// Copy over references from bucket
 		for (int i = 0; i < this.elements.length; i++) {
-			newStack.elements[i] = elements[i];
-			//	   }
-		
+			Object current = elements[i];
+			newStack.elements[i] = bucket.putIfAbsent(Objects.hashCode(current), current);
+		}
+
+		// Append object to new stack
+		newStack.elements[size] = bucket.putIfAbsent(Objects.hashCode(e), e);
 	}
 
 	public Stack_Ft pop() { // went from mutator to producer
