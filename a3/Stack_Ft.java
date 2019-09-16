@@ -4,7 +4,7 @@ import java.util.Objects;
 /*
  * 
  * This program is a rewrite of the Stack class to make it immutable
- * @author Jorge L Martinez & Valeria Green
+ * @author Jorge L Martinez & Valeria Green & Blake Khan
  * 
  */
 
