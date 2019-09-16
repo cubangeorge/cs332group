@@ -47,11 +47,23 @@ public class Stack_Ft{
 		// Copy over references from bucket
 		for (int i = 0; i < this.elements.length; i++) {
 			Object current = elements[i];
-			newStack.elements[i] = bucket.putIfAbsent(Objects.hashCode(current), current);
+			int currentHash = Objects.hashCode(current);
+
+			if (!bucket.containsKey(currentHash)) {
+				bucket.put(currentHash, current);
+			}
+
+			newStack.elements[i] = bucket.get(currentHash);
 		}
 
 		// Append object to new stack
-		newStack.elements[size] = bucket.putIfAbsent(Objects.hashCode(e), e);
+		int hash = Objects.hashCode(e);
+
+		if (!bucket.containsKey(hash)) {
+			bucket.put(hash, e);
+		}
+
+		newStack.elements[size] = bucket.get(hash);
 		return newStack;
 	}
 
