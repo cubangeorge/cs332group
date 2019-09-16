@@ -7,6 +7,8 @@
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 public class Stack_Test_Suite {
 	
@@ -94,5 +96,53 @@ public class Stack_Test_Suite {
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').last());
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().last());
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().pop().last());
+	}//end test
+
+	@Test
+	void test_flyweight_Stack() {
+		
+		Stack_Ft imut_Stack = new Stack_Ft();
+		Stack_Original mutable = new Stack_Original();
+		mutable.push('a');
+		mutable.push('b');
+		mutable.push('c');
+		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').last());
+		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().last());
+		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().pop().last());
+	}//end test
+	@Test
+	void test_flyweight_Stack2() {
+		
+		Stack_Ft imut_Stack = new Stack_Ft();
+		Stack_Original mutable = new Stack_Original();
+		mutable.push('a');
+		mutable.push('b');
+		mutable.push('c');
+		mutable.push(456);
+		imut_Stack= imut_Stack.push('a');
+		imut_Stack= imut_Stack.push('b');
+		imut_Stack= imut_Stack.push('c');
+		imut_Stack= imut_Stack.push(456);
+		
+		assertEquals(mutable.pop(), imut_Stack.last());
+		imut_Stack = imut_Stack.pop();
+		assertEquals(mutable.pop(), imut_Stack.last());
+		imut_Stack = imut_Stack.pop();
+		assertEquals(mutable.pop(), imut_Stack.last());
+		imut_Stack = imut_Stack.pop();
+		assertEquals(mutable.pop(), imut_Stack.last());
+		imut_Stack = imut_Stack.pop();
+		
+		
+		//array of objects to pull from		
+		String [] a = {"Dog", "Cat", "Mouse"};
+        Random rand = new Random();
+
+		for (int i = 0 ; i < 1000 ; i++) {
+			
+			imut_Stack = imut_Stack.push(a[ rand.nextInt( 3 ) ]);
+				
+		}
+		System.out.println(imut_Stack.toString());
 	}//end test
 }

@@ -47,7 +47,7 @@ public class Stack_Ft{
 		// Copy over references from bucket
 		for (int i = 0; i < this.elements.length; i++) {
 			Object current = elements[i];
-			int currentHash = Objects.hashCode(current);
+			int currentHash = Objects.hashCode(current); //generate a hashcode 
 
 			if (!bucket.containsKey(currentHash)) {
 				bucket.put(currentHash, current);
@@ -80,11 +80,15 @@ public class Stack_Ft{
 	}
 
 	public String toString() {
-		String newString = "";
+		String newString = "{";
 		for (int i = 0; i < this.elements.length; i++) {
+			
+			newString += "\"";
 			newString += this.elements[i];
+			newString += "\"";
+			newString += ",";
 		}
 
-		return newString;
+		return newString+="}";
 	}
 }
