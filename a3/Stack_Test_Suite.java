@@ -5,9 +5,13 @@
  * 
  */
 import static org.junit.Assert.*;
+import java.util.concurrent.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Random;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 public class Stack_Test_Suite {
@@ -120,7 +124,7 @@ public class Stack_Test_Suite {
 		//array of objects to pull from		
 		String [] a = {"Dog", "Cat", "Mouse"};
         Random rand = new Random();
-        int total = 1000;
+        int total = 30000;
         //perform flyweight operations 
         long flyweight_time = run_push(a,flywt_Stack  , total,rand);
 		//perform imut operations
@@ -128,8 +132,19 @@ public class Stack_Test_Suite {
 		//perform mutable operation
         long mut_time 		= run_push(a,mutable_Stack, total,rand);
 
-		//print stats
-        String lines = "----------------------------";
+		
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("hit the enter KEY....");
+		//sc.nextLine();
+		//perform flyweight operations again with different time capture
+		long flyweight_time2 = run_push2(a,flywt_Stack  , total,rand);
+		//perform imut operations
+		long imut_time2 		= run_push2(a,imut_Stack   , total,rand);
+		//perform mutable operation
+		long mut_time2 		= run_push2(a,mutable_Stack, total,rand);
+		
+		//print stats run1
+        String lines = "-----------RUN 1------------";
         String header = "Performance comparison report";
         System.out.printf("%s%s%s\n",
         		lines,
@@ -144,6 +159,23 @@ public class Stack_Test_Suite {
 				100-(double)(double)mut_time/imut_time*100,
 				"%",
 				100-(double)mut_time/(double)mut_time*100,
+				"%"
+				);
+		
+		//print stats run 2
+		System.out.printf("%s%s%s\n",
+				lines="-----------RUN 2-------------",
+				header,
+				lines);
+		System.out.printf("%20s%20s%20s%20s\n"," ","Flyweight","Imutable","Mutable");
+		System.out.printf("%20s%20d%20d%20d\n","pushed elements:",total,total,total);
+		System.out.printf("%20s%20d%20d%20d\n","duration in mills:",flyweight_time2,imut_time2,mut_time2);
+		System.out.printf("%20s%20.2f%s%20.2f%s%20.2f%s\n","Slow down of",
+				100-(double)(double)mut_time2/flyweight_time2*100,
+				"%",
+				100-(double)(double)mut_time2/imut_time2*100,
+				"%",
+				100-(double)mut_time2/(double)mut_time2*100,
 				"%"
 				);
 	}//end test
@@ -183,6 +215,49 @@ public class Stack_Test_Suite {
 		}	
 		long time2 = System.currentTimeMillis();
 		return time2 -time1;
+	}
+	
+	
+	//----------------------------
+private static long run_push2(String [] a, Stack_Ft s, int total, Random rand) 
+	
+	{// this will calculate the time it takes for "total" pushes on the stack received
+		//	long time1 = System.currentTimeMillis();
+			Instant time1 = Instant.now();
+			for (int i = 0 ; i < total ; i++) {
+				s = s.push( a[ rand.nextInt(a.length) ]);
+				System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+			}	
+			//long time2 = System.currentTimeMillis();
+			Instant time2 = Instant.now();
+
+				
+		return Duration.between(time1, time2).toMillis();
+	}
+			
+	private static long run_push2(String [] a, Stack s, int total, Random rand) 
+	
+	{// this will calculate the time it takes for "total" pushes on the stack received
+		Instant time1 = Instant.now();
+		for (int i = 0 ; i < total ; i++) {
+			s = s.push( a[ rand.nextInt(a.length) ]);
+			System.out.printf("%s%f%s\n","Immutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+		}	
+		Instant time2 = Instant.now();
+		return Duration.between(time1, time2).toMillis();
+ 
+	}
+	private static long run_push2(String [] a, Stack_Original s, int total, Random rand) 
+	
+	{// this will calculate the time it takes for "total" pushes on the stack received
+		Instant time1 = Instant.now();
+		for (int i = 0 ; i < total ; i++) {
+			s.push( a[ rand.nextInt(a.length) ]);
+			System.out.printf("%s%f%s\n","mutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+		}	
+		
+		Instant time2 = Instant.now();
+		return Duration.between(time1, time2).toMillis();
 	}
 //	mutable.push('a');
 //	mutable.push('b');
