@@ -82,7 +82,7 @@ public class Stack_Test_Suite {
 	}//end test
 	
 	@Test
-	void test_push_and_pop() {
+	void test_push_and_pop_iStack() {
 		
 		Stack imut_Stack = new Stack();
 		Stack_Original mutable = new Stack_Original();
@@ -108,7 +108,7 @@ public class Stack_Test_Suite {
 	}//end test
 
 	@Test
-	void test_flyweight_Stack2() {
+	void test_all_stacks_performance() {
 		
 		Stack_Ft fStack   = new Stack_Ft();
 		Stack_Original mStack = new Stack_Original();
