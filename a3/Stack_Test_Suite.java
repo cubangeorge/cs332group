@@ -14,8 +14,7 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 public class Stack_Test_Suite {
 	
-	// ---------Altered immutable Stack class below -------
-
+	
 	/*test for the push method in the Stack.java file
 	 * this is a test to see if the push method of awesome produces a new object
 	 */
@@ -26,6 +25,19 @@ public class Stack_Test_Suite {
 		
 	}//end test
 	
+	@Test
+	void test_toString_Push() {
+		
+		Stack imut_Stack = new Stack();
+		assertEquals("abc", imut_Stack.push('a').push('b').push('c').toString());
+	}//end test
+	
+	@Test
+	void test_toString_PushPop() {
+		
+		Stack imut_Stack = new Stack();
+		assertEquals("c", imut_Stack.push('a').pop().push('b').pop().push('c').toString());
+	}//end test
 	
 	/*
 	 * test for the push method in the Stack.java file
@@ -41,8 +53,6 @@ public class Stack_Test_Suite {
 	}//end test
 	
 
-	// ---------Original mutable Stack class below -------
-	
 	
 	//test for the push method in the Stack_Original.java file
 	
