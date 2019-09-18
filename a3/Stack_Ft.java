@@ -10,35 +10,29 @@ import java.util.Objects;
 
 public class Stack_Ft{
 
-	private Object[] elements;
-	private int size;
-	private static final HashMap<Integer ,Object> bucket = new HashMap<Integer ,Object> ();
+	private final int[] elements; // Stores the hashcodes. Used as keys in the bucket cache.
+	private final int size;
+	private static final HashMap<Integer, Object> bucket = new HashMap<>();
 	
 	public int getSize() {
 		return size;
 	}
 	
 	public static int getMapsize() {
-		
 		return bucket.size();
 	}
 	
 	public Stack_Ft() {
-		this.elements = new Object[0];
+		this(0);
 	}
 	
 	private Stack_Ft(int e) {//called by push and last only
-		elements = new Object[e];
+		elements = new int[e];
 		size = e;
-		
-		
 	}
 
 	public Stack_Ft push(Object o){//went from mutator to producer
-
 		Stack_Ft newStack = new Stack_Ft(size+1);//make new bigger stack
-		//t = this.bucket;//pass the pointer
-
 		return populate(o, newStack, size); //return new immutable stack
 	}
 
@@ -49,20 +43,13 @@ public class Stack_Ft{
 	 * @param size the size of the new stack
 	 */
 	private Stack_Ft populate(Object e, Stack_Ft newStack, int size) {
-		// Copy over references from bucket
-		for (int i = 0; i < this.elements.length; i++) {
-			Object current = elements[i];
-			int currentHash = Objects.hashCode(current); //generate a hashcode 
+		// Copy over current array
+		System.arraycopy(elements, 0, newStack.elements, 0, elements.length);
 
-			Object cached = bucket.putIfAbsent(currentHash, current);
-
-			newStack.elements[i] = cached == null ? current : cached;
-		}
-
-		// Append object to new stack
+		// Append hashcode to new stack & cache in map
 		int hash = Objects.hashCode(e);
-		Object cached = bucket.putIfAbsent(hash, e);
-		newStack.elements[size] = cached == null ? e : cached;
+		bucket.putIfAbsent(hash, e);
+		newStack.elements[size] = hash;
 		return newStack;
 	}
 
@@ -78,19 +65,20 @@ public class Stack_Ft{
 	 */
 	public Object last() {//went from mutator to observer
 		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
-		return this.elements[this.size-1];
+		return bucket.get(this.elements[this.size-1]);
 	}
 
+	@Override
 	public String toString() {
 		String newString = "{";
 		for (int i = 0; i < this.elements.length; i++) {
 			
 			newString += "\"";
-			newString += this.elements[i];
+			newString += bucket.get(this.elements[i]);
 			newString += "\"";
 			newString += ",";
 		}
 
-		return newString+="}";
+		return newString + "}";
 	}
 }
