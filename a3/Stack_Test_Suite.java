@@ -23,7 +23,7 @@ public class Stack_Test_Suite {
 	void test_push_diff() {
 		Stack awesome = new Stack();
 		assertNotSame(awesome.push(2), awesome.push(2));
-	
+		
 	}//end test
 	
 	
@@ -167,11 +167,11 @@ public class Stack_Test_Suite {
 						"%"
 						);
 				System.out.printf("%20s%20d%20d%20d\n","Objects built:",
-						fStack.getMapsize(),
+						Stack_Ft.getMapsize(),
 						iStack.getSize(),
 						mStack.getSize());
 				System.out.printf("%20s%20d%20d%20d\n","Bytes:",
-						fStack.getMapsize()*3,
+						Stack_Ft.getMapsize()*3,
 						iStack.getSize()*3,
 						mStack.getSize()*3);
 
@@ -198,7 +198,7 @@ public class Stack_Test_Suite {
 				Stack s = (Stack) stack;
 					for (int i = 0 ; i < total ; i++) {
 						s = s.push( a[ rand.nextInt(a.length) ]);
-						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+						System.out.printf("%s%f%s\n","Imutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
 					}
 					return s;
 				}
@@ -206,7 +206,7 @@ public class Stack_Test_Suite {
 				Stack_Original s = (Stack_Original) stack;
 					for (int i = 0 ; i < total ; i++) {
 						s.push( a[ rand.nextInt(a.length) ]);
-						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+						System.out.printf("%s%f%s\n","Mutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
 					}
 				return s;	
 			}//end switch
