@@ -54,22 +54,15 @@ public class Stack_Ft{
 			Object current = elements[i];
 			int currentHash = Objects.hashCode(current); //generate a hashcode 
 
-			if (!bucket.containsKey(currentHash)) {
-				bucket.put(currentHash, current);
-				
-			}
+			Object cached = bucket.putIfAbsent(currentHash, current);
 
-			newStack.elements[i] = bucket.get(currentHash);
+			newStack.elements[i] = cached == null ? current : cached;
 		}
 
 		// Append object to new stack
 		int hash = Objects.hashCode(e);
-
-		if (!bucket.containsKey(hash)) {
-			bucket.put(hash, e);
-		}
-
-		newStack.elements[size] = bucket.get(hash);
+		Object cached = bucket.putIfAbsent(hash, e);
+		newStack.elements[size] = cached == null ? e : cached;
 		return newStack;
 	}
 
