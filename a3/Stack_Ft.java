@@ -18,6 +18,11 @@ public class Stack_Ft{
 		return size;
 	}
 	
+	public static int getMapsize() {
+		
+		return bucket.size();
+	}
+	
 	public Stack_Ft() {
 		this.elements = new Object[0];
 	}
@@ -51,6 +56,7 @@ public class Stack_Ft{
 
 			if (!bucket.containsKey(currentHash)) {
 				bucket.put(currentHash, current);
+				
 			}
 
 			newStack.elements[i] = bucket.get(currentHash);

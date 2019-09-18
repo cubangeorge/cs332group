@@ -13,7 +13,7 @@ public class Stack {
 
 	
 	public int getSize() {
-		return size;
+		return elements.length;
 	}
 	
 	public Stack() {
@@ -43,7 +43,7 @@ public class Stack {
 	}	
 
 	public Object last() {//went from mutator to observer
-		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
+		if (size == 0) return null;//{throw new IllegalStateException("The Stack is Empty ");}
 		return this.elements[this.size-1];
 	}
 

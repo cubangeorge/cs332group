@@ -1,18 +1,16 @@
 /*
  * 
  * This program conducts test cases
- * @author Jorge L Martinez & Valeria Green
+ * @author Jorge L Martinez & Valeria Green & Blake Khan
  * 
  */
 import static org.junit.Assert.*;
-import java.util.concurrent.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
-
 import org.junit.jupiter.api.Test;
 public class Stack_Test_Suite {
 	
@@ -78,13 +76,7 @@ public class Stack_Test_Suite {
 	void test_last() {
 		
 		Stack imut_Stack = new Stack();
-		try {
-			imut_Stack.last();
-			fail("no Excetion thrown");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.err.println("Exception caught OK: "+e);
-		}
+		assertEquals(null,imut_Stack.last());
 		assertEquals('c', imut_Stack.push('a').push('b').push('c').last());
 		assertEquals('d', imut_Stack.push('a').push('b').push('d').last());
 	}//end test
@@ -118,25 +110,40 @@ public class Stack_Test_Suite {
 	@Test
 	void test_flyweight_Stack2() {
 		
-		Stack_Ft flywt_Stack   = new Stack_Ft();
-		Stack_Original mutable_Stack = new Stack_Original();
-		Stack imut_Stack       = new Stack();
+		Stack_Ft fStack   = new Stack_Ft();
+		Stack_Original mStack = new Stack_Original();
+		Stack iStack       = new Stack();
 		
 		//array of objects to pull from		
-		String [] a = {"Dog", "Cat", "Mouse"};
+		String [] a = {"Dog", "Cat", "Rat"};
 		Random rand = new Random();
-		int total = 30000;
+		int total = 300;
+		Instant time1, time2;
 		//perform flyweight operations 
-		long flyweight_time = run_push(a,flywt_Stack  , total,rand, "fStack");
+		time1 = Instant.now();
+		fStack = (Stack_Ft) run_push(a,fStack  , total,rand);
+		time2 = Instant.now();
+		long flyweight_time = Duration.between(time1, time2).toMillis();
+
 		//perform imut operations
-		long imut_time 		= run_push(a,imut_Stack   , total,rand, "iStack");
+		time1 = Instant.now();
+		iStack = (Stack) run_push(a,iStack   , total,rand);
+		time2 = Instant.now();
+		long imut_time = Duration.between(time1, time2).toMillis();
 		//perform mutable operation
-		long mut_time 		= run_push(a,mutable_Stack, total,rand, "mStack");
+		time1 = Instant.now();
+		mStack	= (Stack_Original) run_push(a,mStack, total,rand);
+		time2 = Instant.now();
+		long mut_time = Duration.between(time1, time2).toMillis();
 
 		//print stats
-		printStats(total,flyweight_time,imut_time,mut_time);
+		printStats(total,flyweight_time,imut_time,mut_time,iStack,fStack,mStack,a);
+				
+		
 	}//end test
-	private static void printStats(int total,long flyweight_time,long imut_time,long mut_time) {
+	
+	private static void printStats(int total,long flyweight_time,long imut_time,long mut_time,
+									Stack iStack, Stack_Ft fStack, Stack_Original mStack, String  []a) {
 		
 		//print stats
 				String lines = "----------------------------";
@@ -145,10 +152,13 @@ public class Stack_Test_Suite {
 						lines,
 						header,
 						lines);
+				System.out.println("Objects pushed at random:        "+Arrays.toString(a)+"\n");
 				System.out.printf("%20s%20s%20s%20s\n"," ","Flyweight","Imutable","Mutable");
-				System.out.printf("%20s%20d%20d%20d\n","pushed elements:",total,total,total);
-				System.out.printf("%20s%20d%20d%20d\n","duration in mills:",flyweight_time,imut_time,mut_time);
-				System.out.printf("%20s%20.2f%s%20.2f%s%20.2f%s\n","Slow down of",
+				System.out.printf("%20s%20d%20d%20d\n","pushed elements:",
+						total,total,total);
+				System.out.printf("%20s%20d%20d%20d\n","duration in mills:",
+						flyweight_time,imut_time,mut_time);
+				System.out.printf("%20s%20.2f%s%20.2f%s%20.2f%s\n","Slow down of:",
 						100-(double)(double)mut_time/flyweight_time*100,
 						"%",
 						100-(double)(double)mut_time/imut_time*100,
@@ -156,49 +166,51 @@ public class Stack_Test_Suite {
 						100-(double)mut_time/(double)mut_time*100,
 						"%"
 						);
+				System.out.printf("%20s%20d%20d%20d\n","Objects built:",
+						fStack.getMapsize(),
+						iStack.getSize(),
+						mStack.getSize());
+				System.out.printf("%20s%20d%20d%20d\n","Bytes:",
+						fStack.getMapsize()*3,
+						iStack.getSize()*3,
+						mStack.getSize()*3);
+
 	}
-	private static long run_push(String [] a, Object stack, int total, Random rand, String stakcType) 
+	private static Object run_push(String [] a, Object stack, int total, Random rand) 
 	
 	{// this will calculate the time it takes for "total" pushes on the stack received
-		Instant time1, time2;
-			switch (stakcType) {
-			case "fStack":
+		
+		
+			switch (stack.getClass().toString()) {
+			case "class Stack_Ft":
 				{//when pushing onto a fyweight
 				Stack_Ft s = (Stack_Ft) stack;
-				time1 = Instant.now();
+				
 					for (int i = 0 ; i < total ; i++) {
 						s = s.push( a[ rand.nextInt(a.length) ]);
 						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
 					}
-				time2 = Instant.now();	
+					return s;
 				}
-				break;
-			case "iStack":
+				
+			case "class Stack":
 				{//when pushing into a imutable 
 				Stack s = (Stack) stack;
-				time1 = Instant.now();
 					for (int i = 0 ; i < total ; i++) {
 						s = s.push( a[ rand.nextInt(a.length) ]);
 						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
 					}
-				time2 = Instant.now();	
-	
+					return s;
 				}
-				break;
 			default://when pushing into a mutable
 				Stack_Original s = (Stack_Original) stack;
-				time1 = Instant.now();
 					for (int i = 0 ; i < total ; i++) {
 						s.push( a[ rand.nextInt(a.length) ]);
 						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
 					}
-				time2 = Instant.now();	
-
+				return s;	
 			}//end switch
-		
-			return Duration.between(time1, time2).toMillis();
-	}
+			
+	}//end run push
 
-	
-
-}
+}//end class Test_Suite
