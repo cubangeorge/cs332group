@@ -9,7 +9,7 @@ public class Stack {
 
 	private Object[] elements;
 	private int size;
-
+	
 
 	
 	public int getSize() {
@@ -18,34 +18,15 @@ public class Stack {
 	
 	public Stack() {
 		this.elements = new Object[0];
+		
 	}
 	
 	private Stack(int e) {//called by push and last only
 		elements = new Object[e];
 		size = e;
+		
 	}
 
-//	public Stack(int size, Object[] elements) {
-//		this.size = size;
-//		this.elements = elements;
-//	}
-
-	//takes an object of a type and produces a new one
-	//takes the old elements array and size of it to make a new array with the input parameter as the latest element. Then makes a new object based off of that.
-	//   public Stack push(Object e) {
-	//	   int newSize = elements.length + 1;
-	//	   Object newishElements[] = new Object[newSize];
-	//	   //System.arraycopy(elements, 0, newishElements, 0, newSize);
-	//	   for (int i = 0; i < elements.length; i++) {
-	//		   newishElements[i] = elements[i];
-	//	   }
-	//	   
-	//	   newishElements[newSize-1] = e;
-	//			   
-	//	   Stack newerStack = new Stack(newSize, newishElements);
-	//	     
-	//	    return newerStack;
-	//   }
 	public Stack push(Object e) {//went from mutator to producer
 
 		Stack newStack = new Stack(size+1);//make new bigger stack

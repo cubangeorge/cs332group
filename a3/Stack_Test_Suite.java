@@ -114,168 +114,91 @@ public class Stack_Test_Suite {
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().last());
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().pop().last());
 	}//end test
+
 	@Test
 	void test_flyweight_Stack2() {
 		
 		Stack_Ft flywt_Stack   = new Stack_Ft();
 		Stack_Original mutable_Stack = new Stack_Original();
 		Stack imut_Stack       = new Stack();
-				
+		
 		//array of objects to pull from		
 		String [] a = {"Dog", "Cat", "Mouse"};
-        Random rand = new Random();
-        int total = 30000;
-        //perform flyweight operations 
-        long flyweight_time = run_push(a,flywt_Stack  , total,rand);
+		Random rand = new Random();
+		int total = 30000;
+		//perform flyweight operations 
+		long flyweight_time = run_push(a,flywt_Stack  , total,rand, "fStack");
 		//perform imut operations
-        long imut_time 		= run_push(a,imut_Stack   , total,rand);
+		long imut_time 		= run_push(a,imut_Stack   , total,rand, "iStack");
 		//perform mutable operation
-        long mut_time 		= run_push(a,mutable_Stack, total,rand);
+		long mut_time 		= run_push(a,mutable_Stack, total,rand, "mStack");
 
-		
-		//Scanner sc = new Scanner(System.in);
-		//System.out.println("hit the enter KEY....");
-		//sc.nextLine();
-		//perform flyweight operations again with different time capture
-		long flyweight_time2 = run_push2(a,flywt_Stack  , total,rand);
-		//perform imut operations
-		long imut_time2 		= run_push2(a,imut_Stack   , total,rand);
-		//perform mutable operation
-		long mut_time2 		= run_push2(a,mutable_Stack, total,rand);
-		
-		//print stats run1
-        String lines = "-----------RUN 1------------";
-        String header = "Performance comparison report";
-        System.out.printf("%s%s%s\n",
-        		lines,
-        		header,
-        		lines);
-		System.out.printf("%20s%20s%20s%20s\n"," ","Flyweight","Imutable","Mutable");
-		System.out.printf("%20s%20d%20d%20d\n","pushed elements:",total,total,total);
-		System.out.printf("%20s%20d%20d%20d\n","duration in mills:",flyweight_time,imut_time,mut_time);
-		System.out.printf("%20s%20.2f%s%20.2f%s%20.2f%s\n","Slow down of",
-				100-(double)(double)mut_time/flyweight_time*100,
-				"%",
-				100-(double)(double)mut_time/imut_time*100,
-				"%",
-				100-(double)mut_time/(double)mut_time*100,
-				"%"
-				);
-		
-		//print stats run 2
-		System.out.printf("%s%s%s\n",
-				lines="-----------RUN 2-------------",
-				header,
-				lines);
-		System.out.printf("%20s%20s%20s%20s\n"," ","Flyweight","Imutable","Mutable");
-		System.out.printf("%20s%20d%20d%20d\n","pushed elements:",total,total,total);
-		System.out.printf("%20s%20d%20d%20d\n","duration in mills:",flyweight_time2,imut_time2,mut_time2);
-		System.out.printf("%20s%20.2f%s%20.2f%s%20.2f%s\n","Slow down of",
-				100-(double)(double)mut_time2/flyweight_time2*100,
-				"%",
-				100-(double)(double)mut_time2/imut_time2*100,
-				"%",
-				100-(double)mut_time2/(double)mut_time2*100,
-				"%"
-				);
+		//print stats
+		printStats(total,flyweight_time,imut_time,mut_time);
 	}//end test
-	
-	private static long run_push(String [] a, Stack_Ft s, int total, Random rand) 
-	
-	{// this will calculate the time it takes for "total" pushes on the stack received
-			long time1 = System.currentTimeMillis();
-			for (int i = 0 ; i < total ; i++) {
-				s = s.push( a[ rand.nextInt(a.length) ]);
-				System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
-			}	
-			long time2 = System.currentTimeMillis();
+	private static void printStats(int total,long flyweight_time,long imut_time,long mut_time) {
 		
-				
-		return time2 -time1;
+		//print stats
+				String lines = "----------------------------";
+				String header = "Performance comparison report";
+				System.out.printf("%s%s%s\n",
+						lines,
+						header,
+						lines);
+				System.out.printf("%20s%20s%20s%20s\n"," ","Flyweight","Imutable","Mutable");
+				System.out.printf("%20s%20d%20d%20d\n","pushed elements:",total,total,total);
+				System.out.printf("%20s%20d%20d%20d\n","duration in mills:",flyweight_time,imut_time,mut_time);
+				System.out.printf("%20s%20.2f%s%20.2f%s%20.2f%s\n","Slow down of",
+						100-(double)(double)mut_time/flyweight_time*100,
+						"%",
+						100-(double)(double)mut_time/imut_time*100,
+						"%",
+						100-(double)mut_time/(double)mut_time*100,
+						"%"
+						);
 	}
-			
-	private static long run_push(String [] a, Stack s, int total, Random rand) 
+	private static long run_push(String [] a, Object stack, int total, Random rand, String stakcType) 
 	
 	{// this will calculate the time it takes for "total" pushes on the stack received
-		long time1 = System.currentTimeMillis();
-		for (int i = 0 ; i < total ; i++) {
-			s = s.push( a[ rand.nextInt(a.length) ]);
-			System.out.printf("%s%f%s\n","Immutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
-		}	
-		long time2 = System.currentTimeMillis();
-		return time2 -time1;
-	}
-	private static long run_push(String [] a, Stack_Original s, int total, Random rand) 
+		Instant time1, time2;
+			switch (stakcType) {
+			case "fStack":
+				{//when pushing onto a fyweight
+				Stack_Ft s = (Stack_Ft) stack;
+				time1 = Instant.now();
+					for (int i = 0 ; i < total ; i++) {
+						s = s.push( a[ rand.nextInt(a.length) ]);
+						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+					}
+				time2 = Instant.now();	
+				}
+				break;
+			case "iStack":
+				{//when pushing into a imutable 
+				Stack s = (Stack) stack;
+				time1 = Instant.now();
+					for (int i = 0 ; i < total ; i++) {
+						s = s.push( a[ rand.nextInt(a.length) ]);
+						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+					}
+				time2 = Instant.now();	
 	
-	{// this will calculate the time it takes for "total" pushes on the stack received
-		long time1 = System.currentTimeMillis();
-		for (int i = 0 ; i < total ; i++) {
-			s.push( a[ rand.nextInt(a.length) ]);
-			System.out.printf("%s%f%s\n","mutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
-		}	
-		long time2 = System.currentTimeMillis();
-		return time2 -time1;
-	}
-	
-	
-	//----------------------------
-private static long run_push2(String [] a, Stack_Ft s, int total, Random rand) 
-	
-	{// this will calculate the time it takes for "total" pushes on the stack received
-		//	long time1 = System.currentTimeMillis();
-			Instant time1 = Instant.now();
-			for (int i = 0 ; i < total ; i++) {
-				s = s.push( a[ rand.nextInt(a.length) ]);
-				System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
-			}	
-			//long time2 = System.currentTimeMillis();
-			Instant time2 = Instant.now();
+				}
+				break;
+			default://when pushing into a mutable
+				Stack_Original s = (Stack_Original) stack;
+				time1 = Instant.now();
+					for (int i = 0 ; i < total ; i++) {
+						s.push( a[ rand.nextInt(a.length) ]);
+						System.out.printf("%s%f%s\n","Flyweight stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
+					}
+				time2 = Instant.now();	
 
-				
-		return Duration.between(time1, time2).toMillis();
-	}
-			
-	private static long run_push2(String [] a, Stack s, int total, Random rand) 
-	
-	{// this will calculate the time it takes for "total" pushes on the stack received
-		Instant time1 = Instant.now();
-		for (int i = 0 ; i < total ; i++) {
-			s = s.push( a[ rand.nextInt(a.length) ]);
-			System.out.printf("%s%f%s\n","Immutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
-		}	
-		Instant time2 = Instant.now();
-		return Duration.between(time1, time2).toMillis();
- 
-	}
-	private static long run_push2(String [] a, Stack_Original s, int total, Random rand) 
-	
-	{// this will calculate the time it takes for "total" pushes on the stack received
-		Instant time1 = Instant.now();
-		for (int i = 0 ; i < total ; i++) {
-			s.push( a[ rand.nextInt(a.length) ]);
-			System.out.printf("%s%f%s\n","mutable stack Progress on "+total+" elements: ",((double)i/(double)(total-1))*100,"%");
-		}	
+			}//end switch
 		
-		Instant time2 = Instant.now();
-		return Duration.between(time1, time2).toMillis();
+			return Duration.between(time1, time2).toMillis();
 	}
-//	mutable.push('a');
-//	mutable.push('b');
-//	mutable.push('c');
-//	mutable.push(456);
-//	flywt_Stack= flywt_Stack.push('a');
-//	flywt_Stack= flywt_Stack.push('b');
-//	flywt_Stack= flywt_Stack.push('c');
-//	flywt_Stack= flywt_Stack.push(456);
-//	
-//	assertEquals(mutable.pop(), flywt_Stack.last());
-//	flywt_Stack = flywt_Stack.pop();
-//	assertEquals(mutable.pop(), flywt_Stack.last());
-//	flywt_Stack = flywt_Stack.pop();
-//	assertEquals(mutable.pop(), flywt_Stack.last());
-//	flywt_Stack = flywt_Stack.pop();
-//	assertEquals(mutable.pop(), flywt_Stack.last());
-//	flywt_Stack = flywt_Stack.pop();
-//	
+
+	
 
 }

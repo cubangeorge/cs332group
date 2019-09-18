@@ -12,7 +12,7 @@ public class Stack_Ft{
 
 	private Object[] elements;
 	private int size;
-	private static final HashMap<Integer ,Object> bucket = new HashMap<>();
+	private static final HashMap<Integer ,Object> bucket = new HashMap<Integer ,Object> ();
 	
 	public int getSize() {
 		return size;
@@ -73,7 +73,10 @@ public class Stack_Ft{
 		System.arraycopy(elements, 0, newStack.elements, 0, size	-1);
 		return newStack;
 	}	
-
+	/**
+	 * 
+	 * @return
+	 */
 	public Object last() {//went from mutator to observer
 		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
 		return this.elements[this.size-1];
