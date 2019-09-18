@@ -1,7 +1,7 @@
 /*
  * 
  * This program conducts test cases
- * @author Jorge L Martinez & Valeria Green & Blake Khan
+ * @author Jorge L Martinez & Valeria Green
  * 
  */
 import static org.junit.Assert.*;
@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 public class Stack_Test_Suite {
 	
-	
+	// ---------Altered immutable Stack class below -------
+
 	/*test for the push method in the Stack.java file
 	 * this is a test to see if the push method of awesome produces a new object
 	 */
@@ -36,17 +37,21 @@ public class Stack_Test_Suite {
 	}//end test
 	
 
+	// ---------Original mutable Stack class below -------
+	
+	
+	//test for the push method in the Stack_Original.java file
 	
 	@Test
 	void test_push_diff_stackOriginal() {
 		
 		Stack_Original awesome = new Stack_Original();
 		//method call in case elements is public
-
+		//assertEquals(0, awesome.elements.length);
 		awesome.push(2);
 		assertNotSame(awesome, awesome.pop());
 		//method call in case elements is public
-	
+		//assertEquals(1, awesome.elements.length);
 	}//end test
 
 	@Test
@@ -90,21 +95,4 @@ public class Stack_Test_Suite {
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().last());
 		assertEquals(mutable.pop(), imut_Stack.push('a').push('b').push('c').pop().pop().last());
 	}//end test
-	
-	
-
-	@Test
-	void test_toString_Push() {
-		
-		Stack imut_Stack = new Stack();
-		assertEquals("abc", imut_Stack.push('a').push('b').push('c').toString());
-	}//end test
-	
-	@Test
-	void test_toString_PushPop() {
-		
-		Stack imut_Stack = new Stack();
-		assertEquals("c", imut_Stack.push('a').pop().push('b').pop().push('c').toString());
-	}//end test
-	
 }
