@@ -21,6 +21,7 @@ class StackTest {
 	 */
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+				
 	}
 
 	/**
@@ -34,15 +35,14 @@ class StackTest {
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
-	void setUp() throws Exception {
-		Stack s = new Stack();
-	}
+	void setUp() throws Exception {}	
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
+		
 	}
 
 	/**
@@ -50,7 +50,13 @@ class StackTest {
 	 */
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		Stack s = new Stack();
+		s.push("cat");
+		s.push("dog");
+		s.push("bat");
+		
+		System.out.println(s.toString());
+		
 	}
 
 }
