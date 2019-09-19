@@ -35,14 +35,40 @@ public class Stack {
       }
    }
    
+   public boolean repOkay() {
+	   
+	   if (this.elements.length == 0 || size == 0) {
+		   return false;
+	   }
+	   
+	   
+	   
+	   return true;
+   }
+   
    @Override 
    public String toString() {
+	   //rep invariant
+	   if (!repOkay()) {
+		   throw new IllegalArgumentException("Stack has invalid contents!");
+	   }
+	   
+	   
 	   String objectType = "";
+	   String getDeclaringClass = "";
 	   	
 		String newString = "{top";
+		
+		
 		for (int i = 0; i < this.elements.length; i++) {
 			
-			objectType = this.elements[i].getClass().toString();
+			//check is current element in iteration is null, if so then treat it differently
+			if (this.elements[i] == null) {
+				objectType = "null";
+			} else {
+				objectType = this.elements[i].getClass().toString();
+			}
+			
 			
 			newString += "|";
 			
@@ -53,13 +79,24 @@ public class Stack {
 				case "class java.lang.String":
 					newString += " String: "+this.elements[i]+" ";
 					break;
+				case "null":
+					newString += " ";
+					break;
 				default:
-					newString += " Obj: "+(i+1)+" ";
+					
+					//if the client defined class has a toString method defined then it won't throw the NoSuchMethodException. If they have it defined then it'll just get the name of that class and it's toString
+					try {
+					getDeclaringClass = this.elements[i].getClass().getMethod("toString").getDeclaringClass().toString();
+						newString += " " + getDeclaringClass + " " + this.elements[i].toString() + " ";
+						
+					} catch (NoSuchMethodException e) {
+						newString += " Obj: "+(i+1)+" ";
+					}
+					
 					break;
 				
 			}
 			newString += "|";
-			//newString += ",";
 		}
 
 			return newString + "bottom}";
