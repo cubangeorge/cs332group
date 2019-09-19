@@ -35,6 +35,10 @@ public class Stack {
       }
    }
    
+   public int getSize () {
+	     return size;
+	   }
+   
    public boolean repOkay() {
 	   
 	   if (this.elements.length == 0 || size == 0) {
@@ -72,7 +76,7 @@ public class Stack {
 			
 			newString += "|";
 			
-
+			
 			switch (objectType){
 				case "class java.lang.Integer":
 					newString += " "+this.elements[i]+" ";
@@ -84,7 +88,9 @@ public class Stack {
 					newString += " \""+this.elements[i]+"\" ";
 					break;
 				case "null":
-					newString += " null ";
+					
+						newString += " null ";
+					
 					break;
 				default:
 					
