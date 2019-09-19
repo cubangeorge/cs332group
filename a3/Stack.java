@@ -81,10 +81,10 @@ public class Stack {
 	 *
 	 * OVERVIEW: Returns the last Object of an array 
 	 * @return Object the last object to return unless the size is zero
-	 * 
+	 * @throws ISE when invoked on an empty stack
 	 */
 	public Object last() {//went from mutator to observer
-		if (elements.length == 0) return null;//{throw new IllegalStateException("The Stack is Empty ");}
+		if (elements.length == 0) {throw new IllegalStateException("The Stack is Empty ");}
 		return this.elements[elements.length-1];
 	}
 
