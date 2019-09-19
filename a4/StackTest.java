@@ -51,17 +51,21 @@ class StackTest {
 	@Test
 	void test_ints() {
 		Stack s = new Stack();
-//		s.push("cat");
-//		s.push("dog");
-//		s.push("bat");
-//		s.push( new Object());
-//		s.push( new Object());
-//		s.push( new Object());
 		s.push(1);
-		s.push(2);
+		s.push(new Integer (2));
 		s.push(3);
 		
-		assertTrue("{top|1||2||3|bottom}".equals(s.toString()));
+		assertTrue("{top| 1 || 2 || 3 |bottom}".equals(s.toString()));
+		
+	}
+	@Test
+	void test_chars() {
+		Stack s = new Stack();
+		s.push(new Character ('a'));
+		s.push('b');
+		s.push('c');
+		
+		assertTrue("{top| a || b || c |bottom}".equals(s.toString()));
 		
 	}
 	@Test
@@ -70,11 +74,8 @@ class StackTest {
 		s.push("cat");
 		s.push("dog");
 		s.push("bat");
-//		s.push( new Object());
-//		s.push( new Object());
-//		s.push( new Object());
 		
-		assertTrue("{top|cat||dog||bat|bottom}".equals(s.toString()));
+		assertTrue("{top| cat || dog || bat |bottom}".equals(s.toString()));
 		
 	}
 	@Test
@@ -86,5 +87,24 @@ class StackTest {
 		assertTrue("{top| Obj 1 || Obj2 || Obj3 |bottom}".equals(s.toString()));
 		
 	}
+	@Test
+	void test_mix() {
+		Stack s = new Stack();
+		s.push( new Object());
+		s.push( 2 );
+		s.push( "well hello!");
+		s.push( '4');
+		assertTrue("{top| Obj 1 || 2 || well hello! | 4 |bottom}".equals(s.toString()));
+		
+	}
+//	@Test
+//	void test_null() {
+//		Stack s = new Stack();
+//		s.push(  );
+//		s.push( );
+//		s.push( new Object());
+//		assertTrue("{top| Obj 1 || Obj2 || Obj3 |bottom}".equals(s.toString()));
+//		
+//	}
 
 }
