@@ -49,19 +49,19 @@ class StackTest {
 	 * Test method for {@link java.lang.Object#toString()}.
 	 */
 	@Test
-	void testToString() {
+	void test_ints() {
 		Stack s = new Stack();
 //		s.push("cat");
 //		s.push("dog");
 //		s.push("bat");
-		s.push( new Object());
-		s.push( new Object());
-		s.push( new Object());
-//		s.push(1);
-//		s.push(2);
-	//	s.push(3);
+//		s.push( new Object());
+//		s.push( new Object());
+//		s.push( new Object());
+		s.push(1);
+		s.push(2);
+		s.push(3);
 		
-		System.out.println(s.toString());
+		assertArrayEquals("{top|1||2||3|bottom}\n",s.toString());
 		
 	}
 
