@@ -40,12 +40,7 @@ public class Stack {
 	   }
    
    public boolean repOkay() {
-	   
-	   if (this.elements.length == 0 || size == 0) {
-		   return false;
-	   }
-	   
-	   
+	   //TODO: needs to be defined
 	   
 	   return true;
    }
@@ -55,6 +50,10 @@ public class Stack {
 	   //rep invariant
 	   if (!repOkay()) {
 		   throw new IllegalArgumentException("Stack has invalid contents!");
+	   }
+	   
+	   if (this.elements.length == 0 || size == 0) {
+		   return "{}";
 	   }
 	   
 	   
