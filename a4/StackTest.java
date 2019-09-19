@@ -59,6 +59,12 @@ class StackTest {
 		
 	}
 	@Test
+	void test_empty_stack() {
+		Stack s = new Stack();
+		assertTrue("{}".equals(s.toString()));
+		
+	}
+	@Test
 	void test_chars() {
 		Stack s = new Stack();
 		s.push(new Character ('a'));
@@ -115,7 +121,7 @@ class StackTest {
 		s.push( null );
 		s.push(5);
 		s.push( new Object());
-		assertTrue("{top| Obj_1 || 2 || \"well hello!\" || 4 || null || 5 || Obj_6 |bottom}".equals(s.toString()));
+		assertTrue("{top| Obj_1 || 2 || \"well hello!\" || 4 || null || 5 || Obj_7 |bottom}".equals(s.toString()));
 		
 	}
 
