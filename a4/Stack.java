@@ -73,23 +73,26 @@ public class Stack {
 				objectType = this.elements[i].getClass().toString();
 			}
 			
-			
-			newString += "|";
+//			if ( i< this.elements.length-1)
+//			newString += "|";
 			
 			
 			switch (objectType){
 				case "class java.lang.Integer":
-					newString += " "+this.elements[i]+" ";
+					newString += "| "+this.elements[i]+" |";
 					break;
 				case "class java.lang.Character":
-					newString += " \'"+this.elements[i]+"\' ";
+					newString += "| \'"+this.elements[i]+"\' |";
 					break;
 				case "class java.lang.String":
-					newString += " \""+this.elements[i]+"\" ";
+					newString += "| \""+this.elements[i]+"\" |";
+					break;
+				case "class java.lang.Double":
+					newString += "| "+this.elements[i]+" |";
 					break;
 				case "null":
-					
-						newString += " null ";
+						if ( i< this.elements.length-1 | elements.length ==1)
+							newString += "| null |";
 					
 					break;
 				default:
@@ -99,7 +102,7 @@ public class Stack {
 					
 						if (this.elements[i].getClass().getMethod("toString").getDeclaringClass() == Object.class) {
 							
-							newString += " Obj_"+(i+1)+" ";
+							newString += "| Obj_"+(i+1)+" |";
 						} else {
 							newString += " " + getDeclaringClass + " " + this.elements[i].toString() + " ";
 						}
@@ -111,9 +114,9 @@ public class Stack {
 					
 					break;
 				
-			}
-
-			newString += "|";
+			}//end switch
+//			if ( i<= this.elements.length-1)
+//			newString += "|";
 			
 		}
 

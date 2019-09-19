@@ -57,7 +57,7 @@ class StackTest {
 		s.push(-3);
 		s.push(-3.4);
 		s.push(0.567);
-		
+		System.out.println(s);
 		assertTrue("{bottom| 1 || 2 || 3 || -3 || -3.4 || 0.567 |top}".equals(s.toString()));
 		
 	}
@@ -83,7 +83,7 @@ class StackTest {
 		s.push("cat");
 		s.push("dog");
 		s.push("bat");
-		
+		System.out.println(s);
 		assertTrue("{bottom| \"cat\" || \"dog\" || \"bat\" |top}".equals(s.toString()));
 		
 	}
@@ -103,7 +103,19 @@ class StackTest {
 		s.push( 2 );
 		s.push( "well hello!");
 		s.push( '4');
+		System.out.println(s);
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s.toString()));
+		
+	}
+	@Test
+	void test_nulls() {
+		Stack s = new Stack();
+		
+		s.push( null );
+		s.push( null );
+		s.push( null );
+		//System.out.println(s);
+		assertTrue("{bottom| null || null || null |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -111,9 +123,8 @@ class StackTest {
 		Stack s = new Stack();
 		
 		s.push( null );
-		s.push( null );
-		s.push( null );
-		assertTrue("{bottom| null || null || null |top}".equals(s.toString()));
+		System.out.println(s);
+		assertTrue("{bottom| null |top}".equals(s.toString()));
 		
 	}
 	@Test
