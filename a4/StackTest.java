@@ -49,13 +49,16 @@ class StackTest {
 	 * Test method for {@link java.lang.Object#toString()}.
 	 */
 	@Test
-	void test_ints() {
+	void test_nums() {
 		Stack s = new Stack();
 		s.push(1);
 		s.push(new Integer (2));
 		s.push(3);
+		s.push(-3);
+		s.push(-3.4);
+		s.push(0.567);
 		
-		assertTrue("{top| 1 || 2 || 3 |bottom}".equals(s.toString()));
+		assertTrue("{bottom| 1 || 2 || 3 || -3 || -3.4 || 0.567 |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -71,7 +74,7 @@ class StackTest {
 		s.push('b');
 		s.push('c');
 		
-		assertTrue("{top| 'a' || 'b' || 'c' |bottom}".equals(s.toString()));
+		assertTrue("{bottom| 'a' || 'b' || 'c' |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -81,7 +84,7 @@ class StackTest {
 		s.push("dog");
 		s.push("bat");
 		
-		assertTrue("{top| \"cat\" || \"dog\" || \"bat\" |bottom}".equals(s.toString()));
+		assertTrue("{bottom| \"cat\" || \"dog\" || \"bat\" |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -90,7 +93,7 @@ class StackTest {
 		s.push( new Object());
 		s.push( new Object());
 		s.push( new Object());
-		assertTrue("{top| Obj_1 || Obj_2 || Obj_3 |bottom}".equals(s.toString()));
+		assertTrue("{bottom| Obj_1 || Obj_2 || Obj_3 |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -100,7 +103,7 @@ class StackTest {
 		s.push( 2 );
 		s.push( "well hello!");
 		s.push( '4');
-		assertTrue("{top| Obj_1 || 2 || \"well hello!\" | 4 |bottom}".equals(s.toString()));
+		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -108,7 +111,7 @@ class StackTest {
 		Stack s = new Stack();
 		
 		s.push( null );
-		assertTrue("{top| null |bottom}".equals(s.toString()));
+		assertTrue("{bottom| null |top}".equals(s.toString()));
 		
 	}
 	@Test
@@ -121,7 +124,7 @@ class StackTest {
 		s.push( null );
 		s.push(5);
 		s.push( new Object());
-		assertTrue("{top| Obj_1 || 2 || \"well hello!\" || 4 || null || 5 || Obj_7 |bottom}".equals(s.toString()));
+		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 |top}".equals(s.toString()));
 		
 	}
 
