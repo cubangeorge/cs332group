@@ -64,5 +64,27 @@ class StackTest {
 		assertTrue("{top|1||2||3|bottom}".equals(s.toString()));
 		
 	}
+	@Test
+	void test_Strings() {
+		Stack s = new Stack();
+		s.push("cat");
+		s.push("dog");
+		s.push("bat");
+//		s.push( new Object());
+//		s.push( new Object());
+//		s.push( new Object());
+		
+		assertTrue("{top|cat||dog||bat|bottom}".equals(s.toString()));
+		
+	}
+	@Test
+	void test_Objects() {
+		Stack s = new Stack();
+		s.push( new Object());
+		s.push( new Object());
+		s.push( new Object());
+		assertTrue("{top| Obj 1 || Obj2 || Obj3 |bottom}".equals(s.toString()));
+		
+	}
 
 }
