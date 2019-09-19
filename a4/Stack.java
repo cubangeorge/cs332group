@@ -71,7 +71,11 @@ public class Stack {
 			
 			
 			newString += "|";
+			//if (this.elements[i].getClass());
+			//newString += " Obj"+(i+1)+" ";//this.elements[i].toString();
+			newString += this.elements[i].toString();
 			
+
 			switch (objectType){
 				case "class java.lang.Integer":
 					newString += " Integer: "+this.elements[i]+" ";
@@ -96,6 +100,7 @@ public class Stack {
 					break;
 				
 			}
+
 			newString += "|";
 		}
 
