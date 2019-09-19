@@ -127,7 +127,7 @@ public class Stack_Test_Suite {
 		//array of objects to pull from		
 		String [] a = {"Dog", "Cat", "Rat"};
 		Random rand = new Random();
-		int total = 300;
+		int total = 30000;
 		Instant time1, time2;
 		//perform flyweight operations 
 		time1 = Instant.now();

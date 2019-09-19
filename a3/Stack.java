@@ -9,7 +9,7 @@ public class Stack {
 	//Fields ---------------------------------------------
 	
 	private Object[] elements;
-	private int size;
+	
 	
 	//Constructors --------------------------------
 	
@@ -32,7 +32,6 @@ public class Stack {
 	 */
 	private Stack(int e) {//called by push and last only
 		elements = new Object[e];
-		size = e;
 		
 	}
 	
@@ -58,9 +57,9 @@ public class Stack {
 	 */
 	public Stack push(Object e) {//went from mutator to producer
 
-		Stack newStack = new Stack(size+1);//make new bigger stack
-		System.arraycopy(elements, 0, newStack.elements, 0, size); //copy over
-		newStack.elements[size]=e;	//stick it at the end
+		Stack newStack = new Stack(elements.length+1);//make new bigger stack
+		System.arraycopy(elements, 0, newStack.elements, 0, elements.length); //copy over
+		newStack.elements[elements.length]=e;	//stick it at the end
 		return newStack; //return new immutable stack
 	}
 
@@ -71,9 +70,9 @@ public class Stack {
 	 * 
 	 */
 	public Stack pop() { // went from mutator to producer
-		if (size == 0) {throw new IllegalStateException("The Stack is Empty ");}
-		Stack newStack = new Stack(size-1);
-		System.arraycopy(elements, 0, newStack.elements, 0, size	-1);
+		if (elements.length == 0) {throw new IllegalStateException("The Stack is Empty ");}
+		Stack newStack = new Stack(elements.length-1);
+		System.arraycopy(elements, 0, newStack.elements, 0, elements.length	-1);
 		return newStack;
 	}	
 
@@ -84,8 +83,8 @@ public class Stack {
 	 * 
 	 */
 	public Object last() {//went from mutator to observer
-		if (size == 0) return null;//{throw new IllegalStateException("The Stack is Empty ");}
-		return this.elements[this.size-1];
+		if (elements.length == 0) return null;//{throw new IllegalStateException("The Stack is Empty ");}
+		return this.elements[elements.length-1];
 	}
 
 	/**
