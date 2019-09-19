@@ -113,7 +113,7 @@ class StackTest {
 		s.push( null );
 		s.push( null );
 		s.push( null );
-		assertTrue("{bottom| null || null || null | |top}".equals(s.toString()));
+		assertTrue("{bottom| null || null || null |top}".equals(s.toString()));
 		
 	}
 	@Test
