@@ -41,8 +41,8 @@ public class Stack {
 		for (int i = 0; i < this.elements.length; i++) {
 			
 			newString += "|";
-			//newString += " Obj"+(i+1)+" ";//this.elements[i].toString();
-			newString += this.elements[i].toString();
+			newString += " Obj"+(i+1)+" ";//this.elements[i].toString();
+			//newString += this.elements[i].toString();
 			newString += "|";
 			//newString += ",";
 		}
