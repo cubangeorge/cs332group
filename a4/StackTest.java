@@ -65,7 +65,7 @@ class StackTest {
 		s.push('b');
 		s.push('c');
 		
-		assertTrue("{top| a || b || c |bottom}".equals(s.toString()));
+		assertTrue("{top| 'a' || 'b' || 'c' |bottom}".equals(s.toString()));
 		
 	}
 	@Test
@@ -75,7 +75,7 @@ class StackTest {
 		s.push("dog");
 		s.push("bat");
 		
-		assertTrue("{top| cat || dog || bat |bottom}".equals(s.toString()));
+		assertTrue("{top| \"cat\" || \"dog\" || \"bat\" |bottom}".equals(s.toString()));
 		
 	}
 	@Test
@@ -94,7 +94,7 @@ class StackTest {
 		s.push( 2 );
 		s.push( "well hello!");
 		s.push( '4');
-		assertTrue("{top| Obj_1 || 2 || well hello! | 4 |bottom}".equals(s.toString()));
+		assertTrue("{top| Obj_1 || 2 || \"well hello!\" | 4 |bottom}".equals(s.toString()));
 		
 	}
 	@Test
@@ -115,7 +115,7 @@ class StackTest {
 		s.push( null );
 		s.push(5);
 		s.push( new Object());
-		assertTrue("{top| Obj_1 | 2 | well hello! | 4 | null | 5 | Obj_6 |bottom}".equals(s.toString()));
+		assertTrue("{top| Obj_1 || 2 || \"well hello!\" || 4 || null || 5 || Obj_6 |bottom}".equals(s.toString()));
 		
 	}
 
