@@ -57,7 +57,7 @@ public class Stack {
 	   String objectType = "";
 	   String getDeclaringClass = "";
 	   	
-		String newString = "{top";
+		String newString = "{bottom";
 		
 		
 		for (int i = 0; i < this.elements.length; i++) {
@@ -71,30 +71,36 @@ public class Stack {
 			
 			
 			newString += "|";
-			//if (this.elements[i].getClass());
-			//newString += " Obj"+(i+1)+" ";//this.elements[i].toString();
-			newString += this.elements[i].toString();
 			
 
 			switch (objectType){
 				case "class java.lang.Integer":
-					newString += " Integer: "+this.elements[i]+" ";
+					newString += " "+this.elements[i]+" ";
+					break;
+				case "class java.lang.Character":
+					newString += " \'"+this.elements[i]+"\' ";
 					break;
 				case "class java.lang.String":
-					newString += " String: "+this.elements[i]+" ";
+					newString += " \""+this.elements[i]+"\" ";
 					break;
 				case "null":
-					newString += " ";
+					newString += " null ";
 					break;
 				default:
 					
 					//if the client defined class has a toString method defined then it won't throw the NoSuchMethodException. If they have it defined then it'll just get the name of that class and it's toString
 					try {
-					getDeclaringClass = this.elements[i].getClass().getMethod("toString").getDeclaringClass().toString();
-						newString += " " + getDeclaringClass + " " + this.elements[i].toString() + " ";
+					
+						if (this.elements[i].getClass().getMethod("toString").getDeclaringClass() == Object.class) {
+							
+							newString += " Obj_"+(i+1)+" ";
+						} else {
+							newString += " " + getDeclaringClass + " " + this.elements[i].toString() + " ";
+						}
 						
 					} catch (NoSuchMethodException e) {
-						newString += " Obj: "+(i+1)+" ";
+						
+						newString += " Obj_"+(i+1)+" ";
 					}
 					
 					break;
@@ -102,9 +108,10 @@ public class Stack {
 			}
 
 			newString += "|";
+			
 		}
 
-			return newString + "bottom}";
+			return newString + "top}";
 	   
    }
 
