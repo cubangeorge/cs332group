@@ -34,11 +34,15 @@ public class Stack {
          System.arraycopy(oldElements, 0, elements, 0, size);
       }
    }
+   
    @Override 
    public String toString() {
-
+	   String objectType = "";
+	   	
 		String newString = "{top";
 		for (int i = 0; i < this.elements.length; i++) {
+			
+			objectType = this.elements[i].getClass().toString();
 			
 			newString += "|";
 			//if (this.elements[i].getClass());
@@ -46,6 +50,7 @@ public class Stack {
 			newString += this.elements[i].toString();
 			
 			
+		
 			newString += "|";
 			//newString += ",";
 		}
@@ -53,6 +58,5 @@ public class Stack {
 			return newString + "bottom}";
 	   
    }
-   
 
 }

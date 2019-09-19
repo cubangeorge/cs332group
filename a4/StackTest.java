@@ -61,7 +61,7 @@ class StackTest {
 		s.push(2);
 		s.push(3);
 		
-		assertArrayEquals("{top|1||2||3|bottom}\n",s.toString());
+		assertTrue("{top|1||2||3|bottom}".equals(s.toString()));
 		
 	}
 
