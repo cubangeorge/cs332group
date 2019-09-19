@@ -84,7 +84,7 @@ class StackTest {
 		s.push( new Object());
 		s.push( new Object());
 		s.push( new Object());
-		assertTrue("{top| Obj 1 || Obj2 || Obj3 |bottom}".equals(s.toString()));
+		assertTrue("{top| Obj_1 || Obj_2 || Obj_3 |bottom}".equals(s.toString()));
 		
 	}
 	@Test
@@ -94,17 +94,29 @@ class StackTest {
 		s.push( 2 );
 		s.push( "well hello!");
 		s.push( '4');
-		assertTrue("{top| Obj 1 || 2 || well hello! | 4 |bottom}".equals(s.toString()));
+		assertTrue("{top| Obj_1 || 2 || well hello! | 4 |bottom}".equals(s.toString()));
 		
 	}
-//	@Test
-//	void test_null() {
-//		Stack s = new Stack();
-//		s.push(  );
-//		s.push( );
-//		s.push( new Object());
-//		assertTrue("{top| Obj 1 || Obj2 || Obj3 |bottom}".equals(s.toString()));
-//		
-//	}
+	@Test
+	void test_null() {
+		Stack s = new Stack();
+		
+		s.push( null );
+		assertTrue("{top| null |bottom}".equals(s.toString()));
+		
+	}
+	@Test
+	void test_null_mix() {
+		Stack s = new Stack();
+		s.push( new Object());
+		s.push( 2 );
+		s.push( "well hello!");
+		s.push( '4');
+		s.push( null );
+		s.push(5);
+		s.push( new Object());
+		assertTrue("{top| Obj_1 | 2 | well hello! | 4 | null | 5 | Obj_6 |bottom}".equals(s.toString()));
+		
+	}
 
 }
