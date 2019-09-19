@@ -42,15 +42,15 @@ public class Stack {
 		String newString = "{top";
 		for (int i = 0; i < this.elements.length; i++) {
 			
-			objectType = String.valueOf(this.elements[i].getClass());
+			objectType = this.elements[i].getClass().toString();
 			
 			newString += "|";
 			
 			switch (objectType){
-				case "java.lang.Integer":
+				case "class java.lang.Integer":
 					newString += " Integer: "+this.elements[i]+" ";
 					break;
-				case "java.lang.String":
+				case "class java.lang.String":
 					newString += " String: "+this.elements[i]+" ";
 					break;
 				default:
