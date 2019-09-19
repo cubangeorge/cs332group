@@ -98,13 +98,14 @@ class StackTest {
 	}
 	@Test
 	void test_mix() {
-		Stack s = new Stack();
-		s.push( new Object());
-		s.push( 2 );
-		s.push( "well hello!");
-		s.push( '4');
-		System.out.println(s);
-		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s.toString()));
+		Stack s1 = new Stack();
+		s1.push( new Object());
+		System.out.println(new Object());
+		s1.push( 2 );
+		s1.push( "well hello!");
+		s1.push( '4');
+		System.out.println(s1);
+		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s1.toString()));
 		
 	}
 	@Test

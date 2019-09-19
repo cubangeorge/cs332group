@@ -90,7 +90,7 @@ public class Stack {
 					newString += "| "+this.elements[i]+" |";
 					break;
 				case "null":
-						if ( i< this.elements.length-1 | elements.length ==1)
+						if ( i<= this.size-1 | size ==1)
 							newString += "| null |";
 					
 					break;
@@ -102,7 +102,8 @@ public class Stack {
 						if (this.elements[i].getClass().getMethod("toString").getDeclaringClass() == Object.class) {
 							
 							newString += "| Obj_"+(i+1)+" |";
-						} else {
+						}
+						else {
 							newString += " " + getDeclaringClass + " " + this.elements[i].toString() + " ";
 						}
 						
