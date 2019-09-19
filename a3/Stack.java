@@ -1,6 +1,6 @@
 /*
  * This program is a rewrite of the Stack class to make it immutable
- * @author Jorge L Martinez & Valeria Green & Blake Khan
+ * @author Jorge L Martinez & Valeria Green
  * 
  */
 
@@ -19,6 +19,7 @@ public class Stack {
 	 * OVERVIEW: A default constructor which initializes the array as empty
 	 *
 	 */
+	
 	public Stack() {
 		this.elements = new Object[0];
 		

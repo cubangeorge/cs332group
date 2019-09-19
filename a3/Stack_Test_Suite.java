@@ -1,7 +1,7 @@
 /*
  * 
  * This program conducts test cases
- * @author Jorge L Martinez & Valeria Green & Blake Khan
+ * @author Jorge L Martinez & Valeria Green
  * 
  */
 import static org.junit.Assert.*;
@@ -14,7 +14,8 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 public class Stack_Test_Suite {
 	
-	
+	// ---------Altered immutable Stack class below -------
+
 	/*test for the push method in the Stack.java file
 	 * this is a test to see if the push method of awesome produces a new object
 	 */
@@ -53,6 +54,10 @@ public class Stack_Test_Suite {
 	}//end test
 	
 
+	// ---------Original mutable Stack class below -------
+	
+	
+	//test for the push method in the Stack_Original.java file
 	
 	//test for the push method in the Stack_Original.java file
 	
