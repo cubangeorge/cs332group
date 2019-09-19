@@ -11,6 +11,10 @@ public class Stack_Original {
 
 	   private Object[] elements;
 	   private int size = 0;
+	   
+	   public int getSize() {
+		   return size;
+	   }
 
 
 	   public Stack_Original() {
