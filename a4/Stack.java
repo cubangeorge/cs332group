@@ -34,5 +34,21 @@ public class Stack {
          System.arraycopy(oldElements, 0, elements, 0, size);
       }
    }
+   @Override 
+   public String toString() {
+
+		String newString = "{top";
+		for (int i = 0; i < this.elements.length; i++) {
+			
+			newString += "|";
+			newString += "Obj"+(i+1);//this.elements[i].toString();
+			newString += "|";
+			newString += ",";
+		}
+
+			return newString + "bottom}";
+	   
+   }
+   
 
 }

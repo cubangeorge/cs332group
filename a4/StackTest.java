@@ -35,6 +35,7 @@ class StackTest {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		Stack s = new Stack();
 	}
 
 	/**
