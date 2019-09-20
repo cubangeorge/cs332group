@@ -50,6 +50,8 @@ class StackTest {
 		s.push(0.567);
 		s.pop();
 		s.push(0.567);
+		s.pop();
+		s.push(0.567);
 		assertTrue("{bottom| 1 || 2 || 3 || -3 || -3.4 || 0.567 |top}".equals(s.toString()));
 		
 	}
@@ -110,7 +112,7 @@ class StackTest {
 		s.push( 2 );
 		s.push( 0 );
 		s.push( null );
-		System.out.println(s);
+		//System.out.println(s);
 		assertTrue("{bottom| null || null || null || 2 || 0 || null |top}".equals(s.toString()));
 		
 	}
@@ -120,12 +122,34 @@ class StackTest {
 		assertTrue("{bottom| null |top}".equals(s.toString()));
 		
 	}
+	
 	@Test
 	void test_black_box() {
 		BlackBox b = new BlackBox();
+		String r="";
+		s.push(1);
+		s.push(new Integer (2));
+		s.push(3);
+		s.push(-3);
+		s.push(-3.4);
+		s.pop();
+		s.push(-3.4);
+		s.push(0.567);
+		s.pop();
+		s.push(0.567);
+		s.pop();
+		s.push(0.567);
+		s.push( null );
+		s.push( null );
+		s.push( null );
+		r = s.toString().substring(0, 7);
+		r += s.toString().substring(7, 45);
+		r += "| null || null || null |";
+		r += "| Obj_"+1+""+0+" |";
+		r += s.toString().substring(69);
 		s.push(b);
 		//mmmmmwwwwahahahahahahaha
-		assertEquals("{bottom| Obj_1 |top}",s.toString());
+		assertEquals(r,s.toString());
 	
 	}
 	@Test
