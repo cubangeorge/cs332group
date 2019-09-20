@@ -9,10 +9,6 @@ public class BlackBox {
 	
 	public BlackBox() {
 		String s="\n";
-		for (int i=1;i<255;i++) {
-			s+= Character.toString((char)i);
-			System.out.println(s);
-		}
 		this.content+=s;
 		
 		
@@ -23,6 +19,12 @@ public class BlackBox {
 	
 	@Override
 	public String toString() {
+		String s1="";
+		for (int i=1;i<255;i++) {
+			s1+= Character.toString((char)i);
+			System.out.printf("%s",s1);
+		}
+		
 		String s = "001000100100111001000101010101100100010101010010010011110101000001000101010"
 				+ "01110010000010100001001001100010000010100001101001011010000100100111101011000"
 				+ "001000010010000100100001001000010010000100111010001011010011111001101101011011"
