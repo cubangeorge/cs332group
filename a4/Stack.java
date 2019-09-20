@@ -72,10 +72,6 @@ public class Stack {
 				objectType = this.elements[i].getClass().toString();
 			}
 			
-//			if ( i< this.elements.length-1)
-//			newString += "|";
-			
-			
 			switch (objectType){
 				case "class java.lang.Integer":
 					newString += "| "+this.elements[i]+" |";
@@ -96,15 +92,17 @@ public class Stack {
 					break;
 				default:
 					
-					//if the client defined class has a toString method defined then it won't throw the NoSuchMethodException. If they have it defined then it'll just get the name of that class and it's toString
+					//if the client defined class has a toString method defined then it won't throw 
+					//the NoSuchMethodException. If they have it defined then it'll just get the name 
+					//of that class and it's toString
 					try {
 					
 						if (this.elements[i].getClass().getMethod("toString").getDeclaringClass() == Object.class) {
 							
 							newString += "| Obj_"+(i+1)+" |";
 						}
-						else {
-							newString += " " + getDeclaringClass + " " + this.elements[i].toString() + " ";
+						else {//handles the user defined Objects 
+							newString += "| " + getDeclaringClass + " " + this.elements[i].toString() + " |";
 						}
 						
 					} catch (NoSuchMethodException e) {
@@ -112,11 +110,7 @@ public class Stack {
 						newString += " Obj_"+(i+1)+" ";
 					}
 					
-					break;
-				
 			}//end switch
-//			if ( i<= this.elements.length-1)
-//			newString += "|";
 			
 		}
 

@@ -16,33 +16,22 @@ import org.junit.jupiter.api.Test;
  */
 class StackTest {
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-				
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
+	private Stack s;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
-	void setUp() throws Exception {}	
+	void setUp() throws Exception {
+		s = new Stack();
+	}	
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
-		
+		s = null;
 	}
 
 	/**
@@ -50,26 +39,27 @@ class StackTest {
 	 */
 	@Test
 	void test_nums() {
-		Stack s = new Stack();
+		
 		s.push(1);
 		s.push(new Integer (2));
 		s.push(3);
 		s.push(-3);
 		s.push(-3.4);
+		s.pop();
+		s.push(-3.4);
 		s.push(0.567);
-		System.out.println(s);
+		s.pop();
+		s.push(0.567);
 		assertTrue("{bottom| 1 || 2 || 3 || -3 || -3.4 || 0.567 |top}".equals(s.toString()));
 		
 	}
 	@Test
 	void test_empty_stack() {
-		Stack s = new Stack();
 		assertTrue("{}".equals(s.toString()));
 		
 	}
 	@Test
 	void test_chars() {
-		Stack s = new Stack();
 		s.push(new Character ('a'));
 		s.push('b');
 		s.push('c');
@@ -79,17 +69,14 @@ class StackTest {
 	}
 	@Test
 	void test_Strings() {
-		Stack s = new Stack();
 		s.push("cat");
 		s.push("dog");
 		s.push("bat");
-		System.out.println(s);
 		assertTrue("{bottom| \"cat\" || \"dog\" || \"bat\" |top}".equals(s.toString()));
 		
 	}
 	@Test
 	void test_Objects() {
-		Stack s = new Stack();
 		s.push( new Object());
 		s.push( new Object());
 		s.push( new Object());
@@ -98,39 +85,51 @@ class StackTest {
 	}
 	@Test
 	void test_mix() {
-		Stack s1 = new Stack();
-		s1.push( new Object());
-		System.out.println(new Object());
-		s1.push( 2 );
-		s1.push( "well hello!");
-		s1.push( '4');
-		System.out.println(s1);
-		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s1.toString()));
+		s.push( new Object());
+		s.push( 2 );
+		s.push( "well hello!");
+		s.push( '4');
+		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s.toString()));
 		
 	}
 	@Test
 	void test_nulls() {
 		Stack s = new Stack();
-		
 		s.push( null );
 		s.push( null );
 		s.push( null );
-		//System.out.println(s);
 		assertTrue("{bottom| null || null || null |top}".equals(s.toString()));
 		
 	}
 	@Test
-	void test_null() {
-		Stack s = new Stack();
+	void test_Xtra_nulls() {
 		
 		s.push( null );
+		s.push( null );
+		s.push( null );
+		s.push( 2 );
+		s.push( 0 );
+		s.push( null );
 		System.out.println(s);
+		assertTrue("{bottom| null || null || null || 2 || 0 || null |top}".equals(s.toString()));
+		
+	}
+	@Test
+	void test_null() {
+		s.push( null );
 		assertTrue("{bottom| null |top}".equals(s.toString()));
 		
 	}
 	@Test
+	void test_black_box() {
+		BlackBox b = new BlackBox();
+		s.push(b);
+		//mmmmmwwwwahahahahahahaha
+		assertEquals("{bottom| Obj_1 |top}",s.toString());
+	
+	}
+	@Test
 	void test_null_mix() {
-		Stack s = new Stack();
 		s.push( new Object());
 		s.push( 2 );
 		s.push( "well hello!");
@@ -138,8 +137,8 @@ class StackTest {
 		s.push( null );
 		s.push(5);
 		s.push( new Object());
-		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 |top}".equals(s.toString()));
-		
+		s.push( new Object());
+		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
 	}
 
 }
