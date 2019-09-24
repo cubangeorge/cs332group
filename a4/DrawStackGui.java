@@ -22,13 +22,13 @@ public class DrawStackGui extends JFrame{
 	private static Stack s = null;
 	private static final long serialVersionUID = 1245757140777120082L;
 	
-	public static void main(String[] args) 
+	public static void main2(String[] args) 
 	{
         SwingUtilities.invokeLater( new Runnable() {   public void run() { createAndShowGUI();}   });
 		 
 
     }//end main
-	public static void main(Stack s) 
+	public static void main2(Stack s) 
 	{
 			DrawStackGui.s= s;
 			System.out.println("ran main stak");
