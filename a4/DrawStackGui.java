@@ -16,26 +16,36 @@ import javax.swing.*;
 
 
 public class DrawStackGui extends JFrame{
-	/**
+	/** 
 	 * 
 	 */
+	private static Stack s = null;
 	private static final long serialVersionUID = 1245757140777120082L;
 	
 	public static void main(String[] args) 
 	{
         SwingUtilities.invokeLater( new Runnable() {   public void run() { createAndShowGUI();}   });
+		 
+
     }//end main
+	public static void main(Stack s) 
+	{
+			DrawStackGui.s= s;
+			System.out.println("ran main stak");
+		SwingUtilities.invokeLater( new Runnable() {   public void run() { createAndShowGUI();}   });
+	}//end main
     
     private static void createAndShowGUI() {
         System.out.println("Created GUI on EDT? "+ SwingUtilities.isEventDispatchThread());
+        
         JFrame f = new JFrame("Stack Gui");
+
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        JComponent contentPane = new MyStackPanel();
+        JComponent contentPane = new MyStackPanel(s);
         f.setContentPane(contentPane);
         f.pack();
         f.setVisible(true);
-
         
     }
 }//end DrawStackGui
@@ -51,9 +61,9 @@ class MyStackPanel extends JPanel {
     private JPanel drawingPane;
  
     
-    public MyStackPanel() {
+    public MyStackPanel(Stack s) {
         super(new BorderLayout());
- 
+        
         area = new Dimension(0,0);
         boxes = new Vector<Rec>();
  
@@ -66,7 +76,7 @@ class MyStackPanel extends JPanel {
         instructionPanel.add(instructions);
  
         //Set up the drawing area.
-        drawingPane = new DrawingPane();
+        drawingPane = new DrawingPane(s);
         drawingPane.setBackground(Color.white);
         drawStuff_in_memory();
         
@@ -85,7 +95,13 @@ class MyStackPanel extends JPanel {
 		 * 
 		 */
 		private static final long serialVersionUID = 8307146537943810012L;
+		private Stack s;
+		
+		public DrawingPane(Stack s) {
+			super();
+			this.s=s;
 
+		}
     	@Override
 		protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -93,7 +109,7 @@ class MyStackPanel extends JPanel {
             int corner = 120;//corner angle
             	
             Rec rect;
-            for (int i = 0; i < boxes.size(); i++) {
+            for (int i = 0; i < s.getSize(); i++) {
                 rect = boxes.elementAt(i);
                 g.setColor(Color.black); 
                 g.fillRoundRect(rect.x, rect.y, rect.width, rect.height, corner, corner);
@@ -102,7 +118,9 @@ class MyStackPanel extends JPanel {
                 g.fillRoundRect(rect.x+20, rect.y+20, rect.width-40, rect.height-40, corner, corner-20);;
                 //draw the text
                 g.setColor(Color.black);
-                g.drawString("-->",rect.x+rect.width/2,rect.y+rect.height/2);
+                
+                //g.drawString("-->",rect.x+rect.width/2,rect.y+rect.height/2);
+                g.drawString(s.getStringCell(i),rect.x+rect.width/2,rect.y+rect.height/2);
                 
              }
         }

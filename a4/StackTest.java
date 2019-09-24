@@ -1,15 +1,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
+import java.lang.reflect.InvocationTargetException;
+
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-/**
- * 
- */
-
 /**
  * @author Jorge, Valeria, Blake   
  *
@@ -163,6 +158,22 @@ class StackTest {
 		s.push( new Object());
 		s.push( new Object());
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
+	}
+	@Test
+	void test_Gui() throws InvocationTargetException, InterruptedException {
+		s.push( new Object());
+		s.push( 2 );
+		s.push( "well hello!");
+		s.push( '4');
+		s.push( null );
+		s.push(5);
+		s.push( new Object());
+		s.push( new Object());
+		
+		DrawStackGui.main(s);
+		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
+		Thread.sleep(20000);
+		
 	}
 
 }

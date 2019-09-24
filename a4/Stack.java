@@ -3,8 +3,6 @@
   * Used in SWE/CS 332 to discuss mutability and AF/RI
   */
 
-import java.util.*;
-
 public class Stack {
 
    private Object[] elements;
@@ -57,64 +55,66 @@ public class Stack {
 	   }
 	   
 	   
-	   String objectType = "";
+	   
 	   String getDeclaringClass = "";
 	   	
 		String newString = "{bottom";
 		
-		
 		for (int i = 0; i < this.elements.length; i++) {
-			
-			//check is current element in iteration is null, if so then treat it differently
-			if (this.elements[i] == null) {
-				objectType = "null";
-			} else {
-				objectType = this.elements[i].getClass().toString();
-			}
-			
-			switch (objectType){
-				case "class java.lang.Integer":
-					newString += "| "+this.elements[i]+" |";
-					break;
-				case "class java.lang.Character":
-					newString += "| \'"+this.elements[i]+"\' |";
-					break;
-				case "class java.lang.String":
-					newString += "| \""+this.elements[i]+"\" |";
-					break;
-				case "class java.lang.Double":
-					newString += "| "+this.elements[i]+" |";
-					break;
-				case "null":
-						if ( i<= this.size-1 | size ==1)
-							newString += "| null |";
 					
-					break;
-				default:
+					newString += getStringCell(i);
 					
-					//if the client defined class has a toString method defined then it won't throw 
-					//the NoSuchMethodException. If they have it defined then it'll just get the name 
-					//of that class and it's toString
-					try {
-					
-						if (this.elements[i].getClass().getMethod("toString").getDeclaringClass() == Object.class) {
-							
-							newString += "| Obj_"+(i+1)+" |";
-						}
-						else {//handles the user defined Objects 
-							newString += "| " + getDeclaringClass + " " + this.elements[i].toString() + " |";
-						}
-						
-					} catch (NoSuchMethodException e) {
-						
-						newString += " Obj_"+(i+1)+" ";
-					}
-					
-			}//end switch
-			
 		}
+		
+		
 
 			return newString + "top}";
+	   
+   }
+   
+   public String getStringCell( int i) {
+	   String objectType = "";
+	   	String sCell="";
+	 //check if current element in iteration is null, if so then treat it differently
+		if (this.elements[i] == null) {
+			objectType = "null";
+		} else {
+			objectType = this.elements[i].getClass().toString();
+		}
+		
+		switch (objectType){
+			case "class java.lang.Integer":
+				sCell += "| "+this.elements[i]+" |";
+				break;
+			case "class java.lang.Character":
+				sCell += "| \'"+this.elements[i]+"\' |";
+				break;
+			case "class java.lang.String":
+				sCell += "| \""+this.elements[i]+"\" |";
+				break;
+			case "class java.lang.Double":
+				sCell += "| "+this.elements[i]+" |";
+				break;
+			case "null":
+					if ( i<= this.size-1 | size ==1)
+						sCell += "| null |";
+				
+				break;
+			default:
+						
+						sCell += "| Obj_"+(i+1)+" |";
+				
+				
+		}//end switch
+		return sCell;
+   }
+   
+   public Object[] getStackAsArray() {
+	   
+	   Object []a = new Object[this.size];
+	   System.arraycopy(elements, 0, a, 0, size+1);
+	   return a;
+			   
 	   
    }
 
