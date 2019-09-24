@@ -6,8 +6,8 @@
 
 public class Stack {
 
-	private Object[] elements;
-	private int size = 0;
+	public Object[] elements; // Public only for fault junit test
+	public int size = 0; // Public only for fault junit test
 
 	public Stack() {
 		this.elements = new Object[0];

@@ -159,6 +159,32 @@ class StackTest {
 		s.push( new Object());
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
 	}
+
+	@Test
+	void test_fault_size_ri() {
+		s.push(5);
+		s.push(3);
+		s.push(2);
+		s.push(4);
+		assertEquals(4, s.getSize());
+		assertEquals(7, s.elements.length);
+		// Set size greater than the array length
+		s.size = 8;
+		assertFalse(s.repOK());
+	}
+
+	@Test
+	void test_fault_array_ri() {
+		s.push(5);
+		s.push(3);
+		s.push(2);
+		s.push(4);
+		assertEquals(4, s.getSize());
+		assertEquals(7, s.elements.length);
+		// Set element as non null past the size.
+		s.elements[s.elements.length - 1] = -99;
+		assertFalse(s.repOK());
+	}
 	@Test
 	void test_Gui() throws InvocationTargetException, InterruptedException {
 		s.push( new Object());
