@@ -1,5 +1,5 @@
 /**
- * @author jorge
+ * @author jorge, Valeria, Blake
  *
  */
 import java.awt.BorderLayout;

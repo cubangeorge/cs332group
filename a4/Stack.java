@@ -59,7 +59,7 @@ public class Stack {
 	 * 
 	 */
 	public boolean repOK() {
-		// Verify that size is more than the elements length.
+		// Verify that size is less than the elements length.
 		if (size > elements.length) {
 			return false;
 		}

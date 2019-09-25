@@ -160,6 +160,10 @@ class StackTest {
 		
 	}
 	
+	/**
+	 * A stack with a mix of data types and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_black_box() {
 		BlackBox b = new BlackBox();
@@ -229,6 +233,7 @@ class StackTest {
 
 	/**
 	 * A test for the rep invariant and size of the stack
+	 * This covers the testing for the missing code fault
 	 * 
 	 */
 	@Test
@@ -246,6 +251,7 @@ class StackTest {
 
 	/**
 	 * A test for the rep invariant and size of the stack
+	 * This covers the testing for the missing code fault
 	 * 
 	 */
 	@Test
