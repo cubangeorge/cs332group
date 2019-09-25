@@ -40,10 +40,24 @@ public class Stack {
 		}
 	}
 
+	/**
+	 *
+	 * OVERVIEW: Returns the size of the stack
+	 * @return int the size of the elements array
+	 * 
+	 */
 	public int getSize() {
 		return size;
 	}
 
+	/**
+	 * 
+	 * @return: Boolean Whether or not the constraints are met with whatever is being operated on
+	 * 
+	 * OVERVIEW: This examines the stack's array and determines if it meets the constraints in both overall size and within it's elements
+	 *                    
+	 * 
+	 */
 	public boolean repOK() {
 		// Verify that size is more than the elements length.
 		if (size > elements.length) {
@@ -60,6 +74,14 @@ public class Stack {
 		return true;
 	}
 
+	/**
+	 * 
+	 * @return: String overall string representation of all the data types within the array
+	 * 
+	 * OVERVIEW: This returns an string representation of the data types in the array
+	 *                    
+	 * 
+	 */
 	@Override
 	public String toString() {
 		//rep invariant
@@ -67,6 +89,7 @@ public class Stack {
 			throw new IllegalArgumentException("Stack has invalid contents!");
 		}
 
+		//if the array is empty then show an empty stack
 		if (this.elements.length == 0 || size == 0) {
 			return "{}";
 		}
@@ -124,6 +147,14 @@ public class Stack {
 		return sCell;
 	}
 
+	/**
+	 * 
+	 * @return: Object[] The stack's contents as an array
+	 * 
+	 * OVERVIEW: Copies the stack's contents into an array
+	 *                    
+	 * 
+	 */
 	public Object[] getStackAsArray() {
 		Object[] a = new Object[this.size];
 		System.arraycopy(elements, 0, a, 0, size + 1);
