@@ -198,7 +198,7 @@ class StackTest {
 		
 		DrawStackGui.main2(s);
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
-		Thread.sleep(20000);
+		Thread.sleep(10000);
 		
 	}
 
