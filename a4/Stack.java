@@ -5,14 +5,21 @@
   */
 
 public class Stack {
+	
+	//Fields ---------------------------------------------
 
 	public Object[] elements; // Public only for fault junit test
 	public int size = 0; // Public only for fault junit test
 
+	//Constructors -----------------------------------------
+	
 	public Stack() {
 		this.elements = new Object[0];
 	}
 
+	//Methods -----------------------------------------
+	
+	
 	public void push(Object e) {
 		ensureCapacity();
 		elements[size++] = e;
@@ -38,7 +45,7 @@ public class Stack {
 	}
 
 	public boolean repOK() {
-		// Verify that size is less than the elements length.
+		// Verify that size is more than the elements length.
 		if (size > elements.length) {
 			return false;
 		}
@@ -73,6 +80,15 @@ public class Stack {
 		return newString + "top}";
 	}
 
+	/**
+	 * @param: Integer The index at which the abstract data type is to be found
+	 * 
+	 * @return: String returns a string representation of the abstract data type
+	 * 
+	 * OVERVIEW: This returns an abstract representation of an abstract data type in the array at the specified index
+	 *                    
+	 * 
+	 */
 	public String getStringCell(int i) {
 		String objectType;
 		String sCell = "";
@@ -81,9 +97,11 @@ public class Stack {
 		if (this.elements[i] == null) {
 			objectType = "null";
 		} else {
+			//gets the class name of data type
 			objectType = this.elements[i].getClass().toString();
 		}
 
+		//uses the retrieved class name from earlier to determine which part of the switch case to go to
 		switch (objectType) {
 			case "class java.lang.Integer":
 			case "class java.lang.Double":
