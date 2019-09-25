@@ -269,6 +269,7 @@ class StackTest {
 	
 	/**
 	 * A test to try out the GUI while also ensuring that the mix of data types equals the expected string output
+	 * Note: The rest of the test cases will run as soon as the gui window closes on it's own after 5 seconds and is not closed prematurely
 	 * 
 	 */
 	@Test
@@ -284,7 +285,7 @@ class StackTest {
 		
 		DrawStackGui.main2(s);
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		
 	}
 	
