@@ -10,6 +10,7 @@ public class Stack {
 
 	public Object[] elements; // Public only for fault junit test
 	public int size = 0; // Public only for fault junit test
+	private int previous_capacity = 0;
 
 	//Constructors -----------------------------------------
 	
@@ -35,6 +36,7 @@ public class Stack {
 	private void ensureCapacity() {
 		if (elements.length == size) {
 			Object oldElements[] = elements;
+			previous_capacity = elements.length;
 			elements = new Object[2 * size + 1];
 			System.arraycopy(oldElements, 0, elements, 0, size);
 		}
@@ -59,8 +61,12 @@ public class Stack {
 	 * 
 	 */
 	public boolean repOK() {
-		// Verify array is not null.
+		// Verify array does not point to null.
 		if (elements == null) {
+			return false;
+		}
+		//chek that the stack doubles it self +1 in size 
+		if (previous_capacity != (elements.length-1)/2 && elements.length!=0) {
 			return false;
 		}
 
@@ -70,12 +76,13 @@ public class Stack {
 			return false;
 		}
 
-		// Verify that all elements past size are null.
+		// Verify that all elements at and after size are null.
 		for (int i = size; i < elements.length; i++) {
 			if (elements[i] != null) {
 				return false;
 			}
 		}
+		
 
 		return true;
 	}

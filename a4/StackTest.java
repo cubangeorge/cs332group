@@ -111,9 +111,10 @@ class StackTest {
 	void test_mix() {
 		s.push( new Object());
 		s.push( 2 );
+		s.push( 4.5 );
 		s.push( "well hello!");
 		s.push( '4');
-		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s.toString()));
+		assertTrue("{bottom| Obj_1 || 2 || 4.5 || \"well hello!\" || '4' |top}".equals(s.toString()));
 		
 	}
 	
@@ -286,7 +287,7 @@ class StackTest {
 		DrawStackGui.main2(s);
 		System.out.println(s.toString());
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 	}
 	

@@ -31,12 +31,11 @@ public class DrawStackGui extends JFrame{
 	public static void main2(Stack s) 
 	{
 			DrawStackGui.s= s;
-			System.out.println("ran main stak");
 		SwingUtilities.invokeLater( new Runnable() {   public void run() { createAndShowGUI();}   });
 	}//end main
     
     private static void createAndShowGUI() {
-        System.out.println("Created GUI on EDT? "+ SwingUtilities.isEventDispatchThread());
+        System.out.println("GUI done by EventDispatchThread()? "+ SwingUtilities.isEventDispatchThread());
         
         JFrame f = new JFrame("Stack Gui");
 
