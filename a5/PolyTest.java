@@ -109,7 +109,6 @@ class PolyTest {
 	}
 	@Test
 	void test_weakAdd() {
-		// TODO: Check over this
 		
 		Poly p = new Poly(3, 5);
 		Poly c = new Poly(-3, 5);

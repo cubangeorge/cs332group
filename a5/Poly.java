@@ -79,10 +79,15 @@ public class Poly {
 		// now it knows how big the new coef should be
 		Poly r = new Poly(newdeg);//so create it
 		int i;
-		
+		//now compute and store new coefs in r
 		for (i = 0; i <= sm.deg && i <= newdeg; i++) {
 			r.trms[i] = sm.trms[i] + la.trms[i];
 		}
+		//i survives this loop so that 
+		//it can copy the remaing terms from 
+		//largest array into the new one
+		//these last terms never get added
+		//just copied over 
 		for (int j = i; j <= newdeg; j++) {
 			r.trms[j] = la.trms[j];
 		}
@@ -177,21 +182,7 @@ public class Poly {
 			la = q; sm = this;
 		}
 		int newdeg = la.deg;
-		//if the degrees of what's being added is the same
-		/*if (deg == q.deg) {
-			//goes from the highest degree down
-			for (int k = deg; k > 0; k--) { 
-				//if adding up the coefficient at that specific degree doesn't equal zero then break
-				if (trms[k] + q.trms[k] != 0) {
-					break;
-				}
-				//otherwise, if the two added up equal zero then make the overall degree lower.. gets rid of trailing zeroes
-				else {
-					//it means if (trms[k] + q.trms[k] == 0) {
-					newdeg--;
-				}
-			}
-		}*/
+		
 		Poly r = new Poly(newdeg);
 		int i;
 		for (i = 0; i <= sm.deg && i <= newdeg; i++) {
@@ -200,6 +191,7 @@ public class Poly {
 		for (int j = i; j <= newdeg; j++) {
 			r.trms[j] = la.trms[j];
 		}
+		//resulting Poly array will contain zeroes any where even trailing ones
 		return r;
 	}
 }
