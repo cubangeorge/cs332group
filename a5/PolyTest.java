@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
@@ -37,8 +38,8 @@ class PolyTest {
 	@Test
 	void testPoly() {
 		Poly p = new Poly();
-		System.out.println(p.toString());
-		fail("Not yet implemented"); // TODO
+		
+		assertTrue((p.getCoef(0)==0 && p.getDeg() == 0));
 	}
 
 	/**
