@@ -1,5 +1,9 @@
 /*
-An short version of the Poly class for a 332 assignment.
+A short version of the Poly class for a 332 assignment.
+
+	G 01066284 Valeria L Green (VG)
+	G 00402127 Jorge L Martinez (JM) 
+	G 01082586 Blake Khan (BK)
 */
 
 public class Poly {
