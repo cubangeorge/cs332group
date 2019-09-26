@@ -39,15 +39,18 @@ class PolyTest {
 	void testPoly() {
 		Poly p = new Poly();
 		
-		assertTrue((p.getCoef(0)==0 && p.getDeg() == 0));
+		assertTrue((p.getCoefAtIndex(0)==0 && p.getDeg() == 0));
 	}
 
 	/**
 	 * Test method for {@link Poly#Poly(int, int)}.
 	 */
 	@Test
-	void testPolyIntInt() {
-		fail("Not yet implemented"); // TODO
+	void testPolyIntInt(int c, int d) {
+		Poly p = new Poly(c,d);
+		assertTrue((p.getCoef(0)==0 && p.getDeg() == 0));
+
+
 	}
 
 	/**

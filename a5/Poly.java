@@ -134,14 +134,10 @@ public class Poly {
 			return true;
 		return false;
 	}
-	public int getCoef(int index) {
+	public int getCoefAtIndex(int index) {
 		
 		return trms[index];
 		
-	}
-	
-	public int getDeg() {
-		return deg;
 	}
 
 }
