@@ -70,7 +70,7 @@ public class Stack {
 			return false;
 		}
 
-		// Verify that size is less than the elements length.
+		// Verify that size is less or equal to the elements length.
 		// Verify that size is positive.
 		if (size > elements.length || size < 0) {
 			return false;
@@ -99,7 +99,7 @@ public class Stack {
 	public String toString() {
 		//rep invariant
 		if (!repOK()) {
-			throw new IllegalArgumentException("Stack has invalid contents!");
+			throw new IllegalArgumentException("Rep Invariant Violation!");
 		}
 
 		//if the array is empty then show an empty stack
@@ -147,8 +147,13 @@ public class Stack {
 				sCell += "| \'" + this.elements[i] + "\' |";
 				break;
 			case "class java.lang.String":
-				sCell += "| \"" + this.elements[i] + "\" |";
-				break;
+				if (elements[i].toString().length()>15) {
+					sCell += "| \"" + (this.elements[i].toString().substring(0,15)) + "\" |";
+					break;
+				}else {
+					sCell += "| \"" + this.elements[i] + "\" |";
+					break;
+				}
 			case "null":
 				if (i <= this.size - 1 | size == 1)
 					sCell += "| null |";

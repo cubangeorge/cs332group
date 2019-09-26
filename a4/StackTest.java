@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.InvocationTargetException;
 
+import javax.swing.SwingUtilities;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -270,14 +272,14 @@ class StackTest {
 	
 	/**
 	 * A test to try out the GUI while also ensuring that the mix of data types equals the expected string output
-	 * Note: The rest of the test cases will run as soon as the gui window closes on it's own after 5 seconds and is not closed prematurely
-	 * 
+	 * Note: The rest of the test cases will run as soon as the gui window closes on it's own after 
+	 * 1300 milli seconds and is not closed prematurely
 	 */
 	@Test
 	void test_Gui() throws InvocationTargetException, InterruptedException {
 		s.push( new Object());
 		s.push( 2 );
-		s.push( "well hello!");
+		s.push( "1234567890123456");
 		s.push( '4');
 		s.push( null );
 		s.push(5);
@@ -286,8 +288,9 @@ class StackTest {
 		
 		DrawStackGui.main2(s);
 		System.out.println(s.toString());
-		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
-		Thread.sleep(2000);
+		assertTrue("{bottom| Obj_1 || 2 || \"123456789012345\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
+		Thread.sleep(1300);
+		
 		
 	}
 	
