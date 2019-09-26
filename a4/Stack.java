@@ -59,8 +59,14 @@ public class Stack {
 	 * 
 	 */
 	public boolean repOK() {
+		// Verify array is not null.
+		if (elements == null) {
+			return false;
+		}
+
 		// Verify that size is less than the elements length.
-		if (size > elements.length) {
+		// Verify that size is positive.
+		if (size > elements.length || size < 0) {
 			return false;
 		}
 
