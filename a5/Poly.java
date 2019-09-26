@@ -29,7 +29,8 @@ public class Poly {
 			throw new IllegalArgumentException("Poly(int, int) constructor");
 		}
 		if (c == 0) {
-			trms = new int[1]; trms[0] = 0;
+			trms = new int[1]; 
+			trms[0] = 0;
 			deg = 0;
 			return;
 		}
@@ -103,19 +104,34 @@ public class Poly {
 	}
 
 	/*Implement the original rep-invariant in a method repOk(). 
-	 * 
-	 * 
 	 */
 
 	public boolean repOk() {
-		return null;
+		/*  trms != null
+   		 * 	deg = trms.length - 1
+   		 *	trms.length >= 1
+   		 * if deg > 0 then trms[deg] != 0
+		*/
+					
+		if (weakRepOk()) { //check first 3 constrains
+			if(deg > 0) {  // check 4th 
+				if (trms[deg]!=0) {	//check last constrain
+					return true;
+				}
+			}
+		}
+		
+		
+		return false;
 	}
 
 	/*
 	 * Implement the weaker rep-invariant in a method weakRepOk().
 	 */
 	public boolean weakRepOk() {
-		return null;
+		if ( trms != null && deg == trms.length - 1 && (trms.length >= 1) && (trms.length >= 1) )    
+			return true;
+		return false;
 	}
 
 
