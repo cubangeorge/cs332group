@@ -66,7 +66,13 @@ class PolyTest {
 				else fail("trms not properly initialized");
 			}
 		}
-		//if it didnt fail at this point Poly is good
+		//if it didnt fail at this point Poly is good but do extra chex
+		assertTrue(Arrays.equals(p.getTermRef(),new int[] {0,0,0,1}));
+		p = new Poly(0,0);
+		assertTrue(Arrays.equals(p.getTermRef(),new int[] {0}));
+		p = new Poly(1,0);
+		assertTrue(Arrays.equals(p.getTermRef(),new int[] {1}));
+		
 
 	}
 	
@@ -98,17 +104,29 @@ class PolyTest {
 	 * Test method for {@link Poly#repOk()}.
 	 */
 	@Test
-	void testRepOk_weakAdd() {
-		// TODO: Check over this
+	void test_weakAdd() {
+		//check non trailying zeros 
+		Poly p1 = new Poly(3, 5);
+		Poly p2 = new Poly(3, 5);
+		Poly r = p1.weakAdd(p2);
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,6}));
+		p1 = new Poly(3, 5);
+		p2 = new Poly(4, 6);
+		r = p1.weakAdd(p2);
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,3,4}));
+		p1 = new Poly(3, 2);
+		p2 = new Poly(3, 2); 
+		r = p1.weakAdd(p2);
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,6}));//check that added good 
+		r = r.weakAdd(new Poly(2,1));
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,6}));//check that added good 
+		r = r.weakAdd(new Poly(-6,2));
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that allowed trailing zero 
+
 		
-		Poly p = new Poly(3, 5);
-		Poly c = new Poly(-3, 5);
-		Poly d = p.weakAdd(c);
-		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
-		assertFalse(d.repOk());
 	}
 	@Test
-	void test_weakAdd() {
+	void testRepOk_weakAdd() {
 		
 		Poly p = new Poly(3, 5);
 		Poly c = new Poly(-3, 5);

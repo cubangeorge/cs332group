@@ -157,6 +157,7 @@ public class Poly {
 		
 		return this.trms;
 	}
+	
 	/**
 	 * 
 	 * @param value for coefficient
