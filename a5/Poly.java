@@ -134,6 +134,8 @@ public class Poly {
 			return true;
 		return false;
 	}
+	
+	
 	public int getCoefAtIndex(int index) {
 		
 		return trms[index];
@@ -159,4 +161,41 @@ public class Poly {
 		return 1;
 	}
 
+	//will pass weakRepOk and not pass repOkay. send in array with trailing zeroes then it should be okay
+	// returns this + q (throws NPE if q is null)
+	public Poly weakAdd(Poly q) throws NullPointerException {
+		Poly la, sm;
+		//if main degree is bigger than input degree
+		if (deg > q.deg) {
+			la = this; sm = q;
+		}
+		else {
+			la = q; sm = this;
+		}
+		int newdeg = la.deg;
+		//if the degrees of what's being added is the same
+		/*if (deg == q.deg) {
+			//goes from the highest degree down
+			for (int k = deg; k > 0; k--) { 
+				//if adding up the coefficient at that specific degree doesn't equal zero then break
+				if (trms[k] + q.trms[k] != 0) {
+					break;
+				}
+				//otherwise, if the two added up equal zero then make the overall degree lower.. gets rid of trailing zeroes
+				else {
+					//it means if (trms[k] + q.trms[k] == 0) {
+					newdeg--;
+				}
+			}
+		}*/
+		Poly r = new Poly(newdeg);
+		int i;
+		for (i = 0; i <= sm.deg && i <= newdeg; i++) {
+			r.trms[i] = sm.trms[i] + la.trms[i];
+		}
+		for (int j = i; j <= newdeg; j++) {
+			r.trms[j] = la.trms[j];
+		}
+		return r;
+	}
 }

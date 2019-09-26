@@ -67,6 +67,7 @@ class PolyTest {
 			}
 		}
 		//if it didnt fail at this point Poly is good
+
 	}
 	
 	/**
@@ -97,16 +98,56 @@ class PolyTest {
 	 * Test method for {@link Poly#repOk()}.
 	 */
 	@Test
-	void testRepOk() {
-		fail("Not yet implemented"); // TODO
+	void testRepOk_weakAdd() {
+		// TODO: Check over this
+		
+		Poly p = new Poly(3, 5);
+		Poly c = new Poly(-3, 5);
+		Poly d = p.weakAdd(c);
+		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
+		assertFalse(d.repOk());
+	}
+	
+	/**
+	 * Test method for {@link Poly#repOk()}.
+	 */
+	@Test
+	void testRepOk_regAdd() {
+		// TODO: Check over this
+		
+		Poly p = new Poly(3, 5);
+		Poly c = new Poly(-3, 5);
+		Poly d = p.add(c);
+		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
+		assertTrue(d.repOk());
 	}
 
 	/**
 	 * Test method for {@link Poly#weakRepOk()}.
 	 */
 	@Test
-	void testWeakRepOk() {
-		fail("Not yet implemented"); // TODO
+	void testWeakRepOk_weakAdd() {
+		// TODO: Check over this
+		Poly p = new Poly(3, 5);
+		Poly c = new Poly(-3, 5);
+		Poly d = p.weakAdd(c);
+		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString() + " || ");
+		assertTrue(d.weakRepOk());
+		
+	}
+	
+	/**
+	 * Test method for {@link Poly#weakRepOk()}.
+	 */
+	@Test
+	void testWeakRepOk_regAdd() {
+		// TODO: Check over this
+		Poly p = new Poly(3, 5);
+		Poly c = new Poly(-3, 5);
+		Poly d = p.add(c);
+		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString() + " || ");
+		assertTrue(d.weakRepOk());
+		
 	}
 
 }
