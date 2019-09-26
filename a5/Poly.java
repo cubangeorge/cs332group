@@ -96,21 +96,47 @@ public class Poly {
 
 	// implements AF - assuming all four predicates in rep-invariant
 	public String toString() {
-		String r = "Poly:";
+		String r = "Poly: ";
 
-		if (deg == 0 || trms[0] != 0) {
-			r += " " + trms[0];
-		}
+//		if (deg == 0 || trms[0] != 0) {
+//			r += " " + trms[0];
+//		}
 
 		for (int i = 1; i <= deg; i++) {
 			if (trms[i] < 0) {
-				r += " - " + -trms[i] + "x^" + i;
+				if(this.all_left_terms_r_zero(i, trms))
+					r += -trms[i] + "x^" + i;
+				else {
+					r += " - " + -trms[i] + "x^" + i;
+				}
 			}
-			else if (trms[i] > 0) {
-				r += " + " +  trms[i] + "x^" + i;
+			else 
+				if (trms[i] > 0) {
+					if(this.all_left_terms_r_zero(i, trms))
+						r += +  trms[i] + "x^" + i;
+					else {
+						r += " + " +  trms[i] + "x^" + i;
+					}
 			}
 		}
 		return r;
+	}
+	//this checks if all terms to the left are zero used to 
+	//determine wether or not to include a sign in the term being printed
+	//it starts by checking the left immediate position from the index
+	//if it gets index 2 i starts checking at index 1
+	//return:
+	//	false if index out of range  
+	//	false if index negative
+	//  
+	public boolean all_left_terms_r_zero(int index, int [] temp) {
+		if (index <0 || index>temp.length-1)return false;
+		if (index == 0 )return true; // covers first coef case 
+		
+		for (int i=index-1;i >= 0; i--) {
+			if (temp[i]!=0) return false;
+		}
+		return true;
 	}
 
 	/*Implement the original rep-invariant in a method repOk(). 

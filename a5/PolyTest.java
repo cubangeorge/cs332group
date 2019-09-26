@@ -83,15 +83,6 @@ class PolyTest {
 	void testDegree() {
 		fail("Not yet implemented"); // TODO
 	}
-
-	/**
-	 * Test method for {@link Poly#add(Poly)}.
-	 */
-	@Test
-	void testAdd() {
-		fail("Not yet implemented"); // TODO
-	}
-
 	/**
 	 * Test method for {@link Poly#toString()}.
 	 */
@@ -99,21 +90,53 @@ class PolyTest {
 	void testToString() {
 		fail("Not yet implemented"); // TODO
 	}
+	@Test
+	void test_all_left_terms_r_zero() {
+		Poly p = new Poly();
+		
+		assertEquals( false, p.all_left_terms_r_zero(1, new int[]{0}));
+		assertEquals( true , p.all_left_terms_r_zero(0, new int[]{0}));
+		assertEquals( true , p.all_left_terms_r_zero(2, new int[]{0,0,1,0}));
+		assertEquals( false, p.all_left_terms_r_zero(3, new int[]{0,2,1,0}));
+		assertEquals( false, p.all_left_terms_r_zero(2, new int[]{0,2,1,0}));
+		assertEquals( true , p.all_left_terms_r_zero(1, new int[]{0,2,1,0}));
+		assertEquals( false, p.all_left_terms_r_zero(2, new int[]{1,0,1,0}));
+		assertEquals( true , p.all_left_terms_r_zero(2, new int[]{0,0,0,0}));
+		
+		
+	}
 
 	/**
 	 * Test method for {@link Poly#repOk()}.
 	 */
 	@Test
 	void test_weakAdd() {
-		//check non trailying zeros 
+		//checking non trailying zeros cases
+		Poly p = new Poly(3, 5);
+		Poly c = new Poly(-3, 5);
+		Poly d = p.weakAdd(c);
+		assertTrue(Arrays.equals(d.getTermRef(),new int[] {0,0,0,0,0,0}));
+		assertFalse(d.repOk());
+		assertTrue(d.weakRepOk());
+		
 		Poly p1 = new Poly(3, 5);
 		Poly p2 = new Poly(3, 5);
 		Poly r = p1.weakAdd(p2);
 		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,6}));
-		p1 = new Poly(3, 5);
+		assertTrue(r.repOk());
+		assertTrue(r.weakRepOk());
+		System.out.println(r.toString());
+		assertEquals("Poly: 6x^5", r.toString());
+		
+		p1 = new Poly(3, 3);
 		p2 = new Poly(4, 6);
 		r = p1.weakAdd(p2);
-		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,3,4}));
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,3,0,0,4}));
+		assertTrue(r.repOk());
+		assertTrue(r.weakRepOk());
+		assertEquals("Poly: 3x^3 + 4x^6",r.toString());
+		
+		//checking trailing zero cases 
 		p1 = new Poly(3, 2);
 		p2 = new Poly(3, 2); 
 		r = p1.weakAdd(p2);
@@ -121,59 +144,51 @@ class PolyTest {
 		r = r.weakAdd(new Poly(2,1));
 		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,6}));//check that added good 
 		r = r.weakAdd(new Poly(-6,2));
-		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that allowed trailing zero 
-
-		
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that allowed trailing zero
+		assertFalse(r.repOk());
+		assertTrue(r.weakRepOk());
+		assertEquals("Poly: 2x^1",r.toString());
 	}
-	@Test
-	void testRepOk_weakAdd() {
-		
-		Poly p = new Poly(3, 5);
-		Poly c = new Poly(-3, 5);
-		Poly d = p.weakAdd(c);
-		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
-		assertFalse(d.repOk());
-	}
-
-	/**
-	 * Test method for {@link Poly#repOk()}.
-	 */
-	@Test
-	void testRepOk_regAdd() {
-		// TODO: Check over this
-		
-		Poly p = new Poly(3, 5);
-		Poly c = new Poly(-3, 5);
-		Poly d = p.add(c);
-		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
-		assertFalse(d.repOk());
-	}
-
 	/**
 	 * Test method for {@link Poly#weakRepOk()}.
 	 */
 	@Test
-	void testWeakRepOk_weakAdd() {
-		// TODO: Check over this
-		Poly p = new Poly(3, 5);
-		Poly c = new Poly(-3, 5);
-		Poly d = p.weakAdd(c);
-		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString() + " || ");
-		assertTrue(d.weakRepOk());
-		
-	}
-	
-	/**
-	 * Test method for {@link Poly#weakRepOk()}.
-	 */
-	@Test
-	void testWeakRepOk_regAdd() {
-		// TODO: Check over this
+	void test_add() {
+		//check non trailying zeros
 		Poly p = new Poly(3, 5);
 		Poly c = new Poly(-3, 5);
 		Poly d = p.add(c);
-		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString() + " || ");
+		//check the {0} which is the zero polynomial 
+		assertTrue((d.getTermRef().length==1));//check we got elemnt array 
+		assertTrue((d.getCoefAtIndex(0)==0)); // check it is actually the zero value in it
+		assertFalse(d.repOk());//since its got a trailing zero 
 		assertTrue(d.weakRepOk());
+//
+//		Poly p1 = new Poly(3, 5);
+//		Poly p2 = new Poly(3, 5);
+//		Poly r = p1.weakAdd(p2);
+//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,6}));
+//		assertTrue(r.repOk());
+//		assertTrue(r.weakRepOk());
+//
+//		p1 = new Poly(3, 5);
+//		p2 = new Poly(4, 6);
+//		r = p1.weakAdd(p2);
+//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,3,4}));
+//		assertTrue(r.repOk());
+//		assertTrue(r.weakRepOk());
+//
+//		//test zero trailing samples
+//		p1 = new Poly(3, 2);
+//		p2 = new Poly(3, 2); 
+//		r = p1.weakAdd(p2);
+//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,6}));//check that added good 
+//		r = r.weakAdd(new Poly(2,1));
+//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,6}));//check that added good 
+//		r = r.weakAdd(new Poly(-6,2));
+//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that allowed trailing zero
+//		assertFalse(r.repOk());
+//		assertTrue(r.weakRepOk());
 		
 	}
 
