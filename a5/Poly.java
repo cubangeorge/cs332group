@@ -56,15 +56,17 @@ public class Poly {
 
 	// returns this + q (throws NPE if q is null)
 	public Poly add(Poly q) throws NullPointerException {
-		Poly la, sm;
+		Poly la, sm; 
 		if (deg > q.deg) {
 			la = this; sm = q;
 		}
 		else {
 			la = q; sm = this;
-		}
+		}//la will point to larger array sm will point to samller from here on 
 		int newdeg = la.deg;
-		if (deg == q.deg) {
+		if (deg == q.deg) {//if both have same size do this 
+			//dtermine largest degree by looking new coef after adding them
+			//purpose is to update newdeg stops decrementing it as soon as it detects nonzero coef
 			for (int k = deg; k > 0; k--) {   // fixed k++ bug here 10/10/2011
 				if (trms[k] + q.trms[k] != 0) {
 					break;
@@ -74,8 +76,10 @@ public class Poly {
 				}
 			}
 		}
-		Poly r = new Poly(newdeg);
+		// now it knows how big the new coef should be
+		Poly r = new Poly(newdeg);//so create it
 		int i;
+		
 		for (i = 0; i <= sm.deg && i <= newdeg; i++) {
 			r.trms[i] = sm.trms[i] + la.trms[i];
 		}

@@ -107,7 +107,17 @@ class PolyTest {
 		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
 		assertFalse(d.repOk());
 	}
-	
+	@Test
+	void test_weakAdd() {
+		// TODO: Check over this
+		
+		Poly p = new Poly(3, 5);
+		Poly c = new Poly(-3, 5);
+		Poly d = p.weakAdd(c);
+		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
+		assertFalse(d.repOk());
+	}
+
 	/**
 	 * Test method for {@link Poly#repOk()}.
 	 */
