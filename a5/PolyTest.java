@@ -1,6 +1,8 @@
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -39,20 +41,34 @@ class PolyTest {
 	void testPoly() {
 		Poly p = new Poly();
 		
-		assertTrue((p.getCoefAtIndex(0)==0 && p.getDeg() == 0));
+		assertTrue((p.getCoefAtIndex(0)==0 && p.degree() == 0));
 	}
 
 	/**
 	 * Test method for {@link Poly#Poly(int, int)}.
+	 * 
 	 */
 	@Test
-	void testPolyIntInt(int c, int d) {
+	void testPolyIntInt() {
+		int c = 1;int d = 3;
 		Poly p = new Poly(c,d);
-		assertTrue((p.getCoef(0)==0 && p.getDeg() == 0));
-
-
+		for (int i=0 ; i<p.degree(); i++) {
+			
+			if(i == d && p.getCoefAtIndex(i) == c) {
+				//checked that coef and degree matched
+				continue;
+			}
+			else {
+				if (p.getCoefAtIndex(i)==0) {
+					//every other field should be zero in the array
+					continue;
+				}
+				else fail("trms not properly initialized");
+			}
+		}
+		//if it didnt fail at this point Poly is good
 	}
-
+	
 	/**
 	 * Test method for {@link Poly#degree()}.
 	 */

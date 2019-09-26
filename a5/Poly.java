@@ -137,7 +137,26 @@ public class Poly {
 	public int getCoefAtIndex(int index) {
 		
 		return trms[index];
+	}
+	/**
+	 * created for testing purposes 
+	 * @return
+	 */
+	public int[] getTermRef() {
 		
+		return this.trms;
+	}
+	/**
+	 * 
+	 * @param value for coefficient
+	 * @param index index where coef is stored 
+	 * @return 1 if all ok 
+	 */
+	public int setValueAtIndex(int val, int index) {
+		//this method is used only for testing purposes 
+		//in order to keep instance members private 
+		
+		return 1;
 	}
 
 }
