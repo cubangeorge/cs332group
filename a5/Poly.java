@@ -19,7 +19,8 @@ public class Poly {
 
 	// Constructs the zero Poly
 	public Poly() {
-		trms = new int[1]; trms[0] = 0;
+		trms = new int[1];
+		trms[0] = 0;
 		deg = 0;
 	}
 
@@ -110,8 +111,8 @@ public class Poly {
 		/*  trms != null
    		 * 	deg = trms.length - 1
    		 *	trms.length >= 1
-   		 * if deg > 0 then trms[deg] != 0
-		*/
+   		 *  if deg > 0 then trms[deg] != 0
+		 */
 					
 		if (weakRepOk()) { //check first 3 constrains
 			if(deg > 0) {  // check 4th 
@@ -133,6 +134,14 @@ public class Poly {
 			return true;
 		return false;
 	}
-
+	public int getCoef(int index) {
+		
+		return trms[index];
+		
+	}
+	
+	public int getDeg() {
+		return deg;
+	}
 
 }
