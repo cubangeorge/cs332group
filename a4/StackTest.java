@@ -30,6 +30,7 @@ class StackTest {
 	}
 
 	/**
+	 * A stack with only integers and doubles and compares to what the string output should show
 	 * Test method for {@link java.lang.Object#toString()}.
 	 */
 	@Test
@@ -50,11 +51,22 @@ class StackTest {
 		assertTrue("{bottom| 1 || 2 || 3 || -3 || -3.4 || 0.567 |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * Creation of an empty stack and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_empty_stack() {
 		assertTrue("{}".equals(s.toString()));
 		
 	}
+	
+
+	/**
+	 * A stack with only characters and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_chars() {
 		s.push(new Character ('a'));
@@ -64,6 +76,11 @@ class StackTest {
 		assertTrue("{bottom| 'a' || 'b' || 'c' |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * A stack with only strings and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_Strings() {
 		s.push("cat");
@@ -72,6 +89,11 @@ class StackTest {
 		assertTrue("{bottom| \"cat\" || \"dog\" || \"bat\" |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * A stack with only objects and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_Objects() {
 		s.push( new Object());
@@ -80,6 +102,11 @@ class StackTest {
 		assertTrue("{bottom| Obj_1 || Obj_2 || Obj_3 |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * A stack with a mix of data types and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_mix() {
 		s.push( new Object());
@@ -89,6 +116,11 @@ class StackTest {
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * A stack with only nulls and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_nulls() {
 		Stack s = new Stack();
@@ -98,6 +130,11 @@ class StackTest {
 		assertTrue("{bottom| null || null || null |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * A stack with only nulls and numbers and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_Xtra_nulls() {
 		
@@ -111,6 +148,11 @@ class StackTest {
 		assertTrue("{bottom| null || null || null || 2 || 0 || null |top}".equals(s.toString()));
 		
 	}
+	
+	/**
+	 * A stack with only a null and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_null() {
 		s.push( null );
@@ -118,6 +160,10 @@ class StackTest {
 		
 	}
 	
+	/**
+	 * A stack with a mix of data types and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_black_box() {
 		BlackBox b = new BlackBox();
@@ -147,6 +193,11 @@ class StackTest {
 		assertEquals(r,s.toString());
 	
 	}
+	
+	/**
+	 * A stack with a mix of data types and nulls and compares to what the string output should show
+	 * 
+	 */
 	@Test
 	void test_null_mix() {
 		s.push( new Object());
@@ -159,7 +210,32 @@ class StackTest {
 		s.push( new Object());
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
 	}
+	
+	/**
+	 * A stack with a mix of data types and nulls and compares to what the string output should show
+	 * 
+	 */
+	@Test
+	void test_null_mix2() {
+		s.push( "hi hello");
+		s.push( "well hello!");
+		s.push( null );
+		s.push( null );
+		s.push( new Object());
+		s.push( new Object());
+		s.push(null);
+		s.push( new Object());
+		s.push( new Object());
+		
+		assertTrue("{bottom| \"hi hello\" || \"well hello!\" || null || null || Obj_5 || Obj_6 || null || Obj_8 || Obj_9 |top}".equals(s.toString()));
+		
+	}
 
+	/**
+	 * A test for the rep invariant and size of the stack
+	 * This covers the testing for the missing code fault
+	 * 
+	 */
 	@Test
 	void test_fault_size_ri() {
 		s.push(5);
@@ -173,6 +249,11 @@ class StackTest {
 		assertFalse(s.repOK());
 	}
 
+	/**
+	 * A test for the rep invariant and size of the stack
+	 * This covers the testing for the missing code fault
+	 * 
+	 */
 	@Test
 	void test_fault_array_ri() {
 		s.push(5);
@@ -185,6 +266,12 @@ class StackTest {
 		s.elements[s.elements.length - 1] = -99;
 		assertFalse(s.repOK());
 	}
+	
+	/**
+	 * A test to try out the GUI while also ensuring that the mix of data types equals the expected string output
+	 * Note: The rest of the test cases will run as soon as the gui window closes on it's own after 5 seconds and is not closed prematurely
+	 * 
+	 */
 	@Test
 	void test_Gui() throws InvocationTargetException, InterruptedException {
 		s.push( new Object());
@@ -199,8 +286,9 @@ class StackTest {
 		DrawStackGui.main2(s);
 		System.out.println(s.toString());
 		assertTrue("{bottom| Obj_1 || 2 || \"well hello!\" || '4' || null || 5 || Obj_7 || Obj_8 |top}".equals(s.toString()));
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		
 	}
+	
 
 }
