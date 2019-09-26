@@ -102,7 +102,7 @@ class PolyTest {
 		Poly c = new Poly(-3, 5);
 		Poly d = p.add(c);
 		System.out.println(p.toString() + " + " + c.toString() + " = " + d.toString()  + " || ");
-		assertTrue(d.repOk());
+		assertFalse(d.repOk());
 	}
 
 	/**
