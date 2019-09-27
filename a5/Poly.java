@@ -172,7 +172,6 @@ public class Poly {
 			}
 		}
 		
-		
 		return false;
 	}
 
@@ -199,19 +198,7 @@ public class Poly {
 		return this.trms;
 	}
 	
-	/**
-	 * 
-	 * @param value for coefficient
-	 * @param index index where coef is stored 
-	 * @return 1 if all ok 
-	 */
-	public int setValueAtIndex(int val, int index) {
-		//this method is used only for testing purposes 
-		//in order to keep instance members private 
-		
-		return 1;
-	}
-
+	
 	//will pass weakRepOk and not pass repOkay. send in array with trailing zeroes then it should be okay
 	// returns this + q (throws NPE if q is null)
 	public Poly weakAdd(Poly q) throws NullPointerException {

@@ -11,30 +11,20 @@ import org.junit.jupiter.api.Test;
 
 /**
  * 
+	G 01066284 Valeria L Green (VG)
+	G 00402127 Jorge L Martinez (JM) 
+	G 01082586 Blake Khan (BK)
+
  */
 
 /**
- * @author jorge
+ * @author Jorge, Valeria, Blake
  *
  */
 class PolyTest {
 
 	
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	/**
+		/**
 	 * Test method for {@link Poly#Poly()}.
 	 */
 	@Test
@@ -97,7 +87,7 @@ class PolyTest {
 		p1 = p1.weakAdd(new Poly(-6, 1));//now leaves trailing zero
 		assertFalse(p1.repOk());
 		assertTrue(p1.weakRepOk());
-		assertNotEquals(0,p1.weakDegree()); //weakDegreereturns 0 
+		assertEquals(0,p1.weakDegree()); //weakDegreereturns 0 
 	}
 	/**
 	 * Test method for {@link Poly#toString()}.
@@ -216,33 +206,7 @@ class PolyTest {
 		assertTrue((d.getCoefAtIndex(0)==0)); // check it is actually the zero value in it
 		assertFalse(d.repOk());//since its got a trailing zero 
 		assertTrue(d.weakRepOk());
-//
-//		Poly p1 = new Poly(3, 5);
-//		Poly p2 = new Poly(3, 5);
-//		Poly r = p1.weakAdd(p2);
-//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,6}));
-//		assertTrue(r.repOk());
-//		assertTrue(r.weakRepOk());
-//
-//		p1 = new Poly(3, 5);
-//		p2 = new Poly(4, 6);
-//		r = p1.weakAdd(p2);
-//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,3,4}));
-//		assertTrue(r.repOk());
-//		assertTrue(r.weakRepOk());
-//
-//		//test zero trailing samples
-//		p1 = new Poly(3, 2);
-//		p2 = new Poly(3, 2); 
-//		r = p1.weakAdd(p2);
-//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,6}));//check that added good 
-//		r = r.weakAdd(new Poly(2,1));
-//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,6}));//check that added good 
-//		r = r.weakAdd(new Poly(-6,2));
-//		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that allowed trailing zero
-//		assertFalse(r.repOk());
-//		assertTrue(r.weakRepOk());
-		
+
 	}
 
 }
