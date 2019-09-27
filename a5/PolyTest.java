@@ -40,7 +40,6 @@ class PolyTest {
 	@Test
 	void testPoly() {
 		Poly p = new Poly();
-		
 		assertTrue((p.getCoefAtIndex(0)==0 && p.degree() == 0));
 	}
 
@@ -123,6 +122,10 @@ class PolyTest {
 		p1 = p1.weakAdd(new Poly(+6, 1));//now add back 6x^1
 		p1 = p1.weakAdd(new Poly(-5, 0));//now add 5  negative
 		assertEquals("Poly: -5 + 6x^1 + 7x^2",p1.toString());
+		p1 = p1.weakAdd(new Poly(-6, 1));//now minus back 6x^1
+		p1 = p1.weakAdd(new Poly(+5, 0));//now add 5  
+		p1 = p1.weakAdd(new Poly(-7, 2));//now minus 7x^2
+		assertEquals("Poly: 0",p1.toString());
 
 		}
 	@Test
@@ -139,9 +142,6 @@ class PolyTest {
 		assertEquals( true , p.all_left_terms_r_zero(2, new int[]{0,0,0,0}));
 		
 	}
-	
-	
-
 	/**
 	 * Test method for {@link Poly#repOk()}.
 	 */
@@ -154,6 +154,7 @@ class PolyTest {
 		assertTrue(Arrays.equals(d.getTermRef(),new int[] {0,0,0,0,0,0}));
 		assertFalse(d.repOk());
 		assertTrue(d.weakRepOk());
+		assertEquals("Poly: 0", d.toString());
 		
 		Poly p1 = new Poly(3, 5);
 		Poly p2 = new Poly(3, 5);

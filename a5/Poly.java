@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
 A short version of the Poly class for a 332 assignment.
 
@@ -97,7 +99,12 @@ public class Poly {
 	// implements AF - assuming all four predicates in rep-invariant
 	public String toString() {
 		String r = "Poly: ";
-
+		int result=0;
+		for (int i :trms) {//this loops takes care a the case {0,0,0} where must return the 0 polynomial
+			result+=i;
+		}
+		if (result==0) return r += 0;
+		
 		if (deg == 0 || trms[0] != 0) {
 			r += trms[0];
 		}
@@ -116,8 +123,8 @@ public class Poly {
 						r += +  trms[i] + "x^" + i;
 					else {
 						r += " + " +  trms[i] + "x^" + i;
-					}
-			}
+					}//end if
+				}//end if
 		}
 		return r;
 	}
