@@ -55,6 +55,14 @@ public class Poly {
 	public int degree() {
 		return deg;
 	}
+	
+	public int weakDegree() {
+		int d=0;
+		for (int i =0 ; i<trms.length; i ++) {
+			if (trms[i]!=0) d=i;
+		}
+		return d;
+	}
 
 	// returns this + q (throws NPE if q is null)
 	public Poly add(Poly q) throws NullPointerException {

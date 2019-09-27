@@ -86,8 +86,18 @@ class PolyTest {
 		p1 = p1.weakAdd(new Poly(-6, 1));//now leaves trailing zero
 		assertFalse(p1.repOk());
 		assertTrue(p1.weakRepOk());
-		assertFalse(0==p1.degree());
+		assertNotEquals(0,p1.degree()); //degree still returns 1 instead of zero
+	}
 
+	@Test
+	void testWeakDegree() {
+		
+		Poly p1 = new Poly(5, 0);
+		p1 = p1.weakAdd(new Poly(6, 1));
+		p1 = p1.weakAdd(new Poly(-6, 1));//now leaves trailing zero
+		assertFalse(p1.repOk());
+		assertTrue(p1.weakRepOk());
+		assertNotEquals(0,p1.weakDegree()); //weakDegreereturns 0 
 	}
 	/**
 	 * Test method for {@link Poly#toString()}.
