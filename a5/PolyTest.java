@@ -80,7 +80,14 @@ class PolyTest {
 	 */
 	@Test
 	void testDegree() {
-		fail("Not yet implemented"); // TODO
+
+		Poly p1 = new Poly(5, 0);
+		p1 = p1.weakAdd(new Poly(6, 1));
+		p1 = p1.weakAdd(new Poly(-6, 1));//now leaves trailing zero
+		assertFalse(p1.repOk());
+		assertTrue(p1.weakRepOk());
+		assertFalse(0==p1.degree());
+
 	}
 	/**
 	 * Test method for {@link Poly#toString()}.
@@ -162,7 +169,6 @@ class PolyTest {
 		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,0,0,0,6}));
 		assertTrue(r.repOk());
 		assertTrue(r.weakRepOk());
-		System.out.println(r.toString());
 		assertEquals("Poly: 6x^5", r.toString());
 		
 		p1 = new Poly(3, 3);
