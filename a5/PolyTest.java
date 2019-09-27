@@ -88,8 +88,43 @@ class PolyTest {
 	 */
 	@Test
 	void testToString() {
-		fail("Not yet implemented"); // TODO
-	}
+		//test Polynomials of DEGREE ZERO
+		Poly p1 = new Poly(3, 0);
+		assertEquals("Poly: 3",p1.toString());
+		p1 = p1.weakAdd(new Poly(-3, 0));
+		assertEquals("Poly: 0",p1.toString());
+		p1 = new Poly(0, 0);
+		assertEquals("Poly: 0",p1.toString());
+		p1 = new Poly(-34, 0);
+		assertEquals("Poly: -34",p1.toString());
+		
+		//Polynomials of DEGREE 1
+		p1 = new Poly(5, 0);
+		p1 = p1.weakAdd(new Poly(6, 1));
+		assertEquals("Poly: 5 + 6x^1", p1.toString());
+		p1 = p1.weakAdd(new Poly(-5, 0));//now miss the first term
+		assertEquals("Poly: 6x^1",p1.toString());
+		p1 = p1.weakAdd(new Poly(+5, 0));//now addit back 
+		p1 = p1.weakAdd(new Poly(-6, 1));//now lose the 6x and have trailing zero 
+		assertEquals("Poly: 5",p1.toString());
+		p1 = p1.weakAdd(new Poly(+6, 1));//add it back
+		
+		//Polynomials of DEGREE 2
+		p1 = p1.weakAdd(new Poly(-7, 2));//now add -7x^2 
+		assertEquals("Poly: 5 + 6x^1 - 7x^2",p1.toString());
+		p1 = p1.weakAdd(new Poly(+7, 2));//now lose -7x^2 and have trailing zero 
+		assertEquals("Poly: 5 + 6x^1",p1.toString());
+		p1 = p1.weakAdd(new Poly(+7, 2));//now add it back positive
+		assertEquals("Poly: 5 + 6x^1 + 7x^2",p1.toString());
+		p1 = p1.weakAdd(new Poly(-5, 0));//now lose the 5
+		assertEquals("Poly: 6x^1 + 7x^2",p1.toString());
+		p1 = p1.weakAdd(new Poly(-6, 1));//now lose the 6x^1
+		assertEquals("Poly: 7x^2",p1.toString());
+		p1 = p1.weakAdd(new Poly(+6, 1));//now add back 6x^1
+		p1 = p1.weakAdd(new Poly(-5, 0));//now add 5  negative
+		assertEquals("Poly: -5 + 6x^1 + 7x^2",p1.toString());
+
+		}
 	@Test
 	void test_all_left_terms_r_zero() {
 		Poly p = new Poly();
@@ -103,8 +138,9 @@ class PolyTest {
 		assertEquals( false, p.all_left_terms_r_zero(2, new int[]{1,0,1,0}));
 		assertEquals( true , p.all_left_terms_r_zero(2, new int[]{0,0,0,0}));
 		
-		
 	}
+	
+	
 
 	/**
 	 * Test method for {@link Poly#repOk()}.
@@ -140,11 +176,11 @@ class PolyTest {
 		p1 = new Poly(3, 2);
 		p2 = new Poly(3, 2); 
 		r = p1.weakAdd(p2);
-		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,6}));//check that added good 
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,0,6}));//check that it added good 
 		r = r.weakAdd(new Poly(2,1));
-		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,6}));//check that added good 
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,6}));//check that it added good 
 		r = r.weakAdd(new Poly(-6,2));
-		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that allowed trailing zero
+		assertTrue(Arrays.equals(r.getTermRef(),new int[] {0,2,0}));//check that it allowed trailing zero
 		assertFalse(r.repOk());
 		assertTrue(r.weakRepOk());
 		assertEquals("Poly: 2x^1",r.toString());

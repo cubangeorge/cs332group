@@ -98,13 +98,13 @@ public class Poly {
 	public String toString() {
 		String r = "Poly: ";
 
-//		if (deg == 0 || trms[0] != 0) {
-//			r += " " + trms[0];
-//		}
+		if (deg == 0 || trms[0] != 0) {
+			r += trms[0];
+		}
 
 		for (int i = 1; i <= deg; i++) {
 			if (trms[i] < 0) {
-				if(this.all_left_terms_r_zero(i, trms))
+				if(this.all_left_terms_r_zero(i, trms))//takes care of useles leading sign
 					r += -trms[i] + "x^" + i;
 				else {
 					r += " - " + -trms[i] + "x^" + i;
@@ -112,7 +112,7 @@ public class Poly {
 			}
 			else 
 				if (trms[i] > 0) {
-					if(this.all_left_terms_r_zero(i, trms))
+					if(this.all_left_terms_r_zero(i, trms))//takes care of useles leading sign
 						r += +  trms[i] + "x^" + i;
 					else {
 						r += " + " +  trms[i] + "x^" + i;
