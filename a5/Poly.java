@@ -163,15 +163,17 @@ public class Poly {
    		 *	trms.length >= 1
    		 *  if deg > 0 then trms[deg] != 0
 		 */
-					
-		if (weakRepOk()) { //check first 3 constrains
-			if(deg > 0) {  // check 4th 
-				if (trms[deg]!=0) {	//check last constrain
-					return true;
-				}
-			}
+
+		// Check First 3 Constraints
+		if (!weakRepOk()) {
+			return false;
 		}
-		
+
+		// Check 4th Constraint
+		if (deg > 0) {
+			return trms[deg] != 0;
+		}
+
 		return false;
 	}
 
@@ -179,9 +181,11 @@ public class Poly {
 	 * Implement the weaker rep-invariant in a method weakRepOk().
 	 */
 	public boolean weakRepOk() {
-		if ( trms != null && deg == trms.length - 1 && (trms.length >= 1) && (trms.length >= 1) )    
-			return true;
-		return false;
+		/*  trms != null
+		 * 	deg = trms.length - 1
+		 *	trms.length >= 1
+		 */
+		return trms != null && deg == trms.length - 1 && trms.length >= 1;
 	}
 	
 	
