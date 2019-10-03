@@ -1,5 +1,12 @@
 import java.util.*;
 //  GrowList is a mutable list that only gets longer.
+/**
+ * 
+ *  @author G 01066284 Valeria L Green (VG)
+ *	@author G 00402127 Jorge L Martinez (JM) 
+ *	@author G 01082586 Blake Khan (BK)jorge
+ *  @param <E>
+ */
 public class GrowList <E> {
 
   private Map<Integer,E> values;
