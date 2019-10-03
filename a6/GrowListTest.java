@@ -9,26 +9,13 @@ import org.junit.jupiter.api.Test;
  */
 
 /**
- * 
  *  @author G 01066284 Valeria L Green (VG)
  *	@author G 00402127 Jorge L Martinez (JM) 
  *	@author G 01082586 Blake Khan (BK)jorge
  */
 class GrowListTest {
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
+	
 
 	/**
 	 * Test method for {@link GrowList#GrowList()}.
@@ -45,6 +32,25 @@ class GrowListTest {
 	void testAdd() {
 		fail("Not yet implemented"); // TODO
 	}
+	
+	/**
+	 * Test method for {@link GrowList#add(java.lang.Object)}.
+	 * @param <E>
+	 */
+	@Test
+	<E> void testremove() {
+		
+		GrowList <E> gl = new GrowList<E>();
+		gl.add( (E) "something");
+		gl.add( (E) new Integer(9));
+		gl.add( (E) new Character ('c'));
+		
+		assertEquals('c',((char)gl.remove()));
+		assertEquals(9,((int)gl.remove()));
+		assertTrue("something".equals((String)gl.remove()));
+	}
+	
+	
 
 	/**
 	 * Test method for {@link GrowList#size()}.

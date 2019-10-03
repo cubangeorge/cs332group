@@ -199,6 +199,7 @@ class PolyTest {
 		//check the {0} which is the zero polynomial 
 		assertTrue((d.getTermRef().length==1));//check we got elemnt array 
 		assertTrue((d.getCoefAtIndex(0)==0)); // check it is actually the zero value in it
+		
 		assertFalse(d.repOk());//since its got a trailing zero 
 		assertTrue(d.weakRepOk());
 
