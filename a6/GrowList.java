@@ -45,6 +45,32 @@ public class GrowList <E> {
 		 */
 	  return values.remove(size()-1);
   }
+  
+  /**
+   * OVERVIEW: Removes an element based on index
+   * STORY: This was implemented the way it was because all it needs to do is just access the index
+   * 
+   * @param i the index to which an element needs to be removed
+   * @return E the element that was removed
+   */
+  public E removeByIndex(int i) {
+	 return values.remove(i); 
+  }
+  
+  /**
+   * OVERVIEW: Removes instances of an element in the hash map
+   * STORY: This was implemented the way it was because it's more thorough to go and inspect each element of a hash map to see if it contains the specified object
+   * 
+   * @param E the object to be removed
+   */
+  public void removeObjects(E toRemove) {
+	  for (int i = 0; i < values.size(); i++) {
+		  if (values.get(i) == toRemove) {
+			  values.remove(i);
+		  }
+	  }
+	  	
+  }
 
   // number of values in list
   public int size() { return values.size(); }

@@ -1,3 +1,4 @@
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
@@ -90,6 +91,53 @@ class GrowListTest {
 	@Test
 	void testMain() {
 		fail("Not yet implemented"); // TODO
+	}
+	
+	
+	/**
+	 * Test method for {@link GrowList#removeByIndex}.
+	 */
+	@Test
+	<E> void test_removeByIndex() {
+		GrowList <E> gl = new GrowList<E>();
+		gl.add( (E) "something");
+		gl.add( (E) new Integer(9));
+		gl.add( (E) new Character ('c'));
+		gl.removeByIndex(2);
+		
+		
+		try {
+			gl.get(2);
+			fail("expected exception didn't happen");
+		} catch(IndexOutOfBoundsException e) {
+			System.err.println("error " + e);
+		}
+		assertEquals(2, gl.size());
+	}
+	
+	
+	/**
+	 * Test method for {@link GrowList#removeObjects}.
+	 */
+	@Test
+	<E> void test_removeObjects() {
+		GrowList <E> gl = new GrowList<E>();
+		gl.add( (E) "something");
+		gl.add( (E) new Integer(9));
+		gl.add( (E) new Integer(9001));
+		gl.add( (E) "something");
+		gl.add( (E) "Brooklyn 99");
+		
+		gl.removeObjects((E) "something");
+		
+		for (int i = 0; i < gl.size(); i++) {
+			if (gl.get(i) == (E) "something") {
+				fail("Still in the hash map.");
+			}
+		}
+		
+		
+		
 	}
 
 }
