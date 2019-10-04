@@ -59,27 +59,28 @@ class GrowListTest {
 	}
 	
 	
-	/**
-	 * Test method for {@link GrowList#removeObjects}.
-	 */
-	@Test
-	<E> void test_removeObjects() {
-		GrowList <E> gl = new GrowList<E>();
-		gl.add( (E) "something");
-		gl.add( (E) new Integer(9));
-		gl.add( (E) new Integer(9001));
-		gl.add( (E) "something");
-		gl.add( (E) "Brooklyn 99");
-		gl.add((E)"something");
-		gl.add((E)"something");
-		
-		gl.removeObjects((E) "something");
-		for (int i = 0; i < gl.size(); i++) {
-			if (gl.get(i) == (E) "something") {
-				fail("Still in the hash map.");
-			}
-		}
-		
-	}
+//	/**
+//	 * Test method for {@link GrowList#removeObjects}.
+//	 */
+//	@Test
+//	<E> void test_removeObjects() {
+//		GrowList <E> gl = new GrowList<E>();
+//		gl.add( (E) "something");
+//		gl.add( (E) new Integer(9));
+//		gl.add( (E) new Integer(9001));
+//		gl.add( (E) "something");
+//		gl.add( (E) "Brooklyn 99");
+//		gl.add((E)"something");
+//		gl.add((E)"something");
+//		
+//		System.out.println(gl.toString());
+//		gl.removeObjects((E) "something");
+//		for (int i = 0; i < gl.size(); i++) {
+//			if (gl.get(i) == (E) "something") {
+//				fail("Still in the hash map.");
+//			}
+//		}
+//		
+//	}
 
 }
