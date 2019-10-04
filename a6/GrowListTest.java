@@ -13,38 +13,17 @@ import org.junit.jupiter.api.Test;
  *	@author G 01082586 Blake Khan (BK)jorge
  */
 class GrowListTest {
-
-	
-
-	
-//	/**
-//	 * Test method for {@link GrowList#add(java.lang.Object)}.
-//	 * @param <E>
-//	 */
-//	@Test
-//	<E> void testremove() {
-//		
-//		GrowList <E> gl = new GrowList<E>();
-//		gl.add( (E) "something");
-//		gl.add( (E) new Integer(9));
-//		gl.add( (E) new Character ('c'));
-//		
-//		assertEquals('c',((char)gl.remove()));
-//		assertEquals(9,((int)gl.remove()));
-//		assertTrue("something".equals((String)gl.remove()));
-//	}
-	
-			
+		
 	/**
 	 * Test method for {@link GrowList#removeByIndex}.
 	 */
 	@Test
-	<E> void test_removeByIndex() {
+	<E> void test_remove() {
 		GrowList <E> gl = new GrowList<E>();
 		gl.add( (E) "something");
 		gl.add( (E) new Integer(9));
 		gl.add( (E) new Character ('c'));
-		gl.removeByIndex(2);
+		gl.remove(2);
 		
 		assertTrue("[something,9]".equals(gl.toString()));
 		assertEquals(2, gl.size());
@@ -53,9 +32,8 @@ class GrowListTest {
 			System.err.println("error expected exception didn't happen" );
 			fail("expected exception didn't happen");
 		} catch(IndexOutOfBoundsException e) {
-			System.out.println("remove test succesful: " + e);
+			System.out.println("success: remove test passed " + e);
 		}
-		assertEquals(2, gl.size());
 	}
 	
 	

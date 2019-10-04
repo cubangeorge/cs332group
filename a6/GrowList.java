@@ -48,15 +48,17 @@ public class GrowList <E> {
   
   /**
    * OVERVIEW: Removes an element based on index
-   * STORY: removing an object by index was chosen since it can easily satisfy its contract of 
-   * removing an object at the specified location or throwing a IOBE. It is also more efficient since 
-   * there is no traversal and comparison taking place
+   * STORY: 
+   * 	removing an object by index was chosen since it can easily satisfy its contract of 
+   * removing an object at the specified location or throwing an IOBE. It is also more efficient since 
+   * there is no traversal or comparison necessary for a successful removal.
+   * 
    * 
    * @param i the index at which an element needs to be removed
    * @return E the element that was removed
    * @throws indexOutOfBoundException
    */
-  public E removeByIndex(int i) {
+  public E remove(int i) throws IndexOutOfBoundsException{
 	 return values.remove(i); 
   }
   
