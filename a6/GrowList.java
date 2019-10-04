@@ -37,14 +37,14 @@ public class GrowList <E> {
      values.put(size(), o);
   }
 
-  // remove an item from the list 
-  public E remove() {
-		/*
-		 * Removes the last elemnt placed in the list 
-		 * since no arguments were provided
-		 */
-	  return values.remove(size()-1);
-  }
+//  // remove an item from the list 
+//  public E remove() {
+//		/*
+//		 * Removes the last element placed in the list 
+//		 * since no arguments were provided
+//		 */
+//	  return values.remove(size()-1);
+//  }
   
   /**
    * OVERVIEW: Removes an element based on index
