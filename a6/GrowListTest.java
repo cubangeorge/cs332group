@@ -130,51 +130,33 @@ class GrowListTest {
 		Throwable exception = assertThrows(IndexOutOfBoundsException.class, () -> gl.remove_jorge(0));
 	    assertEquals("GrowList.remove", exception.getMessage());
 		
-		//System.out.println(gl.remove(0));
 		
-		
-		
-		
-		
-		
-//		assertEquals(3    , gl.get   (2));//get 3rd item 
-//		assertEquals(null , gl.remove(2));//remove again get null
-//		assertEquals("two", gl.remove(1));//remove last element
-//		assertEquals(0, gl.size());		  //size is zero cause list is empty
-//		assertEquals("[]", gl.toString());//double check 
-//		
-
-//	
-//		
-//		
-//		gl.add(null);
-//		assertEquals(1, gl.size());
-//		assertEquals(null, gl.remove(5));
 	}
 	
 	
-//	/**
-//	 * Test method for {@link GrowList#removeObjects}.
-//	 */
-//	@Test
-//	<E> void test_removeObjects() {
-//		GrowList <E> gl = new GrowList<E>();
-//		gl.add( (E) "something");
-//		gl.add( (E) new Integer(9));
-//		gl.add( (E) new Integer(9001));
-//		gl.add( (E) "something");
-//		gl.add( (E) "Brooklyn 99");
-//		gl.add((E)"something");
-//		gl.add((E)"something");
-//		
-//		System.out.println(gl.toString());
-//		gl.removeObjects((E) "something");
-//		for (int i = 0; i < gl.size(); i++) {
-//			if (gl.get(i) == (E) "something") {
-//				fail("Still in the hash map.");
-//			}
-//		}
-//		
-//	}
+	/**
+	 * Test method for {@link GrowList#removeObjects}.
+	 */
+	@Test
+	<E> void test_removeObjects() {
+		GrowList <E> gl = new GrowList<E>();
+		gl.add( (E) "something");
+		gl.add( (E) new Integer(9));
+		gl.add( (E) new Integer(9001));
+		gl.add( (E) "something");
+		gl.add( (E) "Brooklyn 99");
+		gl.add( (E)"something");
+		gl.add( (E)"something");
+		
+		System.out.println(gl.toString());
+		gl.removeObjects((E) "something");
+		for (int i = 0; i < gl.size(); i++) {
+			if (gl.get(i) == (E) "something") {
+				fail("Still in the hash map.");
+			}
+		}
+		assertEquals("[9,9001,Brookling 99]", gl.toString());
+		
+	}
 
 }
