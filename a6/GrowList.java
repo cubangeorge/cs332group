@@ -91,7 +91,7 @@ public class GrowList <E> {
 //   */
 //  public void removeObjects(E toRemove) {
 //	  for (int i = 0; i < values.size(); i++) {
-//		  if (values.get(i) == toRemove) {
+//		  if (values.get(i).equals(toRemove)) {
 //			  values.remove(i);
 //		  }
 //	  }
