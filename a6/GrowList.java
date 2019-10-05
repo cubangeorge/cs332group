@@ -37,31 +37,52 @@ public class GrowList <E> {
      values.put(size(), o);
   }
 
-//  // remove an item from the list 
-//  public E remove() {
-//		/*
-//		 * Removes the last element placed in the list 
-//		 * since no arguments were provided
-//		 */
-//	  return values.remove(size()-1);
-//  }
   
   /**
    * OVERVIEW: Removes an element based on index
-   * STORY: 
-   * 	removing an object by index was chosen since it can easily satisfy its contract of 
+   * STORY:
+   *  
+   * 	Removing an object by index was chosen since it can easily satisfy its contract of 
    * removing an object at the specified location or throwing an IOBE. It is also more efficient since 
    * there is no traversal or comparison necessary for a successful removal.
    * 
-   * 
+   * @
    * @param i the index at which an element needs to be removed
    * @return E the element that was removed
-   * @throws indexOutOfBoundException
+   * @throws indexOutOfBoundsException when index is not in range. 
    */
-  public E remove(int i) throws IndexOutOfBoundsException{
-	 return values.remove(i); 
+ 
+  public E remove(int i) {
+	  return values.remove(i); 
   }
   
+  /**
+   * OVERVIEW: Removes an element based on user provided index, does a left shifting for all subsequent elements 
+   * one spot to the left and then removes the last element
+   * 
+   * STORY:
+   *  
+   * 	Removing an object by index was chosen since it can easily satisfy its contract of 
+   * removing an object at the specified location or throwing an IOBE. It is also more efficient since 
+   * there is no traversal or comparison necessary for a successful removal.
+   * 
+   * @
+   * @param i the index at which an element needs to be removed
+   * @return E the element that was removed
+   * @throws indexOutOfBoundsException when index is not in range. 
+   */
+  public E remove_jorge(int i) throws IndexOutOfBoundsException{
+		 if (! inRange(i)) throw new IndexOutOfBoundsException("GrowList.remove");
+		 
+		 E temp = values.get(i);
+		 while (i < size()) { //this loop will copy following objects to the previous index
+			 values.put(i,values.get(i+1));
+			 i++;
+		 }
+		 //now remove last element
+		 values.remove(size()-1);
+		 return temp;
+	  }
 //  /**
 //   * OVERVIEW: Removes instances of an element in the hash map
 //   * STORY: This was implemented the way it was because it's more thorough to go and inspect each element of a hash map to see if it contains the specified object
