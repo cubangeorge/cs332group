@@ -155,7 +155,9 @@ class GrowListTest {
 				fail("Still in the hash map.");
 			}
 		}
+		System.out.println(gl.toString());
 		assertEquals("[9,9001,Brookling 99]", gl.toString());
+		assertEquals(4, gl.size());
 		
 	}
 
