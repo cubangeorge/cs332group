@@ -73,20 +73,7 @@ public class GrowList <E> {
 		return temp;
 	}
 
-	/**
-	 * OVERVIEW: Removes instances of an element in the hash map
-	 * STORY: This was implemented the way it was because it's more thorough to go and inspect each element of a hash map to see if it contains the specified object
-	 *
-	 * @param toRemove the object to be removed
-	 */
-	public void removeObjects(E toRemove) {
-		for (int i = 0; i < values.size(); i++) {
-			if (values.get(i) == toRemove && values.get(i).equals(toRemove)) {
-					values.remove(i);
-				}
-		}
-	}
-
+	
 	// number of values in list
 	public int size() {
 		return values.size();
