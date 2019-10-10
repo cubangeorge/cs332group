@@ -16,23 +16,10 @@ class GrowListTest {
 	 * its effect and its exception throwing capabilities 
 	 * when its argument is out of bounds. 
 	 */
+	@SuppressWarnings("unchecked")
 	@Test
 	<E> void test_remove() {
-//		GrowList <E> gl = new GrowList<E>();
-//		gl.add( (E) "something");
-//		gl.add( (E) new Integer(9));
-//		gl.add( (E) new Character ('c'));
-//		gl.remove(2);
-//		
-//		assertEquals("[something,9]",gl.toString() );
-//		assertEquals(2, gl.size());
-//		try {
-//			gl.get(2);
-//			System.err.println("error expected exception didn't happen" );
-//			fail("expected exception didn't happen");
-//		} catch(IndexOutOfBoundsException e) {
-//			System.out.println("success: @test remove() passed " + e);
-//		}
+
 		GrowList <E> gl = new GrowList<E>();
 		gl.add((E) "one");
 		gl.add((E) "two");
@@ -52,7 +39,7 @@ class GrowListTest {
 		//double check using toString
 		assertEquals("[two,three]", gl.toString());
 		//now add a new element 
-		gl.add((E) new Integer(4));
+		gl.add((E) Integer.valueOf(4));
 		//check the list
 		assertEquals("[two,three,4]", gl.toString());
 		//remove last element again 
@@ -83,12 +70,14 @@ class GrowListTest {
 	/**
 	 * Test method for {@link GrowList#removeObjects}.
 	 */
+	@SuppressWarnings({ "unchecked"})
 	@Test
 	<E> void test_removeObjects() {
+		
 		GrowList <E> gl = new GrowList<E>();
 		gl.add( (E) "something");
-		gl.add( (E) new Integer(9));
-		gl.add( (E) new Integer(9001));
+		gl.add( (E) Integer.valueOf(9));
+		gl.add( (E) Integer.valueOf(9001));
 		gl.add( (E) "something");
 		gl.add( (E) "Brooklyn 99");
 		gl.add( (E)"something");
