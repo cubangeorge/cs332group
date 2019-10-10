@@ -97,13 +97,17 @@ class GrowListTest {
 		System.out.println(gl.toString());
 		gl.removeObjects((E) "something");
 		for (int i = 0; i < gl.size(); i++) {
-			if (gl.get(i) == (E) "something") {
-				fail("Still in the hash map.");
+			try {
+				if (gl.get(i).equals((E) "something")) {
+					fail("Still in the hash map.");
+				}
+			} catch (NullPointerException e) {
+				System.err.println("error " + e);
 			}
 		}
 		System.out.println(gl.toString());
-		assertEquals("[9,9001,Brookling 99]", gl.toString());
-		assertEquals(4, gl.size());
+		assertEquals("[null,9,9001,null,Brooklyn 99]", gl.toString());
+		assertEquals(5, gl.size());
 		
 	}
 
