@@ -22,7 +22,7 @@ import java.util.*;
  * 
  *  @author G 01066284 Valeria L Green (VG)
  *	@author G 00402127 Jorge L Martinez (JM) 
- *	@author G 01082586 Blake Khan (BK)jorge
+ *	@author G 01082586 Blake Khan (BK)
  *  @param <E>
  */
 
@@ -49,10 +49,14 @@ public class GrowList <E> {
 	 * @
 	 * @param i the index at which an element needs to be removed
 	 * @return E the element that was removed
-	 * @throws indexOutOfBoundsException when index is not in range. 
+	 * @throws IndexOutOfBoundsException when index is not in range.
 	 */
 
 	public E remove(int i) {
+		if (!values.containsKey(i)) {
+			throw new IndexOutOfBoundsException("Index is not in the list.");
+		}
+
 		return values.remove(i); 
 	}
 
