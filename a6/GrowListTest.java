@@ -139,6 +139,7 @@ class GrowListTest {
 	 */
 	@Test
 	<E> void test_removeObjects() {
+		
 		GrowList <E> gl = new GrowList<E>();
 		gl.add( (E) "something");
 		gl.add( (E) new Integer(9));
