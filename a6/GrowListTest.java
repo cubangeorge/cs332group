@@ -79,56 +79,6 @@ class GrowListTest {
 	    assertEquals("GrowList.remove", exception.getMessage());
 	}
 	
-	@Test
-	<E> void test_remove_jorge() {
-		GrowList <E> gl = new GrowList<E>();
-		gl.add((E) "one");
-		gl.add((E) "two");
-		gl.add((E) "three");
-		//[one, two , three]
-		assertEquals(3, gl.size());
-		//check each index content
-		assertEquals("one", gl.get(0));
-		assertEquals("two", gl.get(1));
-		assertEquals("three", gl.get(2));
-		//now remove first element
-		assertEquals("one" , gl.remove_jorge(0));
-		//now try and get the last item
-		assertEquals("three", gl.get(1));
-		//check that the size has decrease
-		assertEquals(2, gl.size());
-		//double check using toString
-		assertEquals("[two,three]", gl.toString());
-		//now add a new element 
-		gl.add((E) new Integer(4));
-		//check the list
-		assertEquals("[two,three,4]", gl.toString());
-		//remove last element again 
-		gl.remove_jorge(2);
-		assertEquals("[two,three]", gl.toString());
-		//add a null
-		gl.add(null);
-		//check the list 
-		assertEquals("[two,three,null]", gl.toString());
-		assertEquals(3, gl.size());
-		//remove the middle element
-		assertEquals("three" , gl.remove_jorge(1));
-		//check the list 
-		assertEquals("[two,null]", gl.toString());
-		assertEquals(2, gl.size());
-		//remove all elements
-		gl.remove_jorge(0);
-		gl.remove_jorge(0);
-		assertEquals("[]", gl.toString());
-		assertEquals(0, gl.size());
-		//test exception 
-		//trying to remove from an empty list
-		Throwable exception = assertThrows(IndexOutOfBoundsException.class, () -> gl.remove_jorge(0));
-	    assertEquals("GrowList.remove", exception.getMessage());
-		
-		
-	}
-	
 	
 	/**
 	 * Test method for {@link GrowList#removeObjects}.

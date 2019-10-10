@@ -30,7 +30,7 @@ public class GrowList <E> {
 	private Map<Integer, E> values;
 
 	public GrowList() {
-		values = new HashMap<Integer, E>();
+		values = new HashMap<>();
 	}
 
 	// add to the end of the list
@@ -38,28 +38,6 @@ public class GrowList <E> {
 		values.put(size(), o);
 	}
 
-
-	/**
-	 * OVERVIEW: Removes an element based on index
-	 * STORY:
-	 * <p>
-	 * Removing an object by index was chosen since it can easily satisfy its contract of
-	 * removing an object at the specified location or throwing an IOBE. It is also more efficient since
-	 * there is no traversal or comparison necessary for a successful removal.
-	 *
-	 * @param i the index at which an element needs to be removed
-	 * @return E the element that was removed
-	 * @throws IndexOutOfBoundsException when index is not in range.
-	 * @
-	 */
-
-	public E remove(int i) {
-		if (!inRange(i)) {
-			throw new IndexOutOfBoundsException("Index is not in the list.");
-		}
-
-		return values.remove(i);
-	}
 
 	/**
 	 * OVERVIEW: Removes an element based on user provided index, does a 1 place left shift
@@ -76,15 +54,20 @@ public class GrowList <E> {
 	 * @throws IndexOutOfBoundsException when index is not in range.
 	 * @
 	 */
-	public E remove_jorge(int i) throws IndexOutOfBoundsException {
-		if (!inRange(i)) throw new IndexOutOfBoundsException("GrowList.remove");
+	public E remove(int i) throws IndexOutOfBoundsException {
+		if (!inRange(i)) {
+			throw new IndexOutOfBoundsException("GrowList.remove");
+		}
+
 		//store return value
 		E temp = values.get(i);
+
 		//do the shifting
 		while (i < size()) { //this loop will copy following objects to the previous index
 			values.put(i, values.get(i + 1));
 			i++;
 		}
+
 		//now remove last element
 		values.remove(size() - 1);
 		return temp;
