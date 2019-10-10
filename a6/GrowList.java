@@ -43,7 +43,7 @@ public class GrowList <E> {
 	 * OVERVIEW: Removes an element based on user provided index, does a 1 place left shift
 	 * for all subsequent elements and then removes the last element
 	 * <p>
-	 * STORY:
+	 * STORY: see Doc turned in on BlackBoard
 	 * <p>
 	 * Removing an object by index was chosen since it can easily satisfy its contract of
 	 * removing an object at the specified location or throwing an IOBE. It is also more efficient since
