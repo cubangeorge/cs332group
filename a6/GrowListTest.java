@@ -66,38 +66,4 @@ class GrowListTest {
 	    assertEquals("GrowList.remove", exception.getMessage());
 	}
 	
-	
-	/**
-	 * Test method for {@link GrowList#removeObjects}.
-	 */
-	@SuppressWarnings({ "unchecked"})
-	@Test
-	<E> void test_removeObjects() {
-		
-		GrowList <E> gl = new GrowList<E>();
-		gl.add( (E) "something");
-		gl.add( (E) Integer.valueOf(9));
-		gl.add( (E) Integer.valueOf(9001));
-		gl.add( (E) "something");
-		gl.add( (E) "Brooklyn 99");
-		gl.add( (E)"something");
-		gl.add( (E)"something");
-		
-		System.out.println(gl.toString());
-		gl.removeObjects((E) "something");
-		for (int i = 0; i < gl.size(); i++) {
-			try {
-				if (gl.get(i).equals((E) "something")) {
-					fail("Still in the hash map.");
-				}
-			} catch (NullPointerException e) {
-				System.err.println("error " + e);
-			}
-		}
-		System.out.println(gl.toString());
-		assertEquals("[null,9,9001,null,Brooklyn 99]", gl.toString());
-		assertEquals(5, gl.size());
-		
-	}
-
 }
