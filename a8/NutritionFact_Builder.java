@@ -19,6 +19,8 @@ public class NutritionFacts_Builder {
         private int fat           = 0;
         private int sodium        = 0;
         private int carbohydrate  = 0;
+        private int protein		  = 0;  //added parameter for this assignment 
+        
 
         public Builder(int servingSize, int servings) {
             this.servingSize = servingSize;
