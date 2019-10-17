@@ -6,6 +6,8 @@ public class NutritionFacts_Builder {
     private final int fat;
     private final int sodium;
     private final int carbohydrate;
+    private final int protein; 		// (g/grams of protein per serving)     optional
+
 
     public static class Builder {
         // Required parameters
@@ -31,6 +33,9 @@ public class NutritionFacts_Builder {
             { sodium = val;        return this; }
         public Builder carbohydrate(int val)
             { carbohydrate = val;  return this; }
+     // extra section required for this assignment
+        public Builder protein(int val)
+        { protein = val;  return this; } 
 
         public NutritionFacts_Builder build() {
             return new NutritionFacts_Builder(this);
@@ -44,5 +49,6 @@ public class NutritionFacts_Builder {
         fat          = builder.fat;
         sodium       = builder.sodium;
         carbohydrate = builder.carbohydrate;
+        protein		 = builder.protein;
     }
 }
