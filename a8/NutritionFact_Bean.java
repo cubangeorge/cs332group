@@ -7,6 +7,8 @@ public class NutritionFacts_Bean {
     private int fat          = 0;
     private int sodium       = 0;
     private int carbohydrate = 0;
+    private final int protein; 		// (g/grams of protein per serving)     optional
+
 
     public NutritionFacts_Bean() { }
     // Setters
@@ -16,4 +18,5 @@ public class NutritionFacts_Bean {
     public void setFat(int val)         { fat = val; }
     public void setSodium(int val)      { sodium = val; }
     public void setCarbohydrate(int val) { carbohydrate = val; }
+    public void setProtein(int val) { protein = val; }
 }
