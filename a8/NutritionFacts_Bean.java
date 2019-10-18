@@ -7,7 +7,7 @@ public class NutritionFacts_Bean {
     private int fat          = 0;
     private int sodium       = 0;
     private int carbohydrate = 0;
-    private final int protein; 		// (g/grams of protein per serving)     optional
+    private int protein = 0; 		// (g/grams of protein per serving)     optional
 
 
     public NutritionFacts_Bean() { }
@@ -19,4 +19,18 @@ public class NutritionFacts_Bean {
     public void setSodium(int val)      { sodium = val; }
     public void setCarbohydrate(int val) { carbohydrate = val; }
     public void setProtein(int val) { protein = val; }
+    
+    public int getServingSize() throws IllegalAccessException  { 
+    	if (this.servingSize == -1) {
+    		throw new IllegalAccessException("Cannot access it before it is set");
+    	}
+    	return servingSize; 
+    }
+    
+    public int getServings() throws IllegalAccessException { 
+     	if (this.servingSize == -1) {
+    		throw new IllegalAccessException("Cannot access it before it is set");
+    	}
+    	return servings; 
+    }
 }
