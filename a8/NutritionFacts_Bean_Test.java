@@ -4,9 +4,6 @@ import static org.junit.Assert.fail;
 import org.junit.jupiter.api.Test;
 
 public class NutritionFacts_Bean_Test {
-
-	
-	
 	
 	@Test
 	void testGetServingSize() {
