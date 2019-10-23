@@ -89,4 +89,56 @@ public class NutritionFacts_Telescoping {
         this.carbohydrate = carbohydrate;
         this.protein = protein;   //extra parameter for this assignment
     }
+    
+     
+    /**
+     * Retrieves the serving size.
+     *
+     * @return serving size
+     */
+    public int getServingSize() {return this.servingSize;}
+
+    /**
+     * Retrieves the number of servings.
+     *
+     * @return number of servings
+     */
+    public int getServings() {return this.servings;}
+    
+    /**
+     * Retrieves the calorie number.
+     *
+     * @return calorie number
+     */
+    public int getCalories() {return this.calories;}
+    
+    /**
+     * Retrieves the fat count
+     *
+     * @return the fat count
+     */
+    public int getFat() {return this.fat;}
+    
+    /**
+     * Retrieves the sodium count
+     *
+     * @return the sodium count
+     */
+    public int getSodium() {return this.sodium;}
+    
+    /**
+     * Retrieves the carbohydrate count
+     *
+     * @return the carbohydrate count
+     */
+    public int getCarbohydrate() {return this.carbohydrate;}
+    
+    
+    /**
+     * Retrieves the protein count
+     *
+     * @return the protein count
+     */
+    public int getProtein() {return this.protein;}
+    
 }
