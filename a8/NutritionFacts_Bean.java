@@ -94,7 +94,7 @@ public class NutritionFacts_Bean {
      * @throws IllegalAccessException if servings was not set
      */
     public int getServings() throws IllegalAccessException {
-        if (this.servingSize == -1) {
+        if (this.servings == -1) {
             throw new IllegalAccessException("Cannot access servings before it is set");
         }
 
