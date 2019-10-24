@@ -58,8 +58,13 @@ class IntSetFixedTest {
 	@Test
 	void testEqualsObject() {
 
-		IntSetFixed isf = new IntSetFixed();
+		IntSetFixed il1 = new IntSetFixed();
+		il1.add(5);
+		il1.add(6);
+		il1.add(7);
+		il1.add(8);
 		
+		System.out.println(il1);
 		
 	}
 

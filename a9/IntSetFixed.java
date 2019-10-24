@@ -62,7 +62,10 @@ public class IntSetFixed implements Cloneable {
 	   return cloned;
 
    }
-   
+   @Override 
+   public String toString() {
+	   return this.els.toString();
+   }
    private boolean compare_size_and_elements(IntSetFixed s) {
 	   
 	   //check the size
