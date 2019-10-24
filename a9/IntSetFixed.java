@@ -46,19 +46,18 @@ public class IntSetFixed implements Cloneable {
 	  //do a super.clone
 	  //iterate through clone and update references to new instances
 	   //make it point to the integers of that structure
-	   //List<Integer> clonedList = new ArrayList<Integer>(); 
+
 	   IntSetFixed cloned = (IntSetFixed) super.clone();
-//	   System.arraycopy(this.els, 0, cloned.els, 0, this.els.size());
+
 	   
 	   //inside for loop, initialize each element in clone using a integer constructor which will create an object based off an integer
 	   for (Integer i: this.els) {
-		   Integer newItem = i.intValue();
-		   cloned.els.add(newItem);
+//		   Integer newItem = i.intValue();
+//		   cloned.els.add(newItem);
+		   cloned.els.add((Integer) i.intValue());
 	   }
 	   
-	   //old
-      //return new IntSetFixed ( new ArrayList<Integer>(els));
-	   
+	
 	   return cloned;
 
    }
