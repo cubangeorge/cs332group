@@ -65,12 +65,15 @@ class IntSetFixedTest {
 		il1.add(8);
 		
 		IntSetFixed il2 = new IntSetFixed();
-		il1.add(5);
-		il1.add(6);
-		il1.add(7);
-		il1.add(8);
-		 
-		assertTrue(il1.equals(il2));
+		il2.add(5);
+		il2.add(6);
+		il2.add(7);
+		il2.add(8);
+		
+		assertTrue(il1.equals(il2)); //tests happy path equal
+		il2.add(9);
+		assertFalse(il1.equals(il2)); //tests happy path equal
+		
 		
 	}
 
