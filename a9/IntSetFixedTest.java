@@ -99,14 +99,29 @@ class IntSetFixedTest {
 	 */
 	@Test
 	void testClone() {
-		IntSetFixed toClone = new IntSetFixed();
-		for (int i = 0; i < 10; i++) {
-			toClone.add(i);
+		IntSetFixed original = new IntSetFixed();
+		int size = 10;
+		for (int i = 0; i < size; i++) {
+			original.add(i);
 		}
-
+		
+		try {
+			
+			if (original.size() == 10) {
+			IntSetFixed clone = original.clone();
+			assertFalse(clone.equals(original));
+			}
+			
+			//do equals method on each object
+			
+			
+		} catch(CloneNotSupportedException e) {
+			System.err.println("error " + e);
+			fail("expected exception didn't happen");
+		}
 		
 		
-		fail("Not yet implemented"); // TODO
+		
 	}
 
 }
