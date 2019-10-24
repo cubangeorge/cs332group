@@ -112,7 +112,12 @@ class IntSetFixedTest {
 			
 			if (original.size() == 10) {
 			IntSetFixed clone = original.clone();
-			assertFalse(clone.equals(original));
+			//assertFalse(clone.equals(original));
+			assertTrue(clone.equals(original)); //test happy path 
+			original.set(0,4);
+			System.out.println(original.toString()+"\n"+clone.toString());
+			assertFalse(clone.equals(original)); //test happy path not equal 
+			
 			}
 			
 			//do equals method on each object

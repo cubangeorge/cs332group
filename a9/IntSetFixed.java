@@ -34,6 +34,10 @@ public class IntSetFixed implements Cloneable {
 	   return e;
    }
 
+   public void set(int i, int v) {
+	   
+	   this.els.add(i, v);
+   }
    /**
     * Clones the IntSetFixed object and does a deep copy of it's list of Integer objects.
     *
@@ -54,7 +58,7 @@ public class IntSetFixed implements Cloneable {
 	   for (Integer i: this.els) {
 //		   Integer newItem = i.intValue();
 //		   cloned.els.add(newItem);
-		   cloned.els.add((Integer) i.intValue());
+		   cloned.add((Integer) i.intValue());
 	   }
 	   
 	
