@@ -52,13 +52,13 @@ public class IntSetFixed implements Cloneable {
 	   //make it point to the integers of that structure
 
 	   IntSetFixed cloned = (IntSetFixed) super.clone();
-
+	   cloned.els = new ArrayList<Integer>(); 
 	   
 	   //inside for loop, initialize each element in clone using a integer constructor which will create an object based off an integer
 	   for (Integer i: this.els) {
-//		   Integer newItem = i.intValue();
-//		   cloned.els.add(newItem);
-		   cloned.add((Integer) i.intValue());
+		   Integer newItem = i.intValue();
+		   cloned.add(newItem);
+		   //cloned.add(new int (i.intValue()));
 	   }
 	   
 	

@@ -116,7 +116,10 @@ class IntSetFixedTest {
 			assertTrue(clone.equals(original)); //test happy path 
 			original.set(0,4);
 			System.out.println(original.toString()+"\n"+clone.toString());
+			System.out.println(original);
+			System.out.println(clone);
 			assertFalse(clone.equals(original)); //test happy path not equal 
+			
 			
 			}
 			
