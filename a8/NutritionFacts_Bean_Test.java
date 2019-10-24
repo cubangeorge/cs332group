@@ -1,10 +1,24 @@
+/**
+ *	G 01066284 Valeria L Green (VG)
+ *	G 00402127 Jorge L Martinez (JM) 
+ *	G 01082586 Blake Khan (BK)
+ */
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
 
 public class NutritionFacts_Bean_Test {
+<<<<<<< HEAD
 
+=======
+	
+	/**
+	 * Test method for the class {@link NutritionFacts_Bean}.
+	 * This tests whether an exception is thrown from accessing a field before initialization is complete. It expects an exception to be thrown.
+	 */
+>>>>>>> cf61c0f5780ad3d2cfaab66b9779412ab49d8738
 	@Test
 	void testGetServingSize() {
 		NutritionFacts_Bean setter1 = new NutritionFacts_Bean();
@@ -24,6 +38,10 @@ public class NutritionFacts_Bean_Test {
 
 	}
 
+	/**
+	 * Test method for the class {@link NutritionFacts_Bean}.
+	 * This tests whether an exception is thrown from accessing a field before initialization is complete. It expects an exception to be thrown.
+	 */
 	@Test
 	void testGetServings() {
 		NutritionFacts_Bean setter1 = new NutritionFacts_Bean();
@@ -42,6 +60,10 @@ public class NutritionFacts_Bean_Test {
 		}
 	}
 
+	/**
+	 * Test method for the class {@link NutritionFacts_Bean}.
+	 * This tests accessing a field after the required initialization is complete. It doesn't expect an exception to be thrown.
+	 */
 	@Test
 	void testSetServingSize() {
 		NutritionFacts_Bean setter1 = new NutritionFacts_Bean();
@@ -62,6 +84,10 @@ public class NutritionFacts_Bean_Test {
 
 	}
 
+	/**
+	 * Test method for the class {@link NutritionFacts_Bean}.
+	 * This tests accessing a field after the required initialization is complete. It doesn't expect an exception to be thrown.
+	 */
 	@Test
 	void testSetServings() {
 		NutritionFacts_Bean setter1 = new NutritionFacts_Bean();

@@ -1,3 +1,10 @@
+/**
+ *	G 01066284 Valeria L Green (VG)
+ *	G 00402127 Jorge L Martinez (JM) 
+ *	G 01082586 Blake Khan (BK)
+ */
+
+
 // Telescoping constructor pattern - does not scale well!
 public class NutritionFacts_Telescoping {
 

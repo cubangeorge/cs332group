@@ -1,20 +1,37 @@
+/**
+ *	G 01066284 Valeria L Green (VG)
+ *	G 00402127 Jorge L Martinez (JM) 
+ *	G 01082586 Blake Khan (BK)
+ */
+
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 public class NutritionFacts_Telescoping_Test {
+	//just the servingSize and servings values are specified
 	static NutritionFacts_Telescoping setter2 = new NutritionFacts_Telescoping(7, 1);
 	
+	//just the servingSize, servings, calories values are specified
 	static NutritionFacts_Telescoping setter3 = new NutritionFacts_Telescoping(6, 2, 89);
 	
+	//just the servingSize, servings, calories, fat values are specified
 	static NutritionFacts_Telescoping setter4 = new NutritionFacts_Telescoping(9, 45, 72, 45);
 	
+	//just the servingSize, servings, calories, fat, sodium values are specified
 	static NutritionFacts_Telescoping setter5 = new NutritionFacts_Telescoping(79, 34, 52, 53, 12);
 	
+	//just the servingSize, servings, calories, fat, carbohydrate values are specified
 	static NutritionFacts_Telescoping setter6 = new NutritionFacts_Telescoping(81, 84, 47, 9, 76, 94);
 	
+	//all fields values are specified
 	static NutritionFacts_Telescoping setter7 = new NutritionFacts_Telescoping(82, 58, 38, 67, 13, 18, 90);
 	
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the serving size field is defined in all the objects
+	 */
 	@Test
 	void testGetServingSize() {
 		assertEquals(7, setter2.getServingSize());
@@ -25,6 +42,10 @@ public class NutritionFacts_Telescoping_Test {
 		assertEquals(82, setter7.getServingSize());
 	}
 
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the servings field is defined in all the objects
+	 */
 	@Test
     void testGetServings() {
 		
@@ -36,12 +57,13 @@ public class NutritionFacts_Telescoping_Test {
 		assertEquals(58, setter7.getServings());
 	}
     
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the calories field is undefined in some object(s) based of how many parameters are defined in the constructor
+	 */
 	@Test
     void testGetCalories() {	
-		
 		assertEquals(0, setter2.getCalories());
-		
 		
 		assertEquals(89, setter3.getCalories());
 		assertEquals(72, setter4.getCalories());
@@ -50,7 +72,10 @@ public class NutritionFacts_Telescoping_Test {
 		assertEquals(38, setter7.getCalories());
 	}
 	
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the fat field is undefined in some object(s) based of how many parameters are defined in the constructor
+	 */
 	@Test
     void testGetFat() {
 
@@ -63,6 +88,10 @@ public class NutritionFacts_Telescoping_Test {
 		assertEquals(67, setter7.getFat());
 	}
 	
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the sodium field is undefined in some object(s) based of how many parameters are defined in the constructor
+	 */
 	@Test
     void testGetSodium() {
 
@@ -75,7 +104,10 @@ public class NutritionFacts_Telescoping_Test {
 		assertEquals(13, setter7.getSodium());
 	}
 	
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the carbohydrate field is undefined in some object(s) based of how many parameters are defined in the constructor
+	 */
 	@Test
     void testGetCarbohydrate() {
 		
@@ -89,7 +121,10 @@ public class NutritionFacts_Telescoping_Test {
 		assertEquals(18, setter7.getCarbohydrate());
 	}
 	
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Telescoping}.
+	 * This tests if the protein field is undefined in some object(s) based of how many parameters are defined in the constructor
+	 */
 	@Test
     void testGetProtein() {
 		
