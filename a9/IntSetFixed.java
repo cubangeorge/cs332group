@@ -18,9 +18,33 @@ public class IntSetFixed implements Cloneable {
    // adding a private constructor
    private IntSetFixed (List<Integer> list) { els = list; }
 
+   /**
+    * Clones the IntSetFixed object and does a deep copy of it's list of Integer objects.
+    *
+    * @return IntSetFixed The successfully cloned object
+    * @throws CloneNotSupportedException if object isn't allowed to be cloned
+    */
    @Override 
-   public IntSetFixed clone() { 
-      return new IntSetFixed ( new ArrayList<Integer>(els));
+   public IntSetFixed clone() throws CloneNotSupportedException {
+	   
+	  //do a super.clone
+	  //iterate through clone and update references to new instances
+	   //make it point to the integers of that structure
+	   //List<Integer> clonedList = new ArrayList<Integer>(); 
+	   IntSetFixed cloned = (IntSetFixed) super.clone();
+//	   System.arraycopy(this.els, 0, cloned.els, 0, this.els.size());
+	   
+	   //inside for loop, initialize each element in clone using a integer constructor which will create an object based off an integer
+	   for (Integer i: this.els) {
+		   Integer newItem = i.intValue();
+		   cloned.els.add(newItem);
+	   }
+	   
+	   //old
+      //return new IntSetFixed ( new ArrayList<Integer>(els));
+	   
+	   return cloned;
+
    }
    
    private boolean compare_size_and_elements(IntSetFixed s) {
