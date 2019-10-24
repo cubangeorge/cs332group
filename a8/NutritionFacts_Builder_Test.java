@@ -3,7 +3,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class NutritionFacts_Builder_Test {
-	static NutritionFacts_Builder setter1 = new NutritionFacts_Builder.Builder(5, 4).calories(900).sodium(800).carbohydrate(60).fat(80).protein(45).build();
+	static NutritionFacts_Builder setter1 = new NutritionFacts_Builder.Builder(5, 4)
+			.calories(900).sodium(800).carbohydrate(60).fat(80).protein(45).build();
 
 	
 	
