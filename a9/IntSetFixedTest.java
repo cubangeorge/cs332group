@@ -69,6 +69,22 @@ class IntSetFixedTest {
 	}
 
 	/**
+	 * Test method for {@link IntSetFixed#add(java.lang.Object)}.
+	 */
+	@Test
+	void testIntSetadd() {
+		
+		IntSetFixed il1 = new IntSetFixed();
+		il1.add(5);
+		il1.add(6);
+		il1.add(7);
+		il1.add(8);
+		
+		assertEquals("[5, 6, 7, 8]",il1.toString());
+		
+	}
+
+	/**
 	 * Test method for {@link IntSetFixed#clone()}.
 	 */
 	@Test
@@ -77,6 +93,7 @@ class IntSetFixedTest {
 		for (int i = 0; i < 10; i++) {
 			toClone.add(i);
 		}
+
 		
 		
 		fail("Not yet implemented"); // TODO
