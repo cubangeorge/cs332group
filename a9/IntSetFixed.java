@@ -4,7 +4,12 @@ import java.util.List;
 
 public class IntSetFixed implements Cloneable {  
    private List<Integer> els;
-   public IntSetFixed () { els = new ArrayList<Integer>(); }
+   
+   
+   public IntSetFixed () { 
+	   els = new ArrayList<Integer>(); 
+   }
+   
    //...
    @Override 
    public boolean equals(Object obj) {  // Standard recipe
@@ -17,6 +22,17 @@ public class IntSetFixed implements Cloneable {
 
    // adding a private constructor
    private IntSetFixed (List<Integer> list) { els = list; }
+   
+   
+   public int add(int e) {
+	   
+	   //ensures no duplicates
+	   if (els.indexOf(e) < 0) {
+		   els.add(e);
+	   }
+	   
+	   return e;
+   }
 
    /**
     * Clones the IntSetFixed object and does a deep copy of it's list of Integer objects.

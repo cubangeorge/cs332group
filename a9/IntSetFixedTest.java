@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  *
  */
 class IntSetFixedTest {
-
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -65,6 +65,12 @@ class IntSetFixedTest {
 	 */
 	@Test
 	void testClone() {
+		IntSetFixed toClone = new IntSetFixed();
+		for (int i = 0; i < 10; i++) {
+			toClone.add(i);
+		}
+		
+		
 		fail("Not yet implemented"); // TODO
 	}
 
