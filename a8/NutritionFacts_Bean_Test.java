@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class NutritionFacts_Bean_Test {
 	
+
 	/**
 	 * Test method for the class {@link NutritionFacts_Bean}.
 	 * This tests whether an exception is thrown from accessing a field before initialization is complete. It expects an exception to be thrown.
