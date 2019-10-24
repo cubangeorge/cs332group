@@ -57,7 +57,10 @@ class IntSetFixedTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		fail("Not yet implemented"); // TODO
+
+		IntSetFixed isf = new IntSetFixed();
+		
+		
 	}
 
 	/**
