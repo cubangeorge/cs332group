@@ -1,3 +1,10 @@
+/**
+ *	G 01066284 Valeria L Green (VG)
+ *	G 00402127 Jorge L Martinez (JM) 
+ *	G 01082586 Blake Khan (BK)
+ */
+
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -13,13 +20,24 @@ public class NutritionFacts_Builder_Test {
 	static NutritionFacts_Builder setter5 = new NutritionFacts_Builder.Builder(5, 4).calories(900).sodium(800).fat(80).protein(45).build();
 	static NutritionFacts_Builder setter6 = new NutritionFacts_Builder.Builder(5, 4).calories(900).sodium(800).carbohydrate(60).fat(80).build();
 	
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if one of the two required fields are set
+	 */
 	@Test
 	void testGetServingSize() {assertEquals(5, setter1.getServingSize());}
 
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if one of the two required fields are set
+	 */
 	@Test
     void testGetServings() {assertEquals(4, setter1.getServings());}
     
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if a certain field will default to zero if not set with the builder.
+	 */
 	@Test
     void testGetCalories() {
 		//object where all fields are set
@@ -34,6 +52,10 @@ public class NutritionFacts_Builder_Test {
 		assertEquals(0, setter2.getCalories());
 	}
 	
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if a certain field will default to zero if not set with the builder.
+	 */
 	@Test
     void testGetSodium() {
 		//object where all fields are set
@@ -49,7 +71,10 @@ public class NutritionFacts_Builder_Test {
 	}
 	
 	
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if a certain field will default to zero if not set with the builder.
+	 */
 	@Test
     void testGetFat() {
 		//object where all fields are set
@@ -64,7 +89,10 @@ public class NutritionFacts_Builder_Test {
 		assertEquals(0, setter4.getFat());
 	}
 	
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if a certain field will default to zero if not set with the builder.
+	 */
 	@Test
     void testGetCarbohydrate() {
 		//object where all fields are set
@@ -79,7 +107,10 @@ public class NutritionFacts_Builder_Test {
 		assertEquals(0, setter5.getCarbohydrate());
 	}
 	
-	
+	/**
+	 * Test method for the class {@link NutritionFacts_Builder}.
+	 * This tests if a certain field will default to zero if not set with the builder.
+	 */
 	@Test
     void testGetProtein() {
 		//object where all fields are set
