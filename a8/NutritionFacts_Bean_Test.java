@@ -10,15 +10,11 @@ import static org.junit.Assert.fail;
 import org.junit.jupiter.api.Test;
 
 public class NutritionFacts_Bean_Test {
-<<<<<<< HEAD
 
-=======
-	
 	/**
 	 * Test method for the class {@link NutritionFacts_Bean}.
 	 * This tests whether an exception is thrown from accessing a field before initialization is complete. It expects an exception to be thrown.
 	 */
->>>>>>> cf61c0f5780ad3d2cfaab66b9779412ab49d8738
 	@Test
 	void testGetServingSize() {
 		NutritionFacts_Bean setter1 = new NutritionFacts_Bean();
