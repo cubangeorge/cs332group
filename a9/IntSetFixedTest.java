@@ -64,7 +64,13 @@ class IntSetFixedTest {
 		il1.add(7);
 		il1.add(8);
 		
-		System.out.println(il1);
+		IntSetFixed il2 = new IntSetFixed();
+		il1.add(5);
+		il1.add(6);
+		il1.add(7);
+		il1.add(8);
+		 
+		assertTrue(il1.equals(il2));
 		
 	}
 
@@ -75,12 +81,16 @@ class IntSetFixedTest {
 	void testIntSetadd() {
 		
 		IntSetFixed il1 = new IntSetFixed();
+		assertEquals("[]", il1.toString());//tests empty list
+		//add a few elements
 		il1.add(5);
 		il1.add(6);
 		il1.add(7);
 		il1.add(8);
 		
-		assertEquals("[5, 6, 7, 8]",il1.toString());
+		assertEquals("[5, 6, 7, 8]",il1.toString());//test happy path
+		il1.add(8);
+		assertEquals("[5, 6, 7, 8]",il1.toString());//test no duplicates
 		
 	}
 

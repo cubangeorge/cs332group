@@ -62,6 +62,9 @@ public class IntSetFixed implements Cloneable {
 	   return cloned;
 
    }
+   public int size() {
+	   return els.size();
+   }
    @Override 
    public String toString() {
 	   return this.els.toString();
@@ -69,7 +72,7 @@ public class IntSetFixed implements Cloneable {
    private boolean compare_size_and_elements(IntSetFixed s) {
 	   
 	   //check the size
-	   if (s.els.size() != this.els.size())
+	   if (s.size() != this.size())
 		   	return false;
 	   //now proceed to check for the presence of each element in the target object
 	   Iterator<Integer> litr = s.els.listIterator(s.els.size());
