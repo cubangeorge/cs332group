@@ -94,11 +94,13 @@ class NegativeIntSetTest {
 		
 		
 	}//end test
-	
+	//3#####################################################################3
+	//		from here down is all internal testing and not clone
+	//#######################################################################
 	/**
 	 * Test method for {@link NegativeIntSet#equals(java.lang.Object)}.
 	 */
-	//@Test
+	@Test
 	void test_NIS_equals() {
 		//compare it with another instance 
 		//of the same class
@@ -125,7 +127,7 @@ class NegativeIntSetTest {
 	/**
 	 * Test method for {@link NegativeIntSet#add(java.lang.Object)}.
 	 */
-	//@Test
+	@Test
 	void test_NIS_add() {
 		
 		NegativeIntSet il1 = new NegativeIntSet();
