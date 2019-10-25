@@ -115,20 +115,21 @@ class IntSetFixedTest {
 			//assertFalse(clone.equals(original));
 			assertTrue(clone.equals(original)); //test happy path 
 			original.set(0,4);
-			System.out.println(original.toString()+"\n"+clone.toString());
-			System.out.println(original);
-			System.out.println(clone);
-			assertFalse(clone.equals(original)); //test happy path not equal 
+			System.out.println("clone list:"+clone);
+			System.out.println("origi list:"+original);
 			
+			assertFalse(clone.equals(original)); //test happy path not equal
+			//clone.set(0, 4);
+			//assertFalse(clone.equals(original)); //test happy path equal again
 			
+
 			}
 			
 			//do equals method on each object
 			
-			
 		} catch(CloneNotSupportedException e) {
 			System.err.println("error " + e);
-			fail("expected exception didn't happen");
+			fail("unexpected exception didn't happen");
 		}
 		
 		
