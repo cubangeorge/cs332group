@@ -9,53 +9,6 @@ import org.junit.jupiter.api.Test;
 class NegativeIntSetTest {
 	
 	/**
-	 * Test method for {@link NegativeIntSet#equals(java.lang.Object)}.
-	 */
-	//@Test
-	void test_NIS_equals() {
-		//compare it with another instance 
-		//of the same class
-		NegativeIntSet il1 = new NegativeIntSet();
-		NegativeIntSet il2 = new NegativeIntSet();
-		assertTrue(il1.equals(il2)); //tests happy path equal empty lists
-
-		il1.add(5);
-		il1.add(6);
-		il1.add(7);
-		il1.add(8);
-		assertFalse(il1.equals(il2)); //tests happy path not equal
-		
-		il2.add(5);
-		il2.add(6);
-		il2.add(7);
-		il2.add(8);
-		
-		assertTrue(il1.equals(il2)); //tests happy path equal
-		il2.add(9);
-		assertFalse(il1.equals(il2)); //tests happy path not equal		
-	}
-
-	/**
-	 * Test method for {@link NegativeIntSet#add(java.lang.Object)}.
-	 */
-	//@Test
-	void test_NIS_add() {
-		
-		NegativeIntSet il1 = new NegativeIntSet();
-		assertEquals("[]", il1.toString());//tests empty list
-		//add a few elements
-		il1.add(5);
-		il1.add(6);
-		il1.add(7);
-		il1.add(8);
-		
-		assertEquals("[-5, -6, -7, -8]",il1.toString());//test happy path
-		il1.add(8);
-		assertEquals("[-5, -6, -7, -8]",il1.toString());//test no duplicates
-		
-	}
-
-	/**
 	 * Test method for {@link NegativeIntSet#clone()}.
 	 */
 	@Test
@@ -140,6 +93,55 @@ class NegativeIntSetTest {
 		
 		
 		
+	}//end test
+	
+	/**
+	 * Test method for {@link NegativeIntSet#equals(java.lang.Object)}.
+	 */
+	//@Test
+	void test_NIS_equals() {
+		//compare it with another instance 
+		//of the same class
+		NegativeIntSet il1 = new NegativeIntSet();
+		NegativeIntSet il2 = new NegativeIntSet();
+		assertTrue(il1.equals(il2)); //tests happy path equal empty lists
+
+		il1.add(5);
+		il1.add(6);
+		il1.add(7);
+		il1.add(8);
+		assertFalse(il1.equals(il2)); //tests happy path not equal
+		
+		il2.add(5);
+		il2.add(6);
+		il2.add(7);
+		il2.add(8);
+		
+		assertTrue(il1.equals(il2)); //tests happy path equal
+		il2.add(9);
+		assertFalse(il1.equals(il2)); //tests happy path not equal		
 	}
+
+	/**
+	 * Test method for {@link NegativeIntSet#add(java.lang.Object)}.
+	 */
+	//@Test
+	void test_NIS_add() {
+		
+		NegativeIntSet il1 = new NegativeIntSet();
+		assertEquals("[]", il1.toString());//tests empty list
+		//add a few elements
+		il1.add(5);
+		il1.add(6);
+		il1.add(7);
+		il1.add(8);
+		
+		assertEquals("[-5, -6, -7, -8]",il1.toString());//test happy path
+		il1.add(8);
+		assertEquals("[-5, -6, -7, -8]",il1.toString());//test no duplicates
+		
+	}
+
+	
 
 }
