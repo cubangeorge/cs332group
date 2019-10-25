@@ -11,7 +11,7 @@ class NegativeIntSetTest {
 	/**
 	 * Test method for {@link NegativeIntSet#equals(java.lang.Object)}.
 	 */
-	@Test
+	//@Test
 	void test_NIS_equals() {
 		//compare it with another instance 
 		//of the same class
@@ -32,17 +32,13 @@ class NegativeIntSetTest {
 		
 		assertTrue(il1.equals(il2)); //tests happy path equal
 		il2.add(9);
-		assertFalse(il1.equals(il2)); //tests happy path not equal
-		
-		//now make comparisons with subclassed objects
-		
-		
+		assertFalse(il1.equals(il2)); //tests happy path not equal		
 	}
 
 	/**
 	 * Test method for {@link NegativeIntSet#add(java.lang.Object)}.
 	 */
-	@Test
+	//@Test
 	void test_NIS_add() {
 		
 		NegativeIntSet il1 = new NegativeIntSet();
@@ -72,22 +68,69 @@ class NegativeIntSetTest {
 		
 		try {
 			
-			System.out.println("origi list:"+original);
 			NegativeIntSet clone = (NegativeIntSet) original.clone();
-			System.out.println("clone list:"+clone);
-			assertTrue(clone.equals(original)); //test happy path equal 
+			assertTrue(clone.equals(original)); //test happy path equal
+			System.out.printf(
+							  "clone_list class type:"+clone.getClass()+"\n"+
+							  "origi_list class type:"+original.getClass()+"\n\n"+
+							  "assertTrue(clone.equals(original)) passed:\n"+
+							  "---------------\n"+
+							  "clone list:"+clone+"\n"+
+							  "origi list:"+original+"\n"+
+							  "---------------\n"+
+							  "Equal subclass lists "+
+							  "copied by super class clone\n"+
+							  "============================"+
+							  "============================\n\n");
+			
 			original.set(0,24);
-			System.out.println("clone list:"+clone);
-			System.out.println("origi list:"+original);
+			System.out.println("modifying origi list to differ from cloned list...");
 			assertFalse(clone.equals(original)); //test happy path not equal
+			System.out.printf(
+					  "clone_list class type:"+clone.getClass()+"\n"+
+					  "origi_list class type:"+original.getClass()+"\n\n"+
+					"test assertFalse passed:\n"+
+					"---------------\n"+
+					"clone list:"+clone+"\n"+
+					"origi list:"+original+"\n"+
+					"---------------\n"+
+					"UnEqual subclass lists "+
+					"copied by super class clone\n"+
+					"============================"+
+					"============================\n\n");
+
 			clone.set(0, 4);//add a duplicate 
+			System.out.println("attempting to add a duplicate using clone.set(0,4)");
 			assertFalse(clone.equals(original)); //test happy path not equal again
-			System.out.println("clone list:"+clone);
-			System.out.println("origi list:"+original);
+			System.out.printf(
+					"clone_list class type:"+clone.getClass()+"\n"+
+					"origi_list class type:"+original.getClass()+"\n\n"+
+					"test assertFalse passed:\n"+
+					"---------------\n"+
+					"clone list:"+clone+"\n"+
+					"origi list:"+original+"\n"+
+					"---------------\n"+
+					"UnEqual subclass lists "+
+					"cloned unmodified no duplicates allowed\n"+
+					"============================"+
+					"============================\n\n");
+
 			clone.set(0, 24); // make the clone look like the original again
-			assertTrue(clone.equals(original)); //test happy path equal 
-			System.out.println("clone list:"+clone);
-			System.out.println("origi list:"+original);
+			System.out.println("now updating clone to match original list using clone.set(0,24)");
+			assertTrue(clone.equals(original)); //test happy path equal
+			System.out.printf(
+					"clone_list class type:"+clone.getClass()+"\n"+
+					"origi_list class type:"+original.getClass()+"\n\n"+
+					"test assertTrue passed:\n"+
+					"---------------\n"+
+					"clone list:"+clone+"\n"+
+					"origi list:"+original+"\n"+
+					"---------------\n"+
+					"Equal subclass lists "+
+					"match again upadted using super class super.set(0,24)\n"+
+					"============================"+
+					"============================\n\n");
+
 
 			
 		} catch(CloneNotSupportedException e) {
