@@ -3,7 +3,7 @@
  *
  */
 public class NegativeIntSet extends IntSetGood {
-	//this class stores only megative integers 
+	//this class stores only negative integers 
 	// if given a positive number it will add 
 	//its negative 
 	public NegativeIntSet() {
