@@ -23,21 +23,23 @@ public class IntSetFixed implements Cloneable {
    // adding a private constructor
    private IntSetFixed (List<Integer> list) { els = list; }
    
-   
+   //adds to the list 
    public int add(int e) {
 	   
 	   //ensures no duplicates
-	   if (els.indexOf(e) < 0) {
+	   if (!els.contains(e)) {
 		   els.add(e);
 	   }
 	   
 	   return e;
    }
-
+   
+   //sets the index to the value 
    public void set(int i, int v) {
 	   
-	   this.els.set(i, v);
+	   if (!els.contains(v)) {	   els.set(i, v);}
    }
+   
    /**
     * Clones the IntSetFixed object and does a deep copy of it's list of Integer objects.
     *
@@ -49,7 +51,7 @@ public class IntSetFixed implements Cloneable {
 	   
 	  //do a super.clone
 	  //iterate through clone and update references to new instances
-	   //make it point to the integers of that structure
+	  //make it point to the integers of that structure
 
 	   IntSetFixed cloned = (IntSetFixed) super.clone();
 	   cloned.els = new ArrayList<Integer>(); 
@@ -64,37 +66,50 @@ public class IntSetFixed implements Cloneable {
 	   return cloned;
 
    }
-   public int size() {
-	   return els.size();
-   }
+   
+//   //return the size of els
+//   public int size() {
+//	   return els.size();
+//   }
+   
    @Override 
    public String toString() {
 	   return this.els.toString();
    }
+   
+       
+   //does the comparison for the equals method
    private boolean compare_size_and_elements(IntSetFixed s) {
 	   
 	   //check the size
-	   if (s.size() != this.size())
+	   if (s.els.size() != this.els.size())
 		   	return false;
 	   //now proceed to check for the presence of each element in the target object
-	   Iterator<Integer> litr = s.els.listIterator(s.els.size());
-	
+	  // Iterator<Integer> litr = s.els.listIterator(s.size());
 	   
-	   while (litr.hasNext()) {
-		   int t = litr.next();
-		   boolean found = false;
-		   for (int i : this.els) {  
-			   if (t == i) {found = true; break; } 
-		   }//end for
-		   //if not found @ this point return false since its not present
-		   if (found ==false)   return false;	   
-		}//end while
-	   //from here down the entire list was search and 
-	   //the method should have returned false if any element was absent 
-	   //or if the sizes were different.
-	   //so at this point in execution both sizes are equal 
-	   //and each element is present which means the sets are equal
-	   return true ;
+	   //check its not empty
+	   //if (!litr.hasNext()) return false;
+	   
+	   for (Integer i : s.els) {
+		   if(!this.els.contains(i))
+			   return false;
+	   }
+	   return true;
+//	   while (litr.hasNext()) {
+//		   int t = litr.next();
+//		   boolean found = false;
+//		   for (int i : this.els) {  
+//			   if (t == i) {found = true; break; } 
+//		   }//end for
+//		   //if not found @ this point return false since its not present
+//		   if (found ==false)   return false;	   
+//		}//end while
+//	   //from here down the entire list was search and 
+//	   //the method should have returned false if any element was absent 
+//	   //or if the sizes were different.
+//	   //so at this point in execution both sizes are equal 
+//	   //and each element is present which means the sets are equal
+//	   return true ;
    }
    
 // @Override 
