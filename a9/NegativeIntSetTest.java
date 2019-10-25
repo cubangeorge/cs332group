@@ -1,30 +1,22 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-/**
- * 
- */
 
 /**
  * @author jorge
  *
  */
-class IntSetFixedTest {
+class NegativeIntSetTest {
 	
 	/**
-	 * Test method for {@link IntSetFixed#equals(java.lang.Object)}.
+	 * Test method for {@link NegativeIntSet#equals(java.lang.Object)}.
 	 */
 	@Test
-	void testEqualsObject() {
+	void test_NIS_equals() {
 		//compare it with another instance 
 		//of the same class
-		IntSetFixed il1 = new IntSetFixed();
-		IntSetFixed il2 = new IntSetFixed();
+		NegativeIntSet il1 = new NegativeIntSet();
+		NegativeIntSet il2 = new NegativeIntSet();
 		assertTrue(il1.equals(il2)); //tests happy path equal empty lists
 
 		il1.add(5);
@@ -48,12 +40,12 @@ class IntSetFixedTest {
 	}
 
 	/**
-	 * Test method for {@link IntSetFixed#add(java.lang.Object)}.
+	 * Test method for {@link NegativeIntSet#add(java.lang.Object)}.
 	 */
 	@Test
-	void testIntSet_addTest() {
+	void test_NIS_add() {
 		
-		IntSetFixed il1 = new IntSetFixed();
+		NegativeIntSet il1 = new NegativeIntSet();
 		assertEquals("[]", il1.toString());//tests empty list
 		//add a few elements
 		il1.add(5);
@@ -61,18 +53,18 @@ class IntSetFixedTest {
 		il1.add(7);
 		il1.add(8);
 		
-		assertEquals("[5, 6, 7, 8]",il1.toString());//test happy path
+		assertEquals("[-5, -6, -7, -8]",il1.toString());//test happy path
 		il1.add(8);
-		assertEquals("[5, 6, 7, 8]",il1.toString());//test no duplicates
+		assertEquals("[-5, -6, -7, -8]",il1.toString());//test no duplicates
 		
 	}
 
 	/**
-	 * Test method for {@link IntSetFixed#clone()}.
+	 * Test method for {@link NegativeIntSet#clone()}.
 	 */
 	@Test
-	void testCloneSameClass() {
-		IntSetFixed original = new IntSetFixed();
+	void test_NIS_clone() {
+		NegativeIntSet original = new NegativeIntSet();
 		int size = 10;
 		for (int i = 0; i < size; i++) {
 			original.add(i);
@@ -80,7 +72,9 @@ class IntSetFixedTest {
 		
 		try {
 			
-			IntSetFixed clone = original.clone();
+			System.out.println("origi list:"+original);
+			NegativeIntSet clone = (NegativeIntSet) original.clone();
+			System.out.println("clone list:"+clone);
 			assertTrue(clone.equals(original)); //test happy path equal 
 			original.set(0,24);
 			System.out.println("clone list:"+clone);

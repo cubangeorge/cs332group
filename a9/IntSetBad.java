@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntSet implements Cloneable {  
+public class IntSetBad implements Cloneable {  
    private List<Integer> els;
-   public IntSet () { els = new ArrayList<Integer>(); }
+   public IntSetBad () { els = new ArrayList<Integer>(); }
    //...
 //   @Override 
 //   public boolean equals(Object obj) {  // Standard recipe
@@ -19,10 +19,10 @@ public class IntSet implements Cloneable {
 //   }
 
    // adding a private constructor
-   private IntSet (List<Integer> list) { els = list; }
+   private IntSetBad (List<Integer> list) { els = list; }
 
    @Override 
-   public IntSet clone() { 
-      return new IntSet ( new ArrayList<Integer>(els));
+   public IntSetBad clone() { 
+      return new IntSetBad ( new ArrayList<Integer>(els));
    }
 }
