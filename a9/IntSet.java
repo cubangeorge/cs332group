@@ -1,27 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntSetBad implements Cloneable {  
+public class IntSet implements Cloneable {  
 	private List<Integer> els;
 	   
 	   
-	   public IntSetBad () { 
+	   public IntSet () { 
 		   els = new ArrayList<Integer>(); 
 	   }
 	   @Override 
-	   public IntSetBad clone() { 
-	      return new IntSetBad ( new ArrayList<Integer>(els));
+	   public IntSet clone() { 
+	      return new IntSet ( new ArrayList<Integer>(els));
 	   }
 	   
 	   @Override 
 	   public boolean equals(Object obj) {  // Standard recipe
-	      if (!(obj instanceof IntSetBad)) return false;
+	      if (!(obj instanceof IntSet)) return false;
 
-	      IntSetBad s = (IntSetBad) obj;
+	      IntSet s = (IntSet) obj;
 	      return compare_size_and_elements(s);
 	   }
 
-	   private IntSetBad (List<Integer> list) { els = list; }
+	   private IntSet (List<Integer> list) { els = list; }
 	   
 	   //adds to the list 
 	   public int add(int e) {
@@ -49,7 +49,7 @@ public class IntSetBad implements Cloneable {
 	   
 	       
 	   //does the comparison for the equals method
-	   private boolean compare_size_and_elements(IntSetBad s) {
+	   private boolean compare_size_and_elements(IntSet s) {
 		   
 		   //check the size
 		   if (s.els.size() != this.els.size())
