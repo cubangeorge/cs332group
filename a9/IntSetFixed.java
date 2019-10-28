@@ -2,24 +2,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class IntSetGood implements Cloneable {  
+public class IntSetFixed implements Cloneable {  
    private List<Integer> els;
    
    
-   public IntSetGood () { 
+   public IntSetFixed () { 
 	   els = new ArrayList<Integer>(); 
    }
    
    //...
    @Override 
    public boolean equals(Object obj) {  // Standard recipe
-      if (!(obj instanceof IntSetGood)) return false;
+      if (!(obj instanceof IntSetFixed)) return false;
 
-      IntSetGood s = (IntSetGood) obj;
+      IntSetFixed s = (IntSetFixed) obj;
       return compare_size_and_elements(s);
    }
 
-   private IntSetGood (List<Integer> list) { els = list; }
+   private IntSetFixed (List<Integer> list) { els = list; }
    
    //adds to the list 
    public int add(int e) {
@@ -45,11 +45,11 @@ public class IntSetGood implements Cloneable {
     * @throws CloneNotSupportedException if object isn't allowed to be cloned
     */
    @Override 
-   public IntSetGood clone() throws CloneNotSupportedException {
+   public IntSetFixed clone() throws CloneNotSupportedException {
 	   
 	  //do a super.clone
 	  //make deep copies
-	   IntSetGood cloned = (IntSetGood) super.clone();
+	   IntSetFixed cloned = (IntSetFixed) super.clone();
 	   //make deep copies
 	   cloned.els = new ArrayList<Integer>(cloned.els); 
 	   
@@ -63,7 +63,7 @@ public class IntSetGood implements Cloneable {
    
        
    //does the comparison for the equals method
-   private boolean compare_size_and_elements(IntSetGood s) {
+   private boolean compare_size_and_elements(IntSetFixed s) {
 	   
 	   //check the size
 	   if (s.els.size() != this.els.size())

@@ -118,7 +118,7 @@ class AllTests {
 					"origi list:"+original+"\n"+
 					"---------------\n"+
 					"Equal subclass lists "+
-					"match again upadted using super class super.set(0,24)\n"+
+					"match again updated using super class super.set(0,24)\n"+
 					"============================"+
 					"============================\n\n");
 

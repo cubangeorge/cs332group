@@ -2,7 +2,7 @@
  * @author jorge
  *
  */
-public class NegativeIntSet extends IntSetGood {
+public class NegativeIntSet extends IntSetFixed {
 	//this class stores only negative integers 
 	// if given a positive number it will add 
 	//its negative 
