@@ -19,21 +19,22 @@ class AllTests {
 	@Test
 	@Order(4)
 	void poor_clone_imple_test() {
-		Doomed d = new Doomed();
+		Doomed_subclass d = new Doomed_subclass();
 		d.add(1);
 		d.add(2);
 		d.add(3);
-		System.out.println("Doomed class: "+d.toString());
-		Doomed d_clone = new Doomed();
-		System.out.println("created Doomed clone d_clone: "+d_clone);
+		System.out.println("Doomed_subclass_subclass class: "+d.toString());
+		Doomed_subclass d_clone = new Doomed_subclass();
+		System.out.println("created Doomed_subclass_subclass clone d_clone: "+d_clone);
 		
 		try {
-			d_clone = (Doomed) d.clone();
-			fail("no Class Cast Exception thrown");
+			d_clone = (Doomed_subclass) d.clone();
+			System.out.println("no Class Cast Exception thrown");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println("Exception: \n"+e+
 					"\nThis is our test showing the clone fault in IntSet.java");
+			fail("end or testing\n=============================================");
 		}
 		
 	}
@@ -44,6 +45,13 @@ class AllTests {
 	@Order(1)
 	void nice_clone_imple_tets() {
 		NegativeIntSet original = new NegativeIntSet();
+		try {
+			assertTrue(original.clone().getClass()==original.getClass());
+		} catch (CloneNotSupportedException e1) {
+
+			e1.printStackTrace();
+			fail("intSetGood implementation failed");
+		}
 		int size = 10;
 		for (int i = 0; i < size; i++) {
 			original.add(i);
