@@ -1,14 +1,14 @@
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 /**
- * @author jorge
- *
- */
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
+ **/
 @TestMethodOrder(OrderAnnotation.class)
 class AllTests {
 	/**
@@ -23,11 +23,12 @@ class AllTests {
 		d.add(1);
 		d.add(2);
 		d.add(3);
-		System.out.println("Doomed_subclass_subclass class: "+d.toString());
+		System.out.println("created Doomed_subclass instance: d "+d.toString());
 		Doomed_subclass d_clone = new Doomed_subclass();
-		System.out.println("created Doomed_subclass_subclass clone d_clone: "+d_clone);
+		System.out.println("created Doomed_subclass instance: d_clone: "+d_clone);
 		
 		try {
+			System.out.println("calling defective inherited d.clone() method from IntSet...");
 			d_clone = (Doomed_subclass) d.clone();
 			System.out.println("no Class Cast Exception thrown");
 		} catch (Exception e) {
@@ -80,7 +81,7 @@ class AllTests {
 			System.out.printf(
 					  "clone_list class type:"+clone.getClass()+"\n"+
 					  "origi_list class type:"+original.getClass()+"\n\n"+
-					"test assertFalse passed:\n"+
+					"test assertFalse(clone.equals(original));  passed:\n"+
 					"---------------\n"+
 					"clone list:"+clone+"\n"+
 					"origi list:"+original+"\n"+
@@ -96,7 +97,7 @@ class AllTests {
 			System.out.printf(
 					"clone_list class type:"+clone.getClass()+"\n"+
 					"origi_list class type:"+original.getClass()+"\n\n"+
-					"test assertFalse passed:\n"+
+					"test assertFalse( clone.equals(original)) passed:\n"+
 					"---------------\n"+
 					"clone list:"+clone+"\n"+
 					"origi list:"+original+"\n"+
@@ -112,7 +113,7 @@ class AllTests {
 			System.out.printf(
 					"clone_list class type:"+clone.getClass()+"\n"+
 					"origi_list class type:"+original.getClass()+"\n\n"+
-					"test assertTrue passed:\n"+
+					"test assertTrue(clone.equals(original));  passed:\n"+
 					"---------------\n"+
 					"clone list:"+clone+"\n"+
 					"origi list:"+original+"\n"+

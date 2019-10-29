@@ -1,7 +1,8 @@
 /**
- * @author jorge
- *
- */
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
+ **/
 public class NegativeIntSet extends IntSetFixed {
 	//this class stores only negative integers 
 	// if given a positive number it will add 
