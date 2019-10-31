@@ -11,7 +11,7 @@ private int z; // the z coordinate
    public boolean equals (Object p) { // overriding definition
       if (p instanceof Point3) return equals((Point3) p);
       return super.equals(p); }
-
+   @Override
    public boolean equals (Point2 p) { // overriding definition
       if (p instanceof Point3) return equals((Point3) p);
       return super.equals(p); }

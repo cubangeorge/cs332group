@@ -7,8 +7,8 @@ public class Point2 {
 	    this.y=y;
    }
    
-   @Override 
-   public boolean equals(Object p) {
+   
+   public boolean equals(Point2 p) {
 	   //check class and null validation
 	   if (p == null || !(p instanceof Point2)) return false;
 	   //check instance variables
