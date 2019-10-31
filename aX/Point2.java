@@ -7,7 +7,7 @@ public class Point2 {
 	    this.y=y;
    }
    
-   
+   @Override
    public boolean equals(Object p) {
 	   //check class and null validation
 	   if (p == null || !(p instanceof Point2)) return false;
