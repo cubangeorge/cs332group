@@ -32,7 +32,6 @@ class AllTests {
 			d_clone = (Doomed_subclass) d.clone();
 			System.out.println("no Class Cast Exception thrown");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			System.err.println("Exception: \n"+e+
 					"\nThis is our test showing the clone fault in IntSet.java");
 			fail("end or testing\n=============================================");

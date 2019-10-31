@@ -7,14 +7,29 @@ import java.util.List;
  * @author G 01082586 Blake Khan (BK)
  **/
 public class IntSetFixed implements Cloneable {  
+
+	// Fields -------------------------------------
+	
    private List<Integer> els;
    
+   // Constructors -------------------------------------
    
+   /**
+    * Constructs a new ArrayList for the object
+    *
+    */
    public IntSetFixed () { 
 	   els = new ArrayList<Integer>(); 
    }
    
-   //...
+   // Methods ------------------------------------------------------
+   
+   /**
+    * Determines the equality of two objects by calling another method to do an in depth analysis of equality of the objects inside.
+    *
+    * @param obj the object to compare
+    * @return boolean whether equality is found or not between the two objects
+    */
    @Override 
    public boolean equals(Object obj) {  // Standard recipe
       if (!(obj instanceof IntSetFixed)) return false;
@@ -25,7 +40,12 @@ public class IntSetFixed implements Cloneable {
 
    private IntSetFixed (List<Integer> list) { els = list; }
    
-   //adds to the list 
+   /**
+    * Adds a new integer to the list of the current object
+    *
+    * @param e The integer to add to the list
+    * @return int The integer that was added to the list successfully
+    */
    public int add(int e) {
 	   
 	   //ensures no duplicates
@@ -36,7 +56,13 @@ public class IntSetFixed implements Cloneable {
 	   return e;
    }
    
-   //sets the index to the value 
+   /**
+    * Sets an item in the list to a specific index
+    *
+    * @param i The key to set an element to
+    * @param v The value for the index
+    * 
+    */
    public void set(int i, int v) {
 	   
 	   if (!els.contains(v)) {	   els.set(i, v);}
@@ -60,13 +86,24 @@ public class IntSetFixed implements Cloneable {
 	  return cloned;
    }
    
+   /**
+    * Returns the string representation of the object's list contents by calling the super class
+    *
+    * @return String The string representation of the object
+    * 
+    */
    @Override 
    public String toString() {
 	   return this.els.toString();
    }
    
-       
-   //does the comparison for the equals method
+   /**
+    * Does the comparison for the equals method. It inspects each element in the object's list.
+    *
+    * @param s The IntSetFixed object sent in to compare it's contents with
+    * @return boolean Whether or not all the contents in one list are contained in the other
+    * 
+    */
    private boolean compare_size_and_elements(IntSetFixed s) {
 	   
 	   //check the size
@@ -81,9 +118,4 @@ public class IntSetFixed implements Cloneable {
 	   return true;
    }
    
-// @Override 
-// public int hashCode() { 
-//    // see below 
-// }
-
 }
