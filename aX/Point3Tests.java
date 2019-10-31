@@ -13,14 +13,14 @@ class Point3Tests {
 	 * Test method for {@link Point3#equals(Point3)}.
 	 */
 	@Test
-	void test_Symmtry() {
+	void test_Symmetry() {
 		Point2 p = new Point2(0,0);
 		Point3 q = new Point3(0,0);
-		
+
 		//tests symmetry
 		assertTrue(p.equals(q));
 		assertTrue(q.equals(p));
-		//tests symmtery with different points 
+		//tests symmetry with different points 
 		p = new Point2(1,2);
 		q = new Point3(0,0);
 		assertFalse(p.equals(q));
@@ -36,5 +36,6 @@ class Point3Tests {
 		assertTrue(q.equals(z));
 		assertTrue(p.equals(z));
 	}
+	
 
 }

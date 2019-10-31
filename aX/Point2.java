@@ -8,7 +8,7 @@ public class Point2 {
    }
    
    
-   public boolean equals(Point2 p) {
+   public boolean equals(Object p) {
 	   //check class and null validation
 	   if (p == null || !(p instanceof Point2)) return false;
 	   //check instance variables
