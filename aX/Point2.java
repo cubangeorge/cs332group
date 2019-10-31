@@ -1,16 +1,22 @@
 public class Point2 {
-   private int x; // the x coordinate
-   private int y; // the y coordinate
+   private int x=0; // the x coordinate
+   private int y=0; // the y coordinate
 
-//   public boolean equals (Object p) { // overriding definition
-//      if (p instanceof Point3) return equals((Point3) p);
-//      return super.equals(p); }
-//
-//   public boolean equals (Point2 p) { // overriding definition
-//      if (p instanceof Point3) return equals((Point3) p);
-//      return super.equals(p); }
-//
-//   public boolean equals (Point3 p) { // extra definition
-//      if (p == null || z != p.z) return false;
-//      return super.equals(p); }
+   public Point2(int x , int y) {
+	    this.x=x;
+	    this.y=y;
+   }
+   
+   public boolean equals(Point2 p) {
+	   //check class and null validation
+	   if (p == null || !(p instanceof Point2)) return false;
+	  
+	   //check instance variables
+	   return (x==((Point2)p).x() && y == ((Point2)p).y())? true : false;
+
+   }
+   
+   public int x() { return x;}
+   public int y() { return y;}
+
 }
