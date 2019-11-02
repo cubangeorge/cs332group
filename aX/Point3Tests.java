@@ -39,6 +39,6 @@ class Point3Tests {
 		//test transitivity		
 		assertEquals(p, q);
 		assertEquals(q, z);
-		assertNotEquals(p, z); // This is what causes transitivity to fail!
+		assertEquals(p, z); // This is what causes transitivity to fail!
 	}
 }
