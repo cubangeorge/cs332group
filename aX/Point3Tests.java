@@ -14,32 +14,32 @@ class Point3Tests {
 	 */
 	@Test
 	void test_Symmetry() {
-		Point2 p = new Point2(0,0);
-		Point3 q = new Point3(0,0);
+		// create equal points
+		Point2 p = new Point2(1,2);
+		Point3 q = new Point3(1,2, 3);
 
 		//tests symmetry
-		assertTrue(p.equals(q));
-		assertTrue(q.equals(p));
-		//tests symmetry with different points 
-		p = new Point2(1,2);
-		q = new Point3(0,0);
-		assertFalse(p.equals(q));
-		assertFalse(q.equals(p));
+		assertEquals(p, q);
+		assertEquals(q, p);
+
+		//modify to make not equal
+		p = new Point2(0,0);
+
+		// test for symmetry now (shouldn't be!)
+		assertNotEquals(p, q);
+		assertNotEquals(q, p);
 	}
 	@Test
 	void test_Transitivity() {
-		Point2 p = new Point2(0,0);
-		Point3 q = new Point3(0,0);
-		Point3 z = new Point3(0,0);
+		// create points
+		Point3 p = new Point3(1,2, 3);
+		Point2 q = new Point2(1,2);
+		Point3 z = new Point3(1,2, 5);
+
 		//test transitivity		
-		assertTrue(p.equals(q));
-		assertTrue(q.equals(z));
-		assertTrue(p.equals(z));
+		assertEquals(p, q);
+		assertEquals(q, z);
+		assertEquals(p, z); // This is what causes transitivity to fail!
 	}
-	@Test
-	void test_LSP() {
-		
-	}
-	
 
 }
