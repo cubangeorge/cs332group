@@ -1,4 +1,4 @@
-public class Point2 {
+public class Point2{
    private int x=0; // the x coordinate
    private int y=0; // the y coordinate
 

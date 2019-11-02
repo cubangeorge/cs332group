@@ -5,7 +5,7 @@ private int z; // the z coordinate
   
 	public Point3(int x, int y) {
 		super(x, y);
-		z=0;
+		z=6;
 	}
    @Override 
    public boolean equals (Object p) { // overriding definition

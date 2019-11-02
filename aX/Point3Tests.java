@@ -36,6 +36,10 @@ class Point3Tests {
 		assertTrue(q.equals(z));
 		assertTrue(p.equals(z));
 	}
+	@Test
+	void test_LSP() {
+		
+	}
 	
 
 }
