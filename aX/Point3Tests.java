@@ -49,7 +49,9 @@ class Point3Tests {
 	 * Test method for {@link Point2#equals(Object)}.
 	 * 
 	 * This tests transitivity which is broken due to the logical fallacy. 
-	 * Even if p and q are equal doesn't mean that p and z are equal
+	 * Even if p and q are equal  
+	 * and q and z are equal
+	 * doesn't mean that p and z are equal
 	 * 
 	 */
 	@Test
@@ -60,7 +62,7 @@ class Point3Tests {
 		Point3 z = new Point3(1,2, 5);
 
 		System.out.println("======================");
-		System.out.println("testing transtivity");
+		System.out.println("testing transitivity");
 		System.out.println("Created Point p:"+p);
 		System.out.println("Created Point q:"+q);
 		System.out.println("Created Point z:"+z);
