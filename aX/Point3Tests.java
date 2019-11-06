@@ -43,6 +43,15 @@ class Point3Tests {
 		System.out.println("Symmetry test:"+(!p.equals(q)&&!q.equals(p)));
 
 	}
+	
+	/**
+	 * Test method for {@link Point3#equals(Point3)}.
+	 * Test method for {@link Point2#equals(Object)}.
+	 * 
+	 * This tests transitivity which is broken due to the logical fallacy. 
+	 * Even if p and q are equal doesn't mean that p and z are equal
+	 * 
+	 */
 	@Test
 	void test_Transitivity() {
 		// create points
