@@ -1,3 +1,9 @@
+/**
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
+ */
+
 public class Point2 {
 
     private int x; // the x coordinate
@@ -8,6 +14,12 @@ public class Point2 {
         this.y = y;
     }
 
+    /**
+     * Determines the equality of two objects. This compares the x and y values.
+     *
+     * @param obj The general object to compare
+     * @return boolean Whether the two objects are found to be equal
+     */
     @Override
     public boolean equals(Object p) {
         if (p == this) {
