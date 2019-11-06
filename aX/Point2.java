@@ -11,6 +11,7 @@ public class Point2 {
 
     @Override
     public boolean equals(Object p) {
+
         if (p == this) {
             return true;
         }
@@ -23,6 +24,9 @@ public class Point2 {
         //check instance variables
         return x == ((Point2) p).x() && y == ((Point2) p).y();
 
+    }
+    public String toString() {
+    	return "("+this.x()+","+this.y()+")";
     }
 
     public int x() {

@@ -30,5 +30,9 @@ public class Point3 extends Point2 {
 
         return super.equals(p);
     }
+    
+    public String toString() {
+    	return "("+this.x()+","+this.y()+","+z+")";
+    }
 
 }
