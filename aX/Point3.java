@@ -5,13 +5,19 @@
  */
 
 public class Point3 extends Point2 {
+	
+	// Fields ------------------------------------
 
     private int z; // the z coordinate
+    
+    // Constructors ------------------------------------
 
     public Point3(int x, int y, int z) {
         super(x, y);
         this.z = z;
     }
+    
+    // Methods ------------------------------------
 
     /**
     * Determines the equality of two objects. This is a general catch all

@@ -6,13 +6,20 @@
 
 public class Point2 {
 
+	// Fields ------------------------------------
+	
     private int x; // the x coordinate
     private int y; // the y coordinate
 
+    // Constructors ------------------------------------
+	
+    
     public Point2(int x, int y) {
         this.x = x;
         this.y = y;
     }
+    
+    // Methods ------------------------------------
 
     /**
      * Determines the equality of two objects. This compares the x and y values.
@@ -36,10 +43,20 @@ public class Point2 {
 
     }
 
+    /**
+     * Returns the x value
+     *
+     * @return int The returned x value
+     */
     public int x() {
         return x;
     }
 
+    /**
+     * Returns the y value
+     *
+     * @return int The returned y value
+     */
     public int y() {
         return y;
     }
