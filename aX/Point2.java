@@ -30,14 +30,13 @@ public class Point2 {
      */
     @Override
     public boolean equals(Object p) {
-
-        if (p == this) {
-            return true;
-        }
-
         //check class and null validation
         if (!(p instanceof Point2)) {
             return false;
+        }
+
+        if (p == this) {
+            return true;
         }
 
         //check instance variables
