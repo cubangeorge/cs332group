@@ -2,7 +2,7 @@ import java.util.Collection;
 import java.util.Set;
 
 // Implementation details in underlying set are encapsulated again
-public class InstrumentedCollection<E> extends ForwardingSet<E>{
+public class InstrumentedCollection<E> extends ForwardingCollection<E>{
    private int addCount = 0;	
 
    public InstrumentedCollection(Set<E> s){ super(s); }

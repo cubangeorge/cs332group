@@ -5,11 +5,11 @@ import java.util.Set;
 
 // Re-usable wrapper uses composition instead of inheritance 
 // Note power of the implemented interface
-public class ForwardingSet<E> implements Set<E> {
+public class ForwardingCollection<E> implements Set<E> {
 	private final Set<E> s;
 
 	
-	public ForwardingSet(Set<E> s){ this.s = s; }
+	public ForwardingCollection(Set<E> s){ this.s = s; }
 	/**
 	 * @param s2
 	 */
