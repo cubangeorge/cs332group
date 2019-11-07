@@ -1,15 +1,13 @@
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 // Re-usable wrapper uses composition instead of inheritance 
 // Note power of the implemented interface
-public class ForwardingCollection<E> implements Set<E> {
-	private final Set<E> s;
+public class ForwardingCollection<E> implements Collection<E> {
+	private final Collection<E> s;
 
 	
-	public ForwardingCollection(Set<E> s){ this.s = s; }
+	public ForwardingCollection(Collection<E> s){ this.s = s; }
 	/**
 	 * @param s2
 	 */
