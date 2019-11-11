@@ -50,15 +50,19 @@ class Tests {
 		ArrayList<String> list_3 = new ArrayList<String>();
 		list_3.add("1");
 		list_3.add("2");
+		
+		ForwardingList<String> fl = new ForwardingList<String>(list_2);
 		//il corresponds to list_1
 		InstrumentedList<String> il = new InstrumentedList <String>(list_1);
 		//ily corresponds to list_3
 		InstrumentedList<String> ily = new InstrumentedList <String>(list_3);
 		
 		//Demonstrating transitivity ---------------
-		assertEquals (il,list_2);
-		assertEquals (list_2,ily);
+		
+		assertEquals (list_1,fl);
+		assertEquals (fl,il);
 		assertEquals (il,ily);
+		assertEquals (list_1,ily);
 	}
 	
 	/**
