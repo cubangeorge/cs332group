@@ -56,27 +56,29 @@ class Tests {
 		InstrumentedList<String> ily = new InstrumentedList <String>(list_3);
 		
 		//Demonstrating transitivity ---------------
-		
-		assertEquals(list_1, il);
-		assertEquals(il, list_1);
-		
-		assertEquals(list_3, ily);
-		assertEquals(ily, list_3);
-		
-		
-		//x.equals(y) where x is il and y is list_2
-		assertEquals(list_2,il);
-		assertEquals(il, list_2);
-	
-		//y.equals(z) where y is list_2 and z is ily
-		assertEquals(list_2, ily);
-		assertEquals(ily, list_2);
-		
-		
-		//x.equals(z) where x is il and z is ily
-		assertEquals(il, ily);
-		assertEquals(ily, il);
-			
+		assertEquals (il,list_2);
+		assertEquals (list_2,ily);
+		assertEquals (il,ily);
+//		assertEquals(list_1, il);
+//		assertEquals(il, list_1);
+//		
+//		assertEquals(list_3, ily);
+//		assertEquals(ily, list_3);
+//		
+//		
+//		//x.equals(y) where x is il and y is list_2
+//		assertEquals(list_2,il);
+//		assertEquals(il, list_2);
+//	
+//		//y.equals(z) where y is list_2 and z is ily
+//		assertEquals(list_2, ily);
+//		assertEquals(ily, list_2);
+//		
+//		
+//		//x.equals(z) where x is il and z is ily
+//		assertEquals(il, ily);
+//		assertEquals(ily, il);
+//			
 	}
 	
 	/**
