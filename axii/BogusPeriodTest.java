@@ -19,7 +19,7 @@ class BogusPeriodTest {
 
 	@Test
 	void test() {
-			BogusPeriod bp = new BogusPeriod();
+			BogusPeriod bp = new BogusPeriod();//this will contain  MODIFIED POINT
 		    Period p = (Period) deserialize(bp.getBp());
 		    System.out.println(p);
 
@@ -28,8 +28,8 @@ class BogusPeriodTest {
 	// Returns the object with the specified serialized form
 	  static Object deserialize(byte[] sf) {
 	    try {
-	      return new ObjectInputStream(
-	          new ByteArrayInputStream(sf)).readObject();
+	      return new ObjectInputStream( new ByteArrayInputStream(sf))
+	    		  .readObject();
 	    } catch (IOException | ClassNotFoundException e) {
 	      throw new IllegalArgumentException(e);
 	    }
