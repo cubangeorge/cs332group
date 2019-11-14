@@ -26,7 +26,7 @@ class MutablePeriodTests {
 	@Test
 	void turnBackTime() {
 		MutablePeriod mp = new MutablePeriod();
-	    Period p = mp.period;
+	    //Period p = mp.period;
 	    Date pEnd = mp.end;
 		assertFalse(true);
 		//assertEquals("Wed Nov 22 00:21:29 PST 2017 - Wed Nov 22 00:21:29 PST 1978", pEnd.setYear(78).toString());
@@ -40,7 +40,7 @@ class MutablePeriodTests {
 	@Test
 	void turnBackTimeAgain() {
 		MutablePeriod mp = new MutablePeriod();
-	    Period p = mp.period;
+	    //Period p = mp.period;
 	    Date pEnd = mp.end;
 		assertFalse(true);
 	    //assertEquals("Wed Nov 22 00:21:29 PST 2017 - Sat Nov 22 00:21:29 PST 1969", pEnd.setYear(69).toString());
