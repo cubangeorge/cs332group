@@ -29,7 +29,9 @@ public class BogusPeriod {
     0x77, 0x08, 0x00, 0x00, 0x00, (byte)0xd5, 0x17, 0x69, 0x22,
     0x00, 0x78
   };
-
+  public byte[] getBp() {
+	  return this.serializedForm;
+  }
   public static void main(String[] args) {
     Period p = (Period) deserialize(serializedForm);
     System.out.println(p);
