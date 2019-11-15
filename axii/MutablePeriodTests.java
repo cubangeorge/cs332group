@@ -22,7 +22,6 @@ class MutablePeriodTests {
 	/**
 	 * 
 	 */
-	@SuppressWarnings("deprecation")
 	@Test
 	void turnBackTime() {
 		MutablePeriod mp = new MutablePeriod();
