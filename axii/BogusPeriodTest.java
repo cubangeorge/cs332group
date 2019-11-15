@@ -26,11 +26,12 @@ class BogusPeriodTest {
 	
 	@Test
 	void test()  {
+		//printing Bogus point
 		System.out.println("This shows the bogus period from Bloch 88:");
 	    Period p = (Period) BogusPeriod.deserialize(BogusPeriod.serializedForm);
 	    System.out.println("\t"+p);
 	   
-	    //now making a good period 
+	    //now setting up date preliminaries
 	    Date start=null;
 	    Date end=null ;
 	    SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
@@ -42,8 +43,11 @@ class BogusPeriodTest {
 			e1.printStackTrace();
 		}
 	    
+		//now making good and bad points 
 
-	    Period goodPeriod = new Period(start,end);
+	    Period goodPeriod = new Period(start,end);//good Period 
+	    Period malPeriod = new MaliciousPeriod(end,start);//bad Period
+	    
 	    System.out.println("printing goodPedriod:\n"+"\t"+goodPeriod);
 	   
 	    //serializing it 
@@ -87,10 +91,10 @@ class BogusPeriodTest {
 			e1.printStackTrace();
 		}
 	  
-	    Period malPeriod = new MaliciousPeriod(end,start);
-        assertNotEquals(goodPeriod.toString(),malPeriod.toString());//show they are different 
+	  //show they are different before corruption
+        assertNotEquals(goodPeriod.toString(),malPeriod.toString()); 
 
-	    // Deserialize it to new class object
+	    // Deserialize it to load corrupted Period
         try {
             FileInputStream fis = new FileInputStream("goodPeriod.tmp");
             ObjectInputStream ois = new ObjectInputStream(fis);
