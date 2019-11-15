@@ -15,8 +15,6 @@ class BogusPeriodTest {
 		BogusPeriod bp = new BogusPeriod();
 	    Period p = (Period) bp.deserialize(bp.serializedForm);
 	    System.out.println(p);
-			
-		  
 	}
 	
 	  
