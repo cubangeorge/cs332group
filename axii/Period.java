@@ -1,6 +1,10 @@
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
+ */
 //Got rid of the final keyword for the class so mutable period could extend it
 // Immutable class that uses defensive copying
 

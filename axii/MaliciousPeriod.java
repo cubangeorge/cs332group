@@ -1,8 +1,9 @@
 import java.io.Serializable;
 import java.util.Date;
 /**
- * @author jorge
- *
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
  */
 public class MaliciousPeriod extends Period implements Serializable {
 
@@ -12,11 +13,11 @@ public class MaliciousPeriod extends Period implements Serializable {
 	 */
 	Date start;
 	Date end;
-	public MaliciousPeriod(java.util.Date start, java.util.Date end) {
+	public MaliciousPeriod(java.util.Date e, java.util.Date s) {
 		//no check of any kind
-		super(start,start);//wont complaint since its the same
-		this.start = new Date(start.getTime());
-        this.end   = new Date(end.getTime());
+		super(s,s);//wont complaint since its the same
+		this.start = e;
+        this.end   = s;
 		
 	}
 	@Override

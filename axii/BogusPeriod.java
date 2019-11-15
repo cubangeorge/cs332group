@@ -29,8 +29,7 @@ public class BogusPeriod {
   // Returns the object with the specified serialized form
   static Object deserialize(byte[] sf) {
     try {
-      return new ObjectInputStream(
-          new ByteArrayInputStream(sf)).readObject();
+      return new ObjectInputStream( new ByteArrayInputStream(sf)).readObject();
     } catch (IOException | ClassNotFoundException e) {
       throw new IllegalArgumentException(e);
     }
