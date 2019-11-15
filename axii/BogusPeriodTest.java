@@ -1,21 +1,15 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.math.BigInteger;
 import java.nio.file.Files;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -33,7 +27,6 @@ class BogusPeriodTest {
 	@Test
 	void test()  {
 		System.out.println("This shows the bogus period from Bloch 88:");
-		BogusPeriod bp = new BogusPeriod();
 	    Period p = (Period) BogusPeriod.deserialize(BogusPeriod.serializedForm);
 	    System.out.println("\t"+p);
 	   
@@ -95,10 +88,8 @@ class BogusPeriodTest {
 		}
 	  
 	    Period malPeriod = new MaliciousPeriod(end,start);
-        FileOutputStream fos =null;
-        ObjectOutputStream oos=null ;
-	    
-	        	
+        assertNotEquals(goodPeriod.toString(),malPeriod.toString());//show they are different 
+
 	    // Deserialize it to new class object
         try {
             FileInputStream fis = new FileInputStream("goodPeriod.tmp");
@@ -111,10 +102,11 @@ class BogusPeriodTest {
             System.exit(1);
         }
         
-        //printing corrupted goodPeriod
+        //printing corrupted goodPeriod 
+        //show they are the same now
         System.out.println("Corrupted goodPeriod:\n\t"+goodPeriod);
 	    assertEquals("Thu Nov 15 00:29:32 EST 2029 - Thu Nov 14 00:29:32 EST 2019", goodPeriod.toString()); 
-	    assertNotEquals(goodPeriod.toString(),malPeriod.toString());
+	    assertEquals(goodPeriod.toString(),malPeriod.toString());
 	    
 	}
 	
