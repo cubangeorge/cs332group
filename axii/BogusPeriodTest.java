@@ -48,7 +48,7 @@ class BogusPeriodTest {
 	    Period goodPeriod = new Period(start,end);//good Period 
 	    Period malPeriod = new MaliciousPeriod(end,start);//bad Period
 	    
-	    System.out.println("printing goodPedriod:\n"+"\t"+goodPeriod);
+	    System.out.println("printing goodPeriod:\n"+"\t"+goodPeriod);
 	   
 	    //serializing it 
 	    try {
