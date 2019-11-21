@@ -46,7 +46,7 @@ class BogusPeriodTest {
             e1.printStackTrace();
         }
 
-        //now making good and bad points
+        //now making good and bad periods
 
         Period goodPeriod = new Period(start, end);//good Period
         Period malPeriod = new MaliciousPeriod(end, start);//bad Period
@@ -55,7 +55,7 @@ class BogusPeriodTest {
 
         //serializing it
         try {
-            FileOutputStream fos = new FileOutputStream("goodPoint.tmp");
+            FileOutputStream fos = new FileOutputStream("goodPeriod.tmp");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(goodPeriod);
             oos.flush();
