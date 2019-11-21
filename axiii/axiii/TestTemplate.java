@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author jorge
  *
  */
-class TemplateEngineTest {
+class TestTemplate {
 
 	@Test
 	void test() {
