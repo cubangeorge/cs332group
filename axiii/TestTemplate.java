@@ -35,4 +35,12 @@ public class TestTemplate {
 	private void assertTemplateEvaluatesTo(String expected) {
 		assertEquals(expected, template.evaluate());
 	}
+	
+	
+	@Test(expected=MissingValueException.class)
+	public void testMissingValueRaisesException() throws Exception {
+	    new Template("${foo}").evaluate();
+	}
+	
+	
 }
