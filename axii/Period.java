@@ -28,10 +28,19 @@ public class Period implements Serializable {
                           start + " after " + end);
     }
 
+    /**
+     * @return Date The start time of the period
+     */
     public Date start () { return new Date(start.getTime()); }
 
+    /**
+     * @return Date The end time of the period
+     */
     public Date end () { return new Date(end.getTime()); }
 
+    /**
+     * @return String The start and end time of the period in string format
+     */
     public String toString() { return start + " - " + end; }
 
    // ... // Remainder omitted

@@ -23,7 +23,12 @@ import org.junit.jupiter.api.Test;
  */
 class BogusPeriodTest {
 
-	
+	/**
+	 * 
+	 * This test method demonstrates the flaws of the bogus period class.
+	 * It does the deserialization of the bogus period object, alters it, serializes it and prints it to show both a good bogus period and bad bogus period.
+	 * 
+	 */
 	@Test
 	void test()  {
 		//printing Bogus point

@@ -2,6 +2,13 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+
+/**
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
+ */
+
 public class BogusPeriod {
   // Byte stream couldn't have come from a real Period instance!
   public static final byte[] serializedForm = {
@@ -20,12 +27,24 @@ public class BogusPeriod {
     0x77, 0x08, 0x00, 0x00, 0x00, (byte)0xd5, 0x17, 0x69, 0x23,
     0x00, 0x78
   };
-
+  
+/**
+ * Main method takes a serializedForm to deserialize and convert to a Period object
+ * 
+ */
   public static void main(String[] args) {
     Period p = (Period) deserialize(serializedForm);
     System.out.println(p);
   }
 
+  /**
+   * Takes the input serialized form and converts it into an object input stream
+   * 
+   * @param byte[] An array holding the serialized form
+   * @return Object The Object input stream that the input was converted into
+   * @throws IllegalArgumentException If there is an IO exception or class not found exception
+   * 
+   */
   // Returns the object with the specified serialized form
   static Object deserialize(byte[] sf) {
     try {
