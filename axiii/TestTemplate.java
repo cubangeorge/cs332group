@@ -24,5 +24,18 @@ class TestTemplate {
 		assertEquals("Hi, someone else", template.evaluate());
 		
 	}
+	
+	/**
+	 * Evaluate template “${one}, ${two}, ${three}” with values “1”, “${foo}”, and “3”, respectively, and verify that the template engine renders the result as “1, ${foo}, 3”.
+	 * 
+	 */
+	@Test
+	public void multipleVariables() throws Exception {
+	    Template template = new Template("${one}, ${two}, ${three}");
+	    template.set("one", "1");
+	    template.set("two", "2");
+	    template.set("three", "3");
+	    assertEquals("1, 2, 3", template.evaluate());
+	}
 
 }
