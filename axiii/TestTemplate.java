@@ -36,11 +36,20 @@ public class TestTemplate {
 		assertEquals(expected, template.evaluate());
 	}
 	
+//	NOTE: Requires JUNIT 4 to be the main but we have JUNIT 5 currently configured	
+//	@Test(expected=MissingValueException.class)
+//	public void testMissingValueRaisesException() throws Exception {
+//	    new Template("${foo}").evaluate();
+//	}
 	
-	@Test(expected=MissingValueException.class)
-	public void testMissingValueRaisesException() throws Exception {
-	    new Template("${foo}").evaluate();
+	@Test
+	public void missingValueRaisesException() throws Exception {
+	    try {
+	        new Template("${foo}").evaluate();
+	        fail("evaluate() should throw an exception if "
+	                + "a variable was left without a value!");
+	    } catch (MissingValueException expected) {
+	    }
 	}
-	
 	
 }
