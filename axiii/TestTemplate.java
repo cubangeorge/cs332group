@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -44,12 +45,21 @@ public class TestTemplate {
 	
 	@Test
 	public void missingValueRaisesException() throws Exception {
-	    try {
-	        new Template("${foo}").evaluate();
-	        fail("evaluate() should throw an exception if "
-	                + "a variable was left without a value!");
-	    } catch (MissingValueException expected) {
-	    }
+		try {
+			new Template("${foo}").evaluate();
+			fail("evaluate() should throw an exception if " + "a variable was left without a value!");
+		} catch (MissingValueException expected) {
+			assertEquals("No value for ${foo}", expected.getMessage());
+		}
+	}
+	
+	@Test
+	public void variablesGetProcessedJustOnce() throws Exception {
+	    template.set("one", "${one}");
+	    template.set("two", "${three}");
+	    template.set("three", "${two}");
+	    assertTemplateEvaluatesTo("${one}, ${three}, ${two}");
 	}
 	
 }
+
