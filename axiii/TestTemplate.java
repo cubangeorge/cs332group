@@ -20,7 +20,7 @@ public class TestTemplate {
 		template.set("three", "3");
 	}
 	/**
-	 * Evaluate template ï¿½${one}, ${two}, ${three}ï¿½ with values ï¿½1ï¿½, ï¿½${foo}ï¿½, and ï¿½3ï¿½, respectively, and verify that the template engine renders the result as ï¿½1, ${foo}, 3ï¿½.
+	 * Evaluate template “${one}, ${two}, ${three}” with values “1”, “${foo}”, and “3”, respectively, and verify that the template engine renders the result as “1, ${foo}, 3”.
 	 * 
 	 */
 	@Test
