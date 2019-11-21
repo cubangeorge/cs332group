@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 
@@ -9,42 +10,29 @@ import org.junit.jupiter.api.Test;
  * @author G 01082586 Blake Khan (BK)
  */
 
-class TestTemplate {
-	@Test
-    public void oneVariable() throws Exception {
-        Template template = new Template("Hello, ${name}");
-        template.set("name", "Reader");
-        assertEquals("Hello, Reader", template.evaluate());
-    }
-	
-	@Test
-	public void differentTemplate() throws Exception {
-		Template template = new Template("Hi, ${name}");
-		template.set("name", "someone else");
-		assertEquals("Hi, someone else", template.evaluate());
-		
+public class TestTemplate {
+	private Template template;
+	@Before
+	public void setUp() throws Exception {
+		template = new Template("${one}, ${two}, ${three}");
+		template.set("one", "1");
+		template.set("two", "2");
+		template.set("three", "3");
 	}
-	
 	/**
-	 * Evaluate template “${one}, ${two}, ${three}” with values “1”, “${foo}”, and “3”, respectively, and verify that the template engine renders the result as “1, ${foo}, 3”.
+	 * Evaluate template ï¿½${one}, ${two}, ${three}ï¿½ with values ï¿½1ï¿½, ï¿½${foo}ï¿½, and ï¿½3ï¿½, respectively, and verify that the template engine renders the result as ï¿½1, ${foo}, 3ï¿½.
 	 * 
 	 */
 	@Test
 	public void multipleVariables() throws Exception {
-	    Template template = new Template("${one}, ${two}, ${three}");
-	    template.set("one", "1");
-	    template.set("two", "2");
-	    template.set("three", "3");
-	    assertEquals("1, 2, 3", template.evaluate());
+		assertTemplateEvaluatesTo("1, 2, 3");
 	}
-	
-	
 	@Test
-	public void unknownVariablesAreIgnored() throws Exception 	{
-	    Template template = new Template("Hello, ${name}");
-	    template.set("name", "Reader");
-	    template.set("doesnotexist", "Hi");
-	    assertEquals("Hello, Reader", template.evaluate());
+	public void unknownVariablesAreIgnored() throws Exception {
+		template.set("doesnotexist", "whatever");
+		assertTemplateEvaluatesTo("1, 2, 3");
 	}
-
+	private void assertTemplateEvaluatesTo(String expected) {
+		assertEquals(expected, template.evaluate());
+	}
 }
