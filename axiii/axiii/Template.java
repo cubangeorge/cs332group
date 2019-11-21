@@ -7,6 +7,6 @@ package axiii;
  * @author jorge
  *
  */
-public class TemplateEngine {
+public class Template {
 
 }
