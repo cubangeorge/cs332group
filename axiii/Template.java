@@ -6,8 +6,7 @@
 
 
 public class Template {
-
-    public Template(String templateText) {
+	public Template(String templateText) {
     }
 
     public void set(String variable, String value) {
@@ -17,3 +16,4 @@ public class Template {
         return "Hello, Reader";
     }
 }
+
