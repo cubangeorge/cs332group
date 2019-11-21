@@ -1,5 +1,11 @@
-import java.util.Map;
+/**
+ * @author G 01066284 Valeria L Green (VG)
+ * @author G 00402127 Jorge L Martinez (JM) 
+ * @author G 01082586 Blake Khan (BK)
+ */
+
 import java.util.HashMap;
+import java.util.Map;
 import static java.util.Map.Entry;
 public class Template {
  private Map<String, String> variables;
