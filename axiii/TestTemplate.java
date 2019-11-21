@@ -20,8 +20,8 @@ public class TestTemplate {
 		template.set("three", "3");
 	}
 	/**
-	 * Evaluate template “${one}, ${two}, ${three}” with values “1”, “${foo}”, and “3”, respectively, and verify that the template engine renders the result as “1, ${foo}, 3”.
-	 * 
+	 * Evaluate template "${one}", "${two}", "${three}" with values "1", "${foo}", and "3", respectively, 
+	 * and verify that the template engine renders the result as "1, "${foo}", 3.
 	 */
 	@Test
 	public void multipleVariables() throws Exception {
